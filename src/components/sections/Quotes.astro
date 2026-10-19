@@ -1,8 +1,9 @@
 ---
 import type { Quotes } from './Quotes.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
+import Button from '../ui/Button.astro';
+import { site } from '../../lib/site';
 
 type Props = Quotes;
 
@@ -18,122 +19,127 @@ const {
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
+const [lead, ...rest] = items;
+const score = site.rating;
 
-const starColor = onDark ? 'fill-accent' : 'fill-accent-ink';
-const dimStar = 'fill-current opacity-15';
+const stars = (value: number) => Math.round(value);
+const initials = (name: string) =>
+	name
+		.split(/\s+/)
+		.map((part) => part.charAt(0))
+		.join('')
+		.slice(0, 2);
+const card = onDark ? 'border-current/15 bg-current/[0.05]' : 'border-line bg-surface';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading) && (
-		<header class="mb-14 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-		</header>
-	)}
+	<SectionHead eyebrow={eyebrow} heading={heading} level={headingLevel} onDark={onDark} />
 
-	<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{items.map((item) => (
-			<li class="group h-full">
-				{/* figure/figcaption so the attribution stays tied to the quote.
-					The hover target is the stationary <li> (`group`), not the figure --
-					if the figure drove its own hover, lifting it on hover would slide its
-					edge out from under the cursor and cause a flickering up/down loop. */}
-				<figure
-					class={`relative flex h-full flex-col overflow-hidden rounded-(--radius-media) border p-8 pt-9 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 ${
-						onDark
-							? 'border-current/15 bg-current/[0.06] group-hover:border-accent/50'
-							: 'border-line bg-surface shadow-[0_1px_2px_rgba(20,18,15,0.04)] group-hover:border-accent-ink/30 group-hover:shadow-[0_24px_48px_-20px_rgba(20,18,15,0.28)]'
-					}`}
-				>
-					{/* Brass top edge -- a thin accent bar that gives each card an anchor
-						and a touch of colour against the plain ground. */}
-					<span
-						aria-hidden="true"
-						class={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 ${
-							onDark ? 'bg-accent' : 'bg-accent-ink'
-						}`}
-					>
-					</span>
-
-					{/* Oversized quotation mark as a warm background flourish, clipped by
-						the card. Sits behind the text (‑z) so it reads as texture, not a
-						character in the copy. */}
-					<span
-						aria-hidden="true"
-						class={`pointer-events-none absolute -top-8 right-2 font-display text-[9rem] leading-none select-none ${
-							onDark ? 'text-accent/[0.12]' : 'text-accent-ink/[0.08]'
-						}`}
-					>
-						&rdquo;
-					</span>
-
-					{/* Header: stars + a Google source badge. The badge signals the
-						reviews are real Google reviews -- credibility and colour at once. */}
-					<div class="relative mb-5 flex min-h-6 items-center justify-between">
-						{item.rating !== undefined ? (
-							<div class="flex gap-1" role="img" aria-label={`${item.rating} out of 5`}>
-								{Array.from({ length: 5 }, (_, i) => (
-									<svg
-										viewBox="0 0 20 20"
-										class={`h-[1.125rem] w-[1.125rem] ${i < Math.round(item.rating ?? 0) ? starColor : dimStar}`}
-										aria-hidden="true"
-									>
-										<path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z" />
-									</svg>
-								))}
-							</div>
-						) : (
-							<span />
-						)}
-						{/* Google 'G' -- the four-colour mark, inline so it stays self-contained. */}
-						<svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0" aria-label="Posted on Google">
-							<path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.3-2.1 3.5-5.2 3.5-8.8z" />
-							<path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z" />
-							<path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8l4-3.1z" />
-							<path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 12 0 12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z" />
-						</svg>
+	{/*
+		Review wall: the overall score fills a full-height panel taking about a
+		quarter of the row, closing on the booking action; the first
+		review leads as a featured card with the words in the serif italic, and
+		the rest follow as a two-up grid of smaller cards.
+	*/}
+	<div
+		class={score ? 'grid gap-6 lg:grid-cols-[minmax(17rem,1fr)_minmax(0,2.75fr)] lg:gap-x-6' : ''}
+	>
+		{score && (
+			<aside class="flex flex-col bg-brand p-8 text-brand-fg lg:p-10">
+				<p class="mono-label text-brand-fg/70">Customer rating</p>
+				<p class="mt-5 text-7xl leading-none font-semibold tracking-[-0.04em] lg:text-8xl">
+					{score.value.toFixed(1)}
+				</p>
+				<p class="mt-3 text-lg tracking-[0.12em] text-accent" aria-hidden="true">
+					{'★'.repeat(stars(score.value))}
+					<span class="opacity-30">{'★'.repeat(5 - stars(score.value))}</span>
+				</p>
+				<p class="mt-2 text-sm text-brand-fg/80">
+					{score.value.toFixed(1)} out of 5
+					{score.count ? ` from ${score.count.toLocaleString()} verified Google reviews` : ''}
+				</p>
+				<p class="mt-8 border-t border-current/20 pt-5 text-sm leading-relaxed text-brand-fg/70 lg:mt-auto">
+					Every review comes from a customer we have actually serviced.
+				</p>
+				{site.primaryCta && (
+					<div class="mt-6">
+						<Button {...site.primaryCta} style="accent" class="w-full" />
 					</div>
+				)}
+			</aside>
+		)}
 
-					{/*
-						flex-1 pushes the attribution to the card foot, so every card's name
-						row sits at the same height regardless of quote length. line-clamp
-						caps a runaway Google review at six lines without breaking the grid.
-					*/}
-					<blockquote class="relative flex-1 text-[1.0625rem] leading-[1.6] text-current/90 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:6] overflow-hidden">
-						{item.quote}
-					</blockquote>
-
-					<figcaption class={`relative mt-7 flex items-center gap-3.5 border-t pt-5 ${onDark ? 'border-current/15' : 'border-line'}`}>
-						{/* Monogram avatar with a soft accent ring -- replace with the
-							reviewer's Google photo when the feed provides one; the initial is
-							the no-photo fallback. */}
-						<span
-							aria-hidden="true"
-							class={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-semibold ring-2 ring-offset-2 ${
-								onDark
-									? 'bg-accent text-accent-fg ring-accent/30 ring-offset-transparent'
-									: 'bg-brand text-brand-fg ring-brand/15 ring-offset-surface'
-							}`}
+		<div class="grid gap-6">
+			{lead && (
+				<figure class={`border p-8 sm:p-10 ${card}`}>
+					{lead.rating !== undefined && (
+						<p
+							class="text-base tracking-[0.12em] text-cta"
+							role="img"
+							aria-label={`${lead.rating} out of 5`}
 						>
-							{item.name.trim().charAt(0)}
+							{'★'.repeat(stars(lead.rating))}
+						</p>
+					)}
+					<blockquote
+						class={`mt-5 font-serif text-[clamp(1.75rem,3.2vw,2.6rem)] leading-[1.18] italic ${onDark ? '' : 'text-ink'}`}
+					>
+						&ldquo;{lead.quote}&rdquo;
+					</blockquote>
+					<figcaption class="mt-8 flex items-center gap-4">
+						<span
+							class="flex h-12 w-12 shrink-0 items-center justify-center bg-muted text-sm font-semibold text-brand"
+							aria-hidden="true"
+						>
+							{initials(lead.name)}
 						</span>
-						<span class="min-w-0">
-							<span class="block truncate text-sm font-semibold text-current">{item.name}</span>
-							{item.location && (
-								<span class="mt-0.5 block truncate font-mono text-[0.6875rem] uppercase tracking-[0.14em] opacity-60">
-									{item.location}
-								</span>
-							)}
+						<span>
+							<span class="block font-semibold">{lead.name}</span>
+							{lead.location && <span class="block text-sm opacity-65">{lead.location}</span>}
 						</span>
 					</figcaption>
 				</figure>
-			</li>
-		))}
-	</ul>
+			)}
+
+			{rest.length > 0 && (
+				<ul class="grid gap-6 md:grid-cols-2">
+					{rest.map((item) => (
+						<li>
+							<figure class={`flex h-full flex-col border p-7 ${card}`}>
+								{item.rating !== undefined && (
+									<p
+										class="text-sm tracking-[0.12em] text-cta"
+										role="img"
+										aria-label={`${item.rating} out of 5`}
+									>
+										{'★'.repeat(stars(item.rating))}
+										<span class="opacity-25">{'★'.repeat(5 - stars(item.rating))}</span>
+									</p>
+								)}
+								<blockquote
+									class={`mt-4 flex-1 text-[1.0625rem] leading-relaxed ${onDark ? '' : 'text-ink'}`}
+								>
+									&ldquo;{item.quote}&rdquo;
+								</blockquote>
+								<figcaption
+									class={`mt-6 flex items-center gap-3 border-t pt-5 ${onDark ? 'border-current/15' : 'border-line'}`}
+								>
+									<span
+										class="flex h-10 w-10 shrink-0 items-center justify-center bg-muted text-xs font-semibold text-brand"
+										aria-hidden="true"
+									>
+										{initials(item.name)}
+									</span>
+									<span>
+										<span class="block text-sm font-semibold">{item.name}</span>
+										{item.location && <span class="block text-xs opacity-65">{item.location}</span>}
+									</span>
+								</figcaption>
+							</figure>
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
+	</div>
 </Section>

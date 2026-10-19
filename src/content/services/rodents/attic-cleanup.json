@@ -1,0 +1,370 @@
+{
+  "title": "Attic Clean-Up",
+  "summary": "Removal of droppings, nesting and contaminated insulation after a rodent problem.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/attic-rodent.avif",
+    "alt": "Rodent damage in attic insulation"
+  },
+  "order": 44,
+  "parent": {
+    "label": "Rodent Control",
+    "href": "/services/rodents"
+  },
+  "draft": false,
+  "seo": {
+    "title": "Attic Clean-Up Control in Phoenix",
+    "description": "Removal of droppings, nesting and contaminated insulation after a rodent problem. Licensed technicians, free re-treats and a written field report on every visit.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "badge_strip",
+      "label": "Trust badges",
+      "items": [
+        {
+          "icon": "wrench",
+          "title": "Steel-mesh sealing",
+          "subtitle": "Chew-proof materials"
+        },
+        {
+          "icon": "shield",
+          "title": "1-year guarantee",
+          "subtitle": "On exclusion work"
+        },
+        {
+          "icon": "check",
+          "title": "No indoor poison",
+          "subtitle": "Traps, not bait"
+        },
+        {
+          "icon": "clock",
+          "title": "Sealed in a day",
+          "subtitle": "Most homes"
+        },
+        {
+          "icon": "badge",
+          "title": "Field report",
+          "subtitle": "Every gap photographed"
+        }
+      ],
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "placeholder",
+      "label": "Content to be added",
+      "note": "Placeholder for content to be provided. Replace with the final copy or media for this section.",
+      "size": "md",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "media_split",
+      "eyebrow": "About this treatment",
+      "heading": "Rodents leave more than noise behind.",
+      "body": "Droppings, urine and nesting material carry odours and disease. We remove the contamination, sanitise the attic, and replace damaged insulation so the space is clean and efficient again.\n\nEvery visit ends with a written field report: what we found, where we treated, and what to watch for next. If the problem comes back between visits, so do we, free.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/attic-rodent.avif",
+        "alt": "Rodent damage in attic insulation"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "check",
+          "text": "Species identified first",
+          "desc": "The right product for the right pest, not one spray for everything."
+        },
+        {
+          "icon": "shield",
+          "text": "Safe for kids and pets",
+          "desc": "Targeted, low-toxicity treatments placed where pests live."
+        },
+        {
+          "icon": "badge",
+          "text": "Free re-treats",
+          "desc": "If they come back between visits, we come back too, at no charge."
+        }
+      ],
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "promo_cards",
+      "eyebrow": "More reasons to book",
+      "heading": "Protection plans, financing and this month's offer.",
+      "columns": "3",
+      "cards": [
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
+          },
+          "icon": "shield",
+          "badge": "Free re-treats",
+          "title": "Year-round protection",
+          "subtitle": "For as low as",
+          "price": {
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
+          },
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
+          },
+          "icon": "dollar",
+          "badge": "Limited time",
+          "title": "0% APR for 12 months",
+          "subtitle": "Financing available",
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over low monthly payments. Quick soft-check application — a decision in minutes.",
+          "cta": {
+            "label": "Check your rate",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
+          },
+          "icon": "badge",
+          "badge": "Save now",
+          "title": "$50 off your first service",
+          "subtitle": "New customers",
+          "body": "Take $50 off your initial treatment. Mention code FIRST50 when you book your free inspection. One offer per household.",
+          "cta": {
+            "label": "Book a free inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "lg",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "eyebrow": "Before you book",
+      "heading": "Attic Clean-Up questions.",
+      "items": [
+        {
+          "question": "Roof rats or mice: how can I tell?",
+          "answer": "Roof rat droppings are about half an inch long with pointed ends; mouse droppings are smaller, like grains of rice. Noise in the attic at night usually means roof rats."
+        },
+        {
+          "question": "Do you use poison?",
+          "answer": "Rarely, and never inside the home. Poisoned rodents can die in a wall void and smell for weeks. We rely on exclusion and snap traps, with tamper-proof bait stations outside where appropriate."
+        },
+        {
+          "question": "How long does exclusion take?",
+          "answer": "Most homes are sealed in a single day. We then return for trap checks over the following two weeks."
+        },
+        {
+          "question": "Is the work guaranteed?",
+          "answer": "Yes. Exclusion work carries a one-year guarantee. If a rodent gets in through a sealed point, we come back and fix it free."
+        },
+        {
+          "question": "Can you clean up the attic?",
+          "answer": "Yes. We remove droppings and nesting, sanitise the area and replace damaged insulation where needed."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "collection_feed",
+      "eyebrow": "Related services",
+      "heading": "More rodents services.",
+      "intro": "The same inspect-treat-document approach, for related problems.",
+      "source": "services",
+      "layout": "grid",
+      "columns": "3",
+      "limit": 3,
+      "showImage": true,
+      "showSummary": true,
+      "moreLabel": "All rodents services",
+      "moreHref": "/services/rodents",
+      "moreStyle": "secondary",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "quotes",
+      "eyebrow": "4.9 / 5 on Google",
+      "heading": "Reviews from real homes.",
+      "items": [
+        {
+          "quote": "Roof rats in the attic for months. They sealed eleven gaps in one day and the noise stopped.",
+          "name": "Janet F.",
+          "location": "Arcadia, Phoenix",
+          "rating": 5
+        },
+        {
+          "quote": "Every sealed gap was in the report with a photo. Worth it for that alone.",
+          "name": "Mike D.",
+          "location": "Chandler, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "No poison inside, which mattered with two dogs. Traps checked every few days until it was over.",
+          "name": "Sarah B.",
+          "location": "Mesa, AZ",
+          "rating": 5
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "eyebrow": "Free inspection",
+      "heading": "Get rid of attic clean-up for good.",
+      "body": "A licensed technician, a full inspection and a written plan. No charge, no contract.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "form_block",
+      "eyebrow": "Get in touch",
+      "heading": "Tell us about your attic clean-up problem.",
+      "intro": "Send a few details and we will call to book your free inspection.",
+      "endpoint": "https://formspree.io/f/your-form-id",
+      "submitLabel": "Book my free inspection",
+      "successNote": "Thanks — we will call within one business day, usually sooner.",
+      "fields": [
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "(555) 555-5555",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "placeholder": "you@example.com",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "placeholder": "85001",
+          "required": true,
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "text",
+          "name": "sightings",
+          "label": "Where are you seeing them?",
+          "placeholder": "e.g. kitchen, garage, attic",
+          "required": false,
+          "width": "full"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "Anything else we should know?",
+          "placeholder": "Pets, kids, gate codes, best time to visit…",
+          "required": false,
+          "rows": 4
+        }
+      ],
+      "footnote": "We never share your details. You will only hear from us about your inspection.",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "service_areas",
+      "eyebrow": "Where we work",
+      "heading": "Serving the greater Phoenix valley.",
+      "intro": "Book a free inspection anywhere across these areas and the towns around them.",
+      "columns": "4",
+      "showServed": true,
+      "map": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=Phoenix,AZ&z=10&output=embed",
+        "title": "Map of the greater Phoenix valley service area",
+        "ratio": "4/3"
+      },
+      "footnote": "Not listed? Call us — our trucks cover more of the valley than we can fit here.",
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

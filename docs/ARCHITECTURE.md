@@ -16,7 +16,7 @@ Editors touch content, never code. The build guarantees the two stay in sync.
 ## Folder map
 
 ```
-modern-cabinets-template/
+clearline-pest-template/
 ├── .pages.yml            CMS config — what editors can edit, and how
 ├── astro.config.mjs      Astro + Tailwind config
 ├── tsconfig.json         TypeScript config
@@ -43,7 +43,7 @@ maps each folder to an editing UI.
 content/
 ├── site.json      Global settings (name, nav, contact)
 ├── pages/         Individual pages (home.json, …)
-├── services/      Service entries (kitchen, bathroom, closets…)
+├── services/      Service entries (general-pest, scorpions, termites…)
 ├── locations/     Location / area pages
 ├── projects/      Portfolio entries
 └── templates/     Reusable content templates

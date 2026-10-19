@@ -1,0 +1,68 @@
+---
+import Heading from './Heading.astro';
+import Prose from './Prose.astro';
+import type { HeadingLevel } from '../../lib/section-base';
+
+/**
+ * The header every section opens with: a hairline rule, an auto-numbered
+ * "03" (a CSS counter in global.css) beside the eyebrow, and a sans heading
+ * whose last word is set in the serif italic.
+ *
+ * `stacked` drops the side column, for narrow slots (a sticky FAQ rail, a
+ * dispatch panel) where the two-column head would cramp.
+ */
+interface Props {
+	eyebrow?: string;
+	heading?: string;
+	intro?: string;
+	level?: HeadingLevel;
+	onDark?: boolean;
+	stacked?: boolean;
+	size?: 'xl' | 'lg';
+	class?: string;
+}
+
+const {
+	eyebrow,
+	heading,
+	intro,
+	level = 'h2',
+	onDark = false,
+	stacked = false,
+	size = 'xl',
+	class: className = '',
+} = Astro.props;
+
+// The last word is the one set in the serif italic. Trailing punctuation stays
+// outside the mark so the highlight ends on the letterform.
+const words = heading?.trim().split(/\s+/) ?? [];
+const last = words.pop() ?? '';
+const [, markWord = last, tail = ''] = last.match(/^(.*?)([.!?:,]*)$/) ?? [];
+const lead = words.join(' ');
+---
+
+{(eyebrow || heading || intro) && (
+	<header
+		class={`mb-14 border-t pt-5 ${onDark ? 'border-current/60' : 'border-line'} ${
+			stacked ? '' : 'grid gap-x-10 gap-y-6 lg:grid-cols-[13rem_1fr]'
+		} ${className}`}
+	>
+		<div class={`flex items-baseline gap-4 lg:flex-col lg:gap-2 ${stacked ? 'mb-6' : ''}`}>
+			<span
+				class={`sec-num text-sm font-semibold tabular-nums ${onDark ? 'text-accent' : 'text-accent-ink'}`}
+			/>
+			{eyebrow && <span class="mono-label opacity-75">{eyebrow}</span>}
+		</div>
+		<div>
+			{heading && (
+				<Heading level={level} size={size} display class="max-w-[18ch]">
+					{/* The space lives inside the string: a bare one between tags is compressed away. */}
+					{lead ? `${lead} ` : ''}
+					<span class={onDark ? 'mark-on-dark' : 'mark'}>{markWord}</span>
+					{tail}
+				</Heading>
+			)}
+			{intro && <Prose html={intro} invert={onDark} class="mt-6 max-w-xl" />}
+		</div>
+	</header>
+)}

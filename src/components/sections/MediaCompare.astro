@@ -1,9 +1,7 @@
 ---
 import type { MediaCompare } from './MediaCompare.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = MediaCompare;
 
@@ -30,19 +28,13 @@ const chip =
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	<ul class={`grid gap-10 ${items.length > 1 ? 'lg:grid-cols-2' : ''}`}>
 		{items.map((item, i) => (
@@ -96,7 +88,7 @@ const chip =
 									max="100"
 									value="50"
 									data-compare-input
-									class="h-full w-full cursor-ew-resize appearance-none bg-transparent focus-visible:outline-none [&::-moz-range-thumb]:h-10 [&::-moz-range-thumb]:w-10 [&::-moz-range-thumb]:cursor-ew-resize [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-surface [&::-moz-range-thumb]:bg-brand [&::-webkit-slider-thumb]:h-10 [&::-webkit-slider-thumb]:w-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:cursor-ew-resize [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-surface [&::-webkit-slider-thumb]:bg-brand"
+									class="h-full w-full cursor-ew-resize appearance-none bg-transparent focus-visible:outline-none [&::-moz-range-thumb]:h-10 [&::-moz-range-thumb]:w-10 [&::-moz-range-thumb]:cursor-ew-resize [&::-moz-range-thumb]:rounded-(--radius-brand) [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-surface [&::-moz-range-thumb]:bg-brand [&::-webkit-slider-thumb]:h-10 [&::-webkit-slider-thumb]:w-10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:cursor-ew-resize [&::-webkit-slider-thumb]:rounded-(--radius-brand) [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-surface [&::-webkit-slider-thumb]:bg-brand"
 								/>
 							</label>
 						</div>

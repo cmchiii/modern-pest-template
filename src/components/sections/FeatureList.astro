@@ -3,8 +3,7 @@ import type { FeatureList } from './FeatureList.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import { childLevel } from '../../lib/section-base';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = FeatureList;
 
@@ -31,23 +30,22 @@ const gridCols = {
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-14 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-	<ul class={`grid gap-x-8 gap-y-10 ${gridCols[columns]}`}>
-		{items.map((item) => (
-			<li class={`border-t pt-6 ${onDark ? 'border-current/20' : 'border-line'}`}>
+	<ul class={`grid gap-4 ${gridCols[columns]}`}>
+		{items.map((item, i) => (
+			<li class={`p-7 ${onDark ? 'bg-current/[0.06]' : 'bg-muted'}`}>
+				<span
+					class={`mb-5 block text-sm font-semibold tabular-nums ${onDark ? 'text-accent' : 'text-brand'}`}
+				>
+					{String(i + 1).padStart(2, '0')}
+				</span>
 				<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
 					{item.title}
 				</Heading>

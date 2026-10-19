@@ -32,8 +32,8 @@ export const serviceSchema = z.object({
 	...entryBase,
 	/**
 	 * Public heading override. `title` doubles as the CMS list label, so a room
-	 * main page sets title to "Kitchen — Main Page" to read clearly in the
-	 * sidebar; `heading` then carries the real on-page H1 ("Kitchen Shelves").
+	 * main page sets title to "Scorpions — Main Page" to read clearly in the
+	 * sidebar; `heading` then carries the real on-page H1 ("Scorpion Control").
 	 * Omit on sub-services -- their title is already the heading.
 	 */
 	heading: z.string().optional(),
@@ -41,8 +41,8 @@ export const serviceSchema = z.object({
 	priceNote: z.string().optional(),
 	/**
 	 * An intermediate breadcrumb between Services and this page, for a
-	 * sub-category that lives under a parent (e.g. Pots & Pans under Kitchen
-	 * Shelves). Omit on top-level services; the trail stays Home / Services / Title.
+	 * sub-category that lives under a parent (e.g. UV Scorpion Hunts under Scorpion
+	 * Control). Omit on top-level services; the trail stays Home / Services / Title.
 	 */
 	parent: z
 		.object({
@@ -130,8 +130,8 @@ export const collectionBasePath: Record<CollectionName, string> = {
  *
  * A room's main page lives inside its own folder as `_main.json` so the CMS
  * groups it with its sub-services and sorts it to the top of the group
- * (kitchen/_main.json above kitchen/lazy-susan.json). On disk that gives the id
- * `kitchen/_main`, but the page is still `/services/kitchen` -- so the trailing
+ * (scorpions/_main.json above scorpions/bark-scorpions.json). On disk that gives the id
+ * `scorpions/_main`, but the page is still `/services/scorpions` -- so the trailing
  * `/_main` is dropped here, in one place, for every link and route.
  */
 export function entrySlug(id: string): string {

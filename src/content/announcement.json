@@ -1,8 +1,8 @@
 {
   "enabled": true,
-  "text": "Free in-home design consultation - book by the end of the month.",
+  "text": "Scorpion season is here — free UV inspection with any new protection plan this month.",
   "link": {
-    "label": "Book a measure",
+    "label": "Book an inspection",
     "href": "/contact"
   },
   "dismissible": true

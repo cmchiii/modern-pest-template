@@ -5,27 +5,39 @@ import { iconPaths } from '../../lib/icons';
 
 type Props = BadgeStrip;
 
-const { items = [], anchor, surface = 'brand', spacing = 'sm', width = 'wide' } = Astro.props;
+const {
+	label,
+	items = [],
+	anchor,
+	surface = 'brand',
+	spacing = 'sm',
+	width = 'wide',
+} = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
-
-// Brass on dark grounds, its darkened variant on light -- the page's rule for
-// the accent, matching DimensionLine and the Steps numerals.
-const accent = onDark ? 'text-accent' : 'text-accent-ink';
-const hairline = onDark ? 'bg-current/25' : 'bg-line';
-const divider = onDark ? 'lg:before:bg-current/20' : 'lg:before:bg-line';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	<ul class="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
-		{items.map((item, i) => (
+	{/*
+		A quiet trust bar: each promise is an icon tile, a title and one line of
+		detail, separated by hairlines. Reads in a glance, never competes with
+		the hero above it.
+	*/}
+	<ul class="grid grid-cols-2 gap-y-8 sm:grid-cols-3 lg:grid-cols-5" aria-label={label}>
+		{items.map((item) => (
 			<li
-				class={`relative lg:pl-10 lg:before:absolute lg:before:top-1 lg:before:bottom-1 lg:before:left-0 lg:before:w-px lg:first:pl-0 lg:before:content-[''] lg:first:before:hidden ${divider}`}
+				class={`flex items-start gap-4 pr-4 lg:border-l lg:pl-7 lg:first:border-l-0 lg:first:pl-0 ${
+					onDark ? 'border-current/15' : 'border-line'
+				}`}
 			>
-				<div class="flex items-center justify-between">
+				<span
+					class={`flex h-10 w-10 shrink-0 items-center justify-center ${
+						onDark ? 'bg-accent text-accent-fg' : 'bg-muted text-brand'
+					}`}
+				>
 					<svg
 						viewBox="0 0 24 24"
-						class={`h-10 w-10 ${accent}`}
+						class="h-5 w-5"
 						fill="none"
 						stroke="currentColor"
 						stroke-width="1.75"
@@ -35,15 +47,13 @@ const divider = onDark ? 'lg:before:bg-current/20' : 'lg:before:bg-line';
 					>
 						<path d={iconPaths[item.icon]} />
 					</svg>
-					<span class={`font-mono text-xs font-medium tracking-[0.14em] ${accent}`}>
-						{String(i + 1).padStart(2, '0')}
-					</span>
-				</div>
-				<span class={`mt-6 mb-5 block h-px w-full ${hairline}`} aria-hidden="true" />
-				<span class="block text-base leading-snug font-semibold text-current">{item.title}</span>
-				{item.subtitle && (
-					<span class="mt-1.5 block text-xs leading-relaxed opacity-70">{item.subtitle}</span>
-				)}
+				</span>
+				<span>
+					<span class="block text-[0.9375rem] leading-snug font-semibold">{item.title}</span>
+					{item.subtitle && (
+						<span class="mt-0.5 block text-sm leading-snug opacity-70">{item.subtitle}</span>
+					)}
+				</span>
 			</li>
 		))}
 	</ul>

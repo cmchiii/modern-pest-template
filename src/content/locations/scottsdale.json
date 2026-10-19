@@ -1,6 +1,6 @@
 {
   "title": "Scottsdale, AZ",
-  "summary": "Glide-out cabinet shelving measured and installed across Scottsdale.",
+  "summary": "Scorpion, termite, rodent and general pest control across Scottsdale.",
   "city": "Scottsdale",
   "region": "AZ",
   "postalCodes": ["85251", "85254", "85260"],
@@ -8,14 +8,14 @@
   "image": {
     "source": "upload",
     "src": "/media/images/scottsdale.avif",
-    "alt": "Kitchen cabinetry in Scottsdale"
+    "alt": "Aerial view of Scottsdale, Arizona"
   },
   "order": 20,
   "draft": false,
   "customLayout": true,
   "seo": {
-    "title": "Custom Cabinet Shelving in Scottsdale, AZ",
-    "description": "Glide-out cabinet shelving measured on site and installed across Scottsdale in one visit. Book a free in-home consultation.",
+    "title": "Pest Control in Scottsdale, AZ",
+    "description": "Scorpion, termite, rodent and general pest control across Scottsdale. Inspected, treated at the source, and documented on every visit. Book a free inspection.",
     "noindex": false
   },
   "sections": [
@@ -28,18 +28,32 @@
         "image": {
           "source": "upload",
           "src": "/media/images/scottsdale.avif",
-          "alt": "Custom kitchen cabinetry installed in a Scottsdale home"
+          "alt": "Aerial view of Scottsdale, Arizona"
         }
       },
       "eyebrow": "Scottsdale, AZ",
-      "heading": "Cabinet shelving built to fit your Scottsdale home.",
-      "body": "Glide-out shelves measured on site and installed in one visit — across Old Town, McCormick Ranch, and North Scottsdale.",
+      "heading": "Pest control for Scottsdale homes.",
+      "body": "Scorpions, termites, roof rats and roaches, inspected and treated at the source — across Old Town, McCormick Ranch, and North Scottsdale.",
       "ctas": [
-        { "label": "Free consultation", "href": "/contact", "style": "primary", "newTab": false },
-        { "label": "Call (555) 014-2200", "href": "tel:+15550142200", "style": "secondary", "newTab": false }
+        {
+          "label": "Free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
       ],
-      "rating": { "value": 4.8, "count": 2431, "label": "Scottsdale reviews" },
-      "badges": ["Licensed and insured", "Measured in your home", "Installed in one visit"],
+      "rating": {
+        "value": 4.9,
+        "count": 2431,
+        "label": "Scottsdale reviews"
+      },
+      "badges": ["Licensed and insured", "Pet & kid safe", "Free re-treats"],
       "spacing": "lg",
       "width": "wide"
     },
@@ -48,11 +62,11 @@
       "headingLevel": "h2",
       "eyebrow": "About the area",
       "heading": "Serving Scottsdale and the surrounding valley.",
-      "body": "We cover all of Scottsdale and the surrounding area, including Old Town, McCormick Ranch, and North Scottsdale. For fifteen years we have fitted glide-out shelves into valley kitchens, measuring the cabinet you already own and building to that exact opening.\n\nEvery shelf is measured in your home and cut to that opening, so an older Scottsdale kitchen gets the same fit as a new build. Postcodes served include 85251, 85254, and 85260.",
+      "body": "We cover all of Scottsdale and the surrounding area, including Old Town, McCormick Ranch, and North Scottsdale. For fifteen years we have kept pests out of valley homes the same way: inspect first, treat at the source, and leave a written field report so you can see the work.\n\nEvery technician is our own licensed employee, and if pests come back between visits, the same technician comes back free.",
       "image": {
         "source": "upload",
         "src": "/media/images/scottsdale.avif",
-        "alt": "Custom kitchen cabinetry installed in a Scottsdale home"
+        "alt": "Aerial view of Scottsdale, Arizona"
       },
       "imageSide": "left",
       "bullets": [
@@ -62,15 +76,15 @@
         },
         {
           "icon": "wrench",
-          "text": "12,000+ shelves measured, built and installed"
+          "text": "60,000+ inspections and treatments completed"
         },
         {
           "icon": "star",
-          "text": "Rated 4.8 out of 5 across 2,431 verified reviews"
+          "text": "Rated 4.9 out of 5 across 3,184 verified reviews"
         },
         {
           "icon": "badge",
-          "text": "Backed by a lifetime warranty on every glide"
+          "text": "A written field report with photos on every visit"
         }
       ],
       "ctas": [
@@ -89,58 +103,73 @@
       "type": "promo_cards",
       "headingLevel": "h2",
       "eyebrow": "How we help",
-      "heading": "Everything a Scottsdale cabinet needs.",
+      "heading": "Everything a Scottsdale home needs.",
       "columns": "3",
       "cards": [
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/shelf-detail.avif",
-            "alt": "Full-extension glide-out shelf holding ceramic dishes"
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
           },
           "icon": "wrench",
-          "badge": "Lifetime warranty",
-          "title": "Maintenance",
+          "badge": "Free re-treats",
+          "title": "Protection plans",
           "subtitle": "For as low as",
           "price": {
-            "label": "Tune-ups from",
-            "value": "$0",
-            "unit": "on glides, for life"
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
           },
-          "body": "Tune-ups, re-alignment, and replacement glides for shelving we have already installed across Scottsdale.",
-          "cta": { "label": "Maintenance plans", "href": "/maintenance", "style": "primary", "newTab": false },
-          "phone": "(555) 014-2200",
-          "phoneHref": "tel:+15550142200"
+          "body": "Year-round barrier treatment for Scottsdale homes, with free re-treats between visits.",
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
         },
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-island.avif",
-            "alt": "Kitchen with a dark island and glide-out storage"
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
           },
           "icon": "dollar",
           "badge": "Limited time",
           "title": "Financing",
           "subtitle": "Financing available",
-          "body": "Spread the cost of a full kitchen refit over fixed monthly payments with no surprises. 0% APR for the first twelve months.",
-          "cta": { "label": "See financing", "href": "/financing", "style": "primary", "newTab": false },
-          "phone": "(555) 014-2200",
-          "phoneHref": "tel:+15550142200"
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over fixed monthly payments. 0% APR for the first twelve months.",
+          "cta": {
+            "label": "See financing",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
         },
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-hero.avif",
-            "alt": "White shaker kitchen with glide-out storage"
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
           },
           "icon": "badge",
           "badge": "This month",
-          "title": "Free consultation",
+          "title": "Free inspection",
           "subtitle": "New customers",
-          "body": "Free in-home design consultation when you book a Scottsdale measure before the end of the month.",
-          "cta": { "label": "Book a consultation", "href": "/contact", "style": "primary", "newTab": false },
-          "phone": "(555) 014-2200",
-          "phoneHref": "tel:+15550142200"
+          "body": "Free inspection and $50 off your first treatment when you book a Scottsdale visit this month.",
+          "cta": {
+            "label": "Book an inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
         }
       ],
       "surface": "muted",
@@ -150,9 +179,9 @@
     {
       "type": "collection_feed",
       "headingLevel": "h2",
-      "eyebrow": "What we fit",
+      "eyebrow": "What we treat",
       "heading": "Services in Scottsdale.",
-      "intro": "The same measured-and-built approach, in every room of your Scottsdale home.",
+      "intro": "The same inspect-treat-document approach, for every pest in Scottsdale.",
       "source": "services",
       "layout": "grid",
       "columns": "4",
@@ -171,10 +200,15 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "No obligation",
-      "heading": "Book a free measure in Scottsdale.",
-      "body": "About an hour on site, and a fixed quote before anything is built. Call (555) 014-2200 or book online.",
+      "heading": "Book a free inspection in Scottsdale.",
+      "body": "About 45 minutes on site, a written plan and a fixed price. Call (555) 014-7378 or book online.",
       "ctas": [
-        { "label": "Book a consultation", "href": "/contact", "style": "primary", "newTab": false }
+        {
+          "label": "Book an inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
       ],
       "surface": "brand",
       "spacing": "sm",
@@ -192,7 +226,7 @@
         },
         {
           "question": "How quickly can you get to Scottsdale?",
-          "answer": "Usually within a week for the consultation, and about two weeks from measure to installation."
+          "answer": "Usually the next business day for an inspection, and the same day for wasps, bees and rodents in the living space."
         },
         {
           "question": "Which parts of Scottsdale do you cover?",
@@ -210,19 +244,19 @@
       "heading": "What Scottsdale homeowners say.",
       "items": [
         {
-          "quote": "The glide-outs they built for our Old Town kitchen fit like they were always there. Clean install, no mess.",
+          "quote": "They sealed the weep screed all the way round the house. Scorpion sightings inside went from weekly to none.",
           "name": "Dana R.",
           "location": "Old Town, Scottsdale",
           "rating": 5
         },
         {
-          "quote": "Measured one week, installed the next. The quote never moved. Exactly what was promised.",
+          "quote": "Inspected on Monday, treated on Tuesday, and the report showed exactly what they did. No upsell.",
           "name": "Marcus T.",
           "location": "McCormick Ranch, Scottsdale",
           "rating": 5
         },
         {
-          "quote": "We finally use the deep corner cabinet we ignored for years. Worth every dollar.",
+          "quote": "Roof rats in the attic for months. One day of sealing and it went quiet.",
           "name": "Priya S.",
           "location": "North Scottsdale",
           "rating": 5
@@ -236,9 +270,14 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "Ready when you are",
-      "heading": "Get your fixed quote.",
+      "heading": "Get your free inspection.",
       "ctas": [
-        { "label": "Free consultation", "href": "/contact", "style": "primary", "newTab": false }
+        {
+          "label": "Free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
       ],
       "surface": "dark",
       "spacing": "sm",
@@ -248,19 +287,49 @@
       "type": "form_block",
       "headingLevel": "h2",
       "eyebrow": "Get in touch",
-      "heading": "Request a Scottsdale measure.",
-      "intro": "Tell us a little about the cabinets you want changed and we'll be in touch to book a visit.",
+      "heading": "Request a Scottsdale inspection.",
+      "intro": "Tell us what you are seeing and we will be in touch to book a visit.",
       "endpoint": "https://formspree.io/f/your-form-id",
-      "submitLabel": "Request a measure",
+      "submitLabel": "Request an inspection",
       "successNote": "Thanks — we'll be in touch within one business day.",
       "fields": [
-        { "kind": "text", "name": "name", "label": "Full name", "required": true, "width": "half", "autocomplete": "name" },
-        { "kind": "tel", "name": "phone", "label": "Phone", "required": true, "width": "half" },
-        { "kind": "email", "name": "email", "label": "Email", "required": true, "width": "half" },
-        { "kind": "text", "name": "postcode", "label": "Postcode", "width": "half", "autocomplete": "postal-code" },
-        { "kind": "textarea", "name": "message", "label": "What would you like changed?", "rows": 5 }
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Full name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "What are you seeing?",
+          "rows": 5
+        }
       ],
-      "footnote": "We only use your details to arrange your consultation.",
+      "footnote": "We only use your details to arrange your inspection.",
       "surface": "light",
       "spacing": "md",
       "width": "default"
@@ -270,7 +339,7 @@
       "headingLevel": "h2",
       "eyebrow": "Service map",
       "heading": "Where we work in the valley.",
-      "intro": "Scottsdale is one of the towns we cover — same team, same fixed-quote process as our Phoenix home base.",
+      "intro": "Scottsdale is on our daily routes. We also cover the towns nearby — same technicians, same field report.",
       "columns": "4",
       "showServed": true,
       "showPostalCodes": false,
@@ -280,7 +349,7 @@
         "title": "Map of our Scottsdale, AZ service area",
         "ratio": "4/3"
       },
-      "footnote": "Not sure if we reach you? Call [(555) 014-2200](tel:+15550142200) and ask.",
+      "footnote": "Not sure if we reach you? Call [(555) 014-7378](tel:+15550147378) and ask.",
       "surface": "muted",
       "spacing": "md",
       "width": "wide"

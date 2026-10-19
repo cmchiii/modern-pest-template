@@ -61,6 +61,8 @@ const siteSchema = z.object({
 		.optional(),
 	tagline: z.string().optional(),
 	logo: z.object({ src: z.string(), alt: z.string() }).optional(),
+	/** Light version of the logo for dark grounds (the footer). Falls back to a knocked-out `logo`. */
+	logoOnDark: z.object({ src: z.string(), alt: z.string() }).optional(),
 	contact: z.object({
 		phone: z.string(),
 		phoneHref: z.string(),

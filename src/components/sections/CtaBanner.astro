@@ -4,7 +4,6 @@ import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
 import Button from '../ui/Button.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
 
 type Props = CtaBanner;
 
@@ -17,53 +16,66 @@ const {
 	anchor,
 	surface = 'brand',
 	spacing = 'md',
-	width = 'wide',
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
+const pad = { none: 'py-10', sm: 'py-16 md:py-20', md: 'py-20 md:py-28', lg: 'py-24 md:py-36' }[
+	spacing
+];
 
-// The lead CTA is the whole point of this band, so it gets the brass `accent`
+// The lead CTA is the whole point of this band, so it gets the accent `accent`
 // treatment by default. Crucially we also promote an explicit `primary` to it on
-// dark/brand surfaces: a primary button is brand-green, which disappears against
+// dark/brand surfaces: a primary button is signal-green, which disappears against
 // the green banner, leaving the CTA reading as plain text. Authored `secondary`
 // or `ghost` styles are still honoured.
 const leadStyle = (cta: (typeof ctas)[number]) =>
 	!cta.style || (cta.style === 'primary' && onDark) ? 'accent' : cta.style;
 ---
 
-<Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-		<div class="max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-5 max-w-xs" />
-			)}
-			<Heading level={headingLevel} size="lg" display>
-				{heading}
-			</Heading>
-			{body && <Prose html={body} invert={onDark} class="mt-4" />}
-		</div>
-
-		{ctas.length > 0 && (
-			<div
-				class={`flex shrink-0 flex-wrap items-center gap-4 lg:flex-col lg:items-stretch lg:gap-3 lg:border-l lg:pl-10 ${
-					onDark ? 'lg:border-current/20' : 'lg:border-line'
-				}`}
-			>
-				{/*
-					The lead CTA is the whole point of this band, so it takes the `lg`
-					scale (same as the hero); the rest keep the default size.
-				*/}
-				{ctas.map((cta, i) => (
-					<Button
-						{...cta}
-						style={i === 0 ? leadStyle(cta) : (cta.style ?? 'secondary')}
-						size={i === 0 ? 'lg' : 'md'}
-						onDark={onDark}
-						arrow={i === 0}
-						class="lg:justify-center"
-					/>
-				))}
-			</div>
+<Section anchor={anchor} surface={surface} spacing="none" width="full" contained={false}>
+	{/*
+		Closing band: a thin brand rule top and bottom, the heading at a
+		confident size, and the actions on a hairline beneath it.
+	*/}
+	<div class="edge-rule h-1" aria-hidden="true" />
+	<div class={`mx-auto w-full max-w-[104rem] px-5 sm:px-8 lg:px-12 ${pad}`}>
+		{eyebrow && (
+			<p class="mono-label mb-6 flex items-center gap-3 font-semibold">
+				<span class="check-dot" aria-hidden="true" />
+				{eyebrow}
+			</p>
 		)}
+		<Heading
+			level={headingLevel}
+			size="hero"
+			display
+			class="max-w-[16ch] !text-[clamp(2.25rem,4.6vw,3.75rem)] !leading-[1.05]"
+		>
+			{heading}
+		</Heading>
+
+		<div
+			class={`mt-10 grid items-end gap-8 border-t pt-8 lg:grid-cols-[1fr_auto] ${onDark ? 'border-current' : 'border-line'}`}
+		>
+			{body ? (
+				<Prose html={body} invert={onDark && surface !== 'brand'} size="lg" class="max-w-xl" />
+			) : (
+				<span />
+			)}
+			{ctas.length > 0 && (
+				<div class="flex flex-wrap items-center gap-4">
+					{ctas.map((cta, i) => (
+						<Button
+							{...cta}
+							style={i === 0 ? leadStyle(cta) : (cta.style ?? 'secondary')}
+							size={i === 0 ? 'lg' : 'md'}
+							onDark={onDark}
+							arrow={i === 0}
+						/>
+					))}
+				</div>
+			)}
+		</div>
 	</div>
+	<div class="edge-rule h-1" aria-hidden="true" />
 </Section>

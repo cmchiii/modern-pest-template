@@ -1,0 +1,72 @@
+{
+  "title": "Mesa termite treatment, 1970s slab",
+  "summary": "Mud tubes behind a garage water heater. Liquid perimeter barrier and bait monitoring, warranty renewed annually.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/termite.avif",
+    "alt": "Winged termite specimen"
+  },
+  "order": 20,
+  "location": "Mesa, AZ",
+  "completed": "2026-03-19",
+  "services": ["termites"],
+  "draft": false,
+  "seo": {
+    "description": "Mud tubes behind a garage water heater. Liquid perimeter barrier and bait monitoring, warranty renewed annually.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "media_split",
+      "eyebrow": "Field report",
+      "heading": "What we found. What we did.",
+      "body": "Mud tubes behind a garage water heater. Liquid perimeter barrier and bait monitoring, warranty renewed annually.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/termite.avif",
+        "alt": "Winged termite specimen"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "star",
+          "text": "Found",
+          "desc": "Active subterranean tubes behind the water heater and along two expansion joints."
+        },
+        {
+          "icon": "wrench",
+          "text": "Treated",
+          "desc": "Non-repellent liquid barrier around 210 linear feet, plus six bait monitoring stations."
+        },
+        {
+          "icon": "check",
+          "text": "Result",
+          "desc": "No activity at the 3- and 6-month checks. Renewable warranty issued."
+        }
+      ],
+      "ctas": [],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "headingLevel": "h2",
+      "eyebrow": "No obligation",
+      "heading": "Seeing the same thing?",
+      "body": "Book a free inspection and we will tell you exactly what is going on.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "surface": "brand",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

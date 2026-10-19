@@ -4,8 +4,7 @@ import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import Button from '../ui/Button.astro';
 import { childLevel } from '../../lib/section-base';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = Team;
 
@@ -14,7 +13,6 @@ const {
 	eyebrow,
 	heading,
 	intro,
-	columns = '3',
 	members = [],
 	cta,
 	anchor,
@@ -24,62 +22,70 @@ const {
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
-
-const gridCols = {
-	'2': 'sm:grid-cols-2',
-	'3': 'sm:grid-cols-2 lg:grid-cols-3',
-	'4': 'sm:grid-cols-2 lg:grid-cols-4',
-};
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mx-auto mb-14 max-w-2xl text-center">
-			{eyebrow && (
-				<DimensionLine
-					label={eyebrow}
-					rule="both"
-					onDark={onDark}
-					class="mx-auto mb-6 max-w-xs justify-center"
-				/>
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-	<ul class={`grid gap-x-8 gap-y-12 ${gridCols[columns]}`}>
-		{members.map((member) => (
-			<li class="flex flex-col text-center">
-				{member.photo && (
-					<div class="mb-6 aspect-square overflow-hidden rounded-(--radius-media)">
-						<img
-							src={member.photo.src}
-							alt={member.photo.alt}
-							loading="lazy"
-							class="h-full w-full object-cover"
-						/>
+	{/*
+		Profile cards: the first person (usually the owner) leads on a wide card,
+		everyone else sits two-up with the photo beside the bio -- a directory,
+		not a wall of headshots.
+	*/}
+	<ul class="grid gap-5 md:grid-cols-2">
+		{members.map((member, i) => {
+			const lead = i === 0 && members.length > 2;
+			return (
+				<li
+					class={`grid gap-6 border p-5 sm:p-6 ${onDark ? 'border-current/15' : 'border-line bg-surface'} ${
+						lead
+							? 'md:col-span-2 sm:grid-cols-[14rem_1fr] sm:items-center'
+							: 'grid-cols-[6.5rem_1fr] items-start sm:grid-cols-[8rem_1fr]'
+					}`}
+				>
+					{member.photo ? (
+						<div class="aspect-square overflow-hidden bg-muted">
+							<img
+								src={member.photo.src}
+								alt={member.photo.alt}
+								loading="lazy"
+								class="h-full w-full object-cover"
+							/>
+						</div>
+					) : (
+						<div
+							class="flex aspect-square items-center justify-center bg-muted text-3xl font-semibold text-brand"
+							aria-hidden="true"
+						>
+							{member.name.trim().charAt(0)}
+						</div>
+					)}
+					<div>
+						{member.role && (
+							<p class={`mono-label mb-2 ${onDark ? 'text-accent' : 'text-accent-ink'}`}>
+								{member.role}
+							</p>
+						)}
+						<Heading level={childLevel(headingLevel, Boolean(heading))} size={lead ? 'md' : 'sm'}>
+							{member.name}
+						</Heading>
+						{member.bio && (
+							<p
+								class={`mt-2.5 text-sm leading-relaxed opacity-85 ${lead ? 'max-w-xl text-base' : ''}`}
+							>
+								{member.bio}
+							</p>
+						)}
 					</div>
-				)}
-				<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
-					{member.name}
-				</Heading>
-				{member.role && (
-					<p class="mt-2 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-accent-ink">
-						{member.role}
-					</p>
-				)}
-				{member.bio && (
-					<p class="mx-auto mt-3.5 max-w-[30ch] text-sm leading-relaxed opacity-85">
-						{member.bio}
-					</p>
-				)}
-			</li>
-		))}
+				</li>
+			);
+		})}
 	</ul>
 
 	{cta && (

@@ -1,0 +1,679 @@
+{
+  "title": "Mosquitoes & Stingers — Main Page",
+  "heading": "Mosquitoes & Stinging Insects",
+  "summary": "Mosquitoes, wasps, bees, fleas, ticks and bed bugs: the pests that bite and sting. Fast, safe removal and treatments that keep the yard usable.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/wasp.avif",
+    "alt": "Paper wasp specimen photographed on black"
+  },
+  "order": 50,
+  "priceNote": "From $79 per visit",
+  "draft": false,
+  "seo": {
+    "title": "Mosquito, Wasp & Bed Bug Control in Phoenix",
+    "description": "Mosquito yard treatments, wasp and bee removal, flea and tick control and bed bug heat treatment across the Phoenix valley.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "badge_strip",
+      "label": "Trust badges",
+      "items": [
+        {
+          "icon": "clock",
+          "title": "Same-day nests",
+          "subtitle": "Wasps & hornets"
+        },
+        {
+          "icon": "shield",
+          "title": "Pet safe once dry",
+          "subtitle": "About 30 minutes"
+        },
+        {
+          "icon": "check",
+          "title": "Bees relocated",
+          "subtitle": "Where possible"
+        },
+        {
+          "icon": "star",
+          "title": "Heat for bed bugs",
+          "subtitle": "No chemicals"
+        },
+        {
+          "icon": "badge",
+          "title": "Field report",
+          "subtitle": "On every visit"
+        }
+      ],
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "offers",
+      "eyebrow": "Current offers",
+      "heading": "Save on mosquitoes & stingers treatment.",
+      "intro": "Mention the code when you book. One offer per household.",
+      "columns": "3",
+      "items": [
+        {
+          "title": "$50 off your first service",
+          "value": "$50 off",
+          "body": "On any initial general pest, scorpion or rodent treatment.",
+          "code": "FIRST50",
+          "expires": "2026-12-31",
+          "terms": "New customers only. Cannot be combined with other offers."
+        },
+        {
+          "title": "Free termite inspection",
+          "value": "Free",
+          "body": "A licensed inspector checks slab, garage, attic and exterior, with a written report. No cost, no obligation.",
+          "code": "TERMITEFREE",
+          "cta": {
+            "label": "Book an inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          }
+        },
+        {
+          "title": "Seniors & military save 10%",
+          "value": "10% off",
+          "body": "A standing discount for customers 65 and over and for active and retired service members.",
+          "code": "SERVE10",
+          "terms": "ID required. Cannot be combined with other offers."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "media_split",
+      "eyebrow": "How we work",
+      "heading": "Take the backyard back.",
+      "body": "Monsoon season turns every saucer, gutter and drip line into a mosquito nursery, and paper wasps build under every eave. The yard you pay to water becomes the one place nobody wants to sit.\n\nWe treat the breeding sites, not just the air: standing water, dense foliage and shaded resting spots. Wasp nests are removed the same day, honey bee swarms are relocated where possible, and bed bugs get a whole-room heat treatment that leaves no survivors and no residue.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/mosquito.avif",
+        "alt": "Mosquito larvae photographed in water"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "check",
+          "text": "Full inspection before any treatment"
+        },
+        {
+          "icon": "shield",
+          "text": "Licensed, background-checked technicians"
+        },
+        {
+          "icon": "clock",
+          "text": "Same-week appointments, usually next day"
+        },
+        {
+          "icon": "badge",
+          "text": "Written field report with photos, every visit"
+        }
+      ],
+      "ctas": [
+        {
+          "label": "More about us",
+          "href": "/about",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "service_menu",
+      "anchor": "menu",
+      "eyebrow": "Services",
+      "heading": "Explore our pest control services.",
+      "intro": "Browse by pest — insects, scorpions, termites, rodents and the things that bite.",
+      "nowViewingLabel": "Now viewing",
+      "columns": "4",
+      "tabs": [
+        {
+          "label": "General Pest",
+          "bannerTitle": "General Pest Control",
+          "image": {
+            "source": "upload",
+            "src": "/media/images/ant.avif",
+            "alt": "Macro photo of an ant specimen on black"
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Ants",
+              "body": "Bait-based ant control that takes out the colony, not just the trail across your counter.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/ants",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "shield",
+              "title": "Cockroaches",
+              "body": "Cockroach control for kitchens, bathrooms and sewers: gel baits, growth regulators and sealing.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/cockroaches",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "star",
+              "title": "Spiders",
+              "body": "Spider control and web removal, plus treatment of the insects they hunt.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/spiders",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "wrench",
+              "title": "Black Widows",
+              "body": "Black widow removal from garages, block walls, meter boxes and patio furniture.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/black-widows",
+                "style": "ghost",
+                "newTab": false
+              }
+            }
+          ]
+        },
+        {
+          "label": "Scorpions",
+          "bannerTitle": "Scorpion Control",
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion.avif",
+            "alt": "Arizona bark scorpion specimen on black"
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Bark Scorpions",
+              "body": "Monthly bark scorpion treatment for homes across the valley, with free re-treats between visits.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/bark-scorpions",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "shield",
+              "title": "UV Scorpion Hunts",
+              "body": "Night-time UV hunts that find and remove scorpions you would never see by day.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/uv-scorpion-hunts",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "star",
+              "title": "Scorpion Sealing",
+              "body": "Exclusion sealing that closes the gaps scorpions climb through: weep screeds, sweeps and plumbing.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/scorpion-sealing",
+                "style": "ghost",
+                "newTab": false
+              }
+            }
+          ]
+        },
+        {
+          "label": "Termites",
+          "bannerTitle": "Termite Control",
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Macro photo of a winged termite specimen"
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Subterranean Termites",
+              "body": "Liquid barrier and bait treatments for desert subterranean termites.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/subterranean-termites",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "shield",
+              "title": "Drywood Termites",
+              "body": "Spot and whole-structure treatment for drywood termites in framing, furniture and trim.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/drywood-termites",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "star",
+              "title": "Termite Inspections",
+              "body": "Licensed Wood Destroying Insect inspections for buyers, sellers and annual checks.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/termite-inspections",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "wrench",
+              "title": "Pre-Construction Treatment",
+              "body": "Pre-treat soil for new builds, additions and slabs before the concrete is poured.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/pre-construction",
+                "style": "ghost",
+                "newTab": false
+              }
+            }
+          ]
+        },
+        {
+          "label": "Rodents",
+          "bannerTitle": "Rodent Control",
+          "image": {
+            "source": "upload",
+            "src": "/media/images/mouse.avif",
+            "alt": "Close-up of a mouse specimen on black"
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Roof Rats",
+              "body": "Roof rat trapping and removal from attics, garages and citrus trees.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/roof-rats",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "shield",
+              "title": "Mice",
+              "body": "Mouse control for kitchens, garages and wall voids.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/mice",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "star",
+              "title": "Rodent Exclusion",
+              "body": "Whole-home exclusion with steel mesh, flashing and sealant rodents cannot chew through.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/rodent-exclusion",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "wrench",
+              "title": "Attic Clean-Up",
+              "body": "Removal of droppings, nesting and contaminated insulation after a rodent problem.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/attic-cleanup",
+                "style": "ghost",
+                "newTab": false
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mosquitoes & Stingers",
+          "bannerTitle": "Mosquitoes & Stinging Insects",
+          "image": {
+            "source": "upload",
+            "src": "/media/images/wasp.avif",
+            "alt": "Paper wasp specimen photographed on black"
+          },
+          "cards": [
+            {
+              "icon": "check",
+              "title": "Mosquitoes",
+              "body": "Monthly mosquito yard treatments through the monsoon season.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/mosquitoes",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "shield",
+              "title": "Bees & Wasps",
+              "body": "Same-day wasp nest removal and humane honey bee swarm relocation.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/bees-and-wasps",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "star",
+              "title": "Fleas & Ticks",
+              "body": "Inside-and-out flea and tick treatment for homes with pets.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/fleas-and-ticks",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "wrench",
+              "title": "Bed Bugs",
+              "body": "Whole-room heat treatment that kills bed bugs and their eggs in a single day.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/bed-bugs",
+                "style": "ghost",
+                "newTab": false
+              }
+            }
+          ]
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "promo_cards",
+      "eyebrow": "More reasons to book",
+      "heading": "Protection plans, financing and this month's offer.",
+      "columns": "3",
+      "cards": [
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
+          },
+          "icon": "shield",
+          "badge": "Free re-treats",
+          "title": "Year-round protection",
+          "subtitle": "For as low as",
+          "price": {
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
+          },
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
+          },
+          "icon": "dollar",
+          "badge": "Limited time",
+          "title": "0% APR for 12 months",
+          "subtitle": "Financing available",
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over low monthly payments. Quick soft-check application — a decision in minutes.",
+          "cta": {
+            "label": "Check your rate",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
+          },
+          "icon": "badge",
+          "badge": "Save now",
+          "title": "$50 off your first service",
+          "subtitle": "New customers",
+          "body": "Take $50 off your initial treatment. Mention code FIRST50 when you book your free inspection. One offer per household.",
+          "cta": {
+            "label": "Book a free inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "lg",
+      "width": "wide"
+    },
+    {
+      "type": "collection_feed",
+      "eyebrow": "Related services",
+      "heading": "The rest of the list.",
+      "intro": "The same inspect-treat-document approach, for every other pest.",
+      "source": "services",
+      "layout": "grid",
+      "columns": "3",
+      "limit": 3,
+      "showImage": true,
+      "showSummary": true,
+      "moreLabel": "All services",
+      "moreHref": "/services",
+      "moreStyle": "secondary",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "eyebrow": "Before you book",
+      "heading": "Mosquitoes & Stingers questions.",
+      "items": [
+        {
+          "question": "When is mosquito season in Phoenix?",
+          "answer": "Activity climbs with the monsoon in July and runs into October. A monthly yard treatment through the season keeps numbers down."
+        },
+        {
+          "question": "Do you kill honey bees?",
+          "answer": "Not if we can help it. Swarms are relocated to local beekeepers where possible. Africanised colonies inside a structure may need to be removed for safety."
+        },
+        {
+          "question": "How does bed bug heat treatment work?",
+          "answer": "We raise the room to **over 120°F** for several hours, which kills every life stage, including eggs, without chemicals. Most homes are done in a single day."
+        },
+        {
+          "question": "Is the yard treatment safe for pets?",
+          "answer": "Yes, once dry. We ask you to keep pets inside for about 30 minutes after treatment."
+        },
+        {
+          "question": "Can you treat for fleas and ticks?",
+          "answer": "Yes, inside and out. We treat carpets, pet resting areas and the yard together, and recommend you treat pets with your vet at the same time."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "quotes",
+      "eyebrow": "4.9 / 5 on Google",
+      "heading": "Reviews from real homes.",
+      "items": [
+        {
+          "quote": "Wasp nest the size of a football under the patio. Gone the same afternoon.",
+          "name": "Carlos V.",
+          "location": "Phoenix, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "We can sit outside after sunset in August again. That is the whole review.",
+          "name": "Emily T.",
+          "location": "Scottsdale, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "Bed bug heat treatment in one day, no chemicals, no repeat. Discreet van too.",
+          "name": "Name withheld",
+          "location": "Tempe, AZ",
+          "rating": 5
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "eyebrow": "Free inspection",
+      "heading": "Get mosquitoes & stingers handled properly.",
+      "body": "A licensed technician, a full inspection and a written plan. No charge, no contract.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "form_block",
+      "eyebrow": "Get in touch",
+      "heading": "Tell us what you are seeing.",
+      "intro": "Send a few details and we will call to book your free inspection.",
+      "endpoint": "https://formspree.io/f/your-form-id",
+      "submitLabel": "Book my free inspection",
+      "successNote": "Thanks — we will call within one business day, usually sooner.",
+      "fields": [
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "(555) 555-5555",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "placeholder": "you@example.com",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "placeholder": "85001",
+          "required": true,
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "text",
+          "name": "sightings",
+          "label": "Where are you seeing them?",
+          "placeholder": "e.g. kitchen, garage, attic",
+          "required": false,
+          "width": "full"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "Anything else we should know?",
+          "placeholder": "Pets, kids, gate codes, best time to visit…",
+          "required": false,
+          "rows": 4
+        }
+      ],
+      "footnote": "We never share your details. You will only hear from us about your inspection.",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "service_areas",
+      "eyebrow": "Where we work",
+      "heading": "Serving the greater Phoenix valley.",
+      "intro": "Book a free inspection anywhere across these areas and the towns around them.",
+      "columns": "4",
+      "showServed": true,
+      "map": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=Phoenix,AZ&z=10&output=embed",
+        "title": "Map of the greater Phoenix valley service area",
+        "ratio": "4/3"
+      },
+      "footnote": "Not listed? Call us — our trucks cover more of the valley than we can fit here.",
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

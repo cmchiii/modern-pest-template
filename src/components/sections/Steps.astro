@@ -3,8 +3,7 @@ import type { Steps } from './Steps.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import { childLevel } from '../../lib/section-base';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = Steps;
 
@@ -24,43 +23,44 @@ const onDark = surface === 'dark' || surface === 'brand';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-14 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	{/*
-		An ordered list, because the order carries the information: these happen
-		in sequence. The visible numbers come from the markup rather than being
-		typed into the content, so reordering in the CMS renumbers correctly.
+		A connected timeline: navy number tiles joined by a track line, each step
+		on its own card beneath. An ordered list, because the order carries the
+		information; the numbers come from the markup, so reordering in the CMS
+		renumbers correctly.
 	*/}
-	<ol class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+	<ol class="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+		<span
+			class={`absolute top-6 right-[12%] left-[12%] hidden h-px lg:block ${onDark ? 'bg-current/25' : 'bg-line'}`}
+			aria-hidden="true"
+		/>
 		{steps.map((step, i) => (
-			<li class="relative">
+			<li class="relative flex flex-col items-start">
 				<span
-					class={`font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] ${
-						onDark ? 'text-accent' : 'text-accent-ink'
+					class={`relative z-[1] flex h-12 w-12 items-center justify-center text-lg font-semibold tabular-nums ${
+						onDark ? 'bg-accent text-accent-fg' : 'bg-brand text-brand-fg'
 					}`}
 				>
-					{String(i + 1).padStart(2, '0')}
+					{i + 1}
 				</span>
-				<span
-					class={`mt-3 mb-5 block h-px w-full ${onDark ? 'bg-current/25' : 'bg-line'}`}
-					aria-hidden="true"
-				/>
-				<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
-					{step.title}
-				</Heading>
-				{step.body && <p class="mt-3 text-sm leading-relaxed">{step.body}</p>}
+				<div
+					class={`mt-5 w-full flex-1 border p-6 ${
+						onDark ? 'border-current/15 bg-current/[0.04]' : 'border-line bg-surface'
+					}`}
+				>
+					<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
+						{step.title}
+					</Heading>
+					{step.body && <p class="mt-2.5 text-sm leading-relaxed">{step.body}</p>}
+				</div>
 			</li>
 		))}
 	</ol>

@@ -1,11 +1,11 @@
 {
   "title": "Contact",
-  "permalink": "https://modern-cabinets-template.vercel.app/contact",
+  "permalink": "https://clearline-pest-template.vercel.app/contact",
   "order": 70,
   "draft": false,
   "seo": {
-    "title": "Book a Free Consultation",
-    "description": "Book a free in-home consultation with Modern Cabinets. About an hour, a fixed quote, no obligation. Serving Phoenix, Scottsdale, Chandler and Mesa.",
+    "title": "Book a Free Pest Inspection",
+    "description": "Book a free pest inspection with Clearline Pest Solutions. About 45 minutes, a written plan and a fixed price, no contract. Serving Phoenix, Scottsdale, Chandler and Mesa.",
     "noindex": false
   },
   "sections": [
@@ -16,23 +16,23 @@
         "kind": "image",
         "image": {
           "source": "upload",
-          "src": "/media/images/kitchen-hero.avif",
-          "alt": "Fitted kitchen shelving measured to the opening"
+          "src": "/media/images/cockroach.avif",
+          "alt": "American cockroach specimen on white"
         }
       },
-      "eyebrow": "Free, about an hour",
-      "heading": "Book a free consultation.",
-      "body": "A designer comes to you, measures every cabinet you want changed, and leaves a fixed quote. No cost, and no pressure to book on the day.",
-      "mediaNote": "Built to your exact opening",
+      "eyebrow": "Free, about 45 minutes",
+      "heading": "Book a free inspection.",
+      "body": "A licensed technician walks the property inside and out, maps where pests are getting in, and leaves a written plan with a fixed price. No cost, and no contract.",
+      "mediaNote": "American cockroach — last seen under the sink",
       "ctas": [
         {
-          "label": "Call the shop",
-          "href": "tel:+15550142200",
+          "label": "Call the office",
+          "href": "tel:+15550147378",
           "style": "primary",
           "newTab": false
         }
       ],
-      "badges": ["Free in-home measure", "Fixed quote, valid 30 days", "No obligation"],
+      "badges": ["Free inspection", "Fixed price, valid 30 days", "No contract"],
       "headingLevel": "h1",
       "surface": "light",
       "spacing": "md",
@@ -43,7 +43,7 @@
       "headingLevel": "h2",
       "eyebrow": "Two minutes",
       "heading": "Request a call.",
-      "intro": "Tell us which rooms you are thinking about and we will call to arrange a time that suits you.",
+      "intro": "Tell us what you are seeing and we will call to arrange a time that suits you.",
       "endpoint": "https://formspree.io/f/REPLACE_WITH_YOUR_ID",
       "submitLabel": "Request a call",
       "fields": [
@@ -88,23 +88,30 @@
         {
           "kind": "select",
           "name": "rooms",
-          "label": "Which room",
+          "label": "What are you seeing?",
           "required": true,
           "width": "half",
-          "choices": ["Kitchen", "Pantry", "Bathroom", "Closets", "More than one"]
+          "choices": [
+            "Scorpions",
+            "Ants or roaches",
+            "Termites",
+            "Rats or mice",
+            "Wasps, bees or mosquitoes",
+            "Not sure"
+          ]
         },
         {
           "kind": "textarea",
           "name": "message",
           "label": "Anything we should know",
-          "placeholder": "Cabinet sizes, awkward corners, access notes",
+          "placeholder": "Where you see them, for how long, pets or kids in the home",
           "rows": 5,
           "required": false
         },
         {
           "kind": "checkbox",
           "name": "consent",
-          "label": "You can text me about this enquiry. See the [privacy policy](/privacy).",
+          "label": "You can text me about this inspection. See the [privacy policy](/privacy).",
           "required": true
         },
         {
@@ -113,7 +120,7 @@
           "value": "contact-page"
         }
       ],
-      "footnote": "We use your details to arrange the consultation and nothing else. No lists, no resale.",
+      "footnote": "We use your details to arrange the inspection and nothing else. No lists, no resale.",
       "surface": "muted",
       "spacing": "md",
       "width": "default"
@@ -122,7 +129,7 @@
       "type": "contact_details",
       "headingLevel": "h2",
       "eyebrow": "Where to find us",
-      "heading": "Find the shop.",
+      "heading": "Find the office.",
       "showPhone": true,
       "showEmail": true,
       "showAddress": true,
@@ -130,13 +137,13 @@
       "extra": [
         {
           "label": "Service area",
-          "value": "Phoenix valley, within 40 miles of the shop"
+          "value": "Phoenix valley, within 40 miles of the office"
         }
       ],
       "media": {
         "kind": "embed",
-        "url": "https://maps.google.com/maps?q=1420+Millwork+Ave,+Phoenix,+AZ+85004&z=15&output=embed",
-        "title": "Map showing the Modern Cabinets workshop in Phoenix",
+        "url": "https://maps.google.com/maps?q=2210+E+Camelback+Rd,+Phoenix,+AZ+85016&z=15&output=embed",
+        "title": "Map showing the Clearline Pest Solutions office in Phoenix",
         "ratio": "4/3"
       },
       "surface": "light",

@@ -1,11 +1,11 @@
 {
   "title": "FAQ Page",
-  "permalink": "https://modern-cabinets-template.vercel.app/faq",
+  "permalink": "https://clearline-pest-template.vercel.app/faq",
   "order": 80,
   "draft": false,
   "seo": {
     "title": "Frequently Asked Questions",
-    "description": "Common questions about glide-out cabinet shelving: fit, cost, weight, warranty and installation.",
+    "description": "Common questions about pest control: safety, contracts, scorpions, termites, rodents and what happens on a visit.",
     "noindex": false
   },
   "sections": [
@@ -14,7 +14,7 @@
       "headingLevel": "h1",
       "eyebrow": "Before you book",
       "heading": "Questions, answered.",
-      "body": "If yours is not here, call the shop. Nobody is working from a script.",
+      "body": "If yours is not here, call the office. Nobody is reading from a script.",
       "surface": "muted",
       "spacing": "sm",
       "width": "wide"
@@ -28,36 +28,36 @@
       "width": "default",
       "items": [
         {
-          "question": "Do you have to replace my cabinets?",
-          "answer": "No. The shelves fit inside the cabinet boxes you already have. Your doors, drawer fronts, counters and plumbing all stay where they are."
+          "question": "Are your treatments safe for kids and pets?",
+          "answer": "Yes. We use targeted baits and low-toxicity products placed where pests live, not where people and pets do. Most treated areas are fine to use again once dry, usually within **30 minutes**."
         },
         {
-          "question": "Will they fit an older or non-standard cabinet?",
-          "answer": "Usually yes, and that is the point of measuring on site. Older cabinets are rarely square, so each shelf is cut for one specific opening."
+          "question": "Do I have to sign a contract?",
+          "answer": "No. One-time treatments are available, and protection plans can be cancelled any time without a fee."
         },
         {
-          "question": "How much weight will a shelf hold?",
-          "answer": "Our standard glides are rated to **100 lb** per shelf, which covers stand mixers, stacked cast iron and full cases of tinned goods."
+          "question": "What is a field report?",
+          "answer": "A written summary we leave after every visit: what we found, where we treated, what we sealed, and what to watch for, with photos. It is how you know the work was actually done."
         },
         {
-          "question": "How long does installation take?",
-          "answer": "Most kitchens are done in a single morning. Larger jobs across several rooms can run to a full day, and we tell you which before you book."
+          "question": "How soon can you come out?",
+          "answer": "Usually the next business day, often the same day for wasps, bees and rodents in the living space."
         },
         {
           "question": "What does it cost?",
-          "answer": "Pricing is per shelf and depends on the width and the glide. You get a fixed quote after the free consultation, before anything is built."
+          "answer": "A general pest treatment starts from $49 a visit on a plan. Termite and exclusion work is quoted after a free inspection, before anything starts."
         },
         {
           "question": "Do you offer financing?",
-          "answer": "Yes, on jobs over a threshold. See the [financing page](/financing) for the current terms."
+          "answer": "Yes, on termite treatments and larger exclusion jobs. See the [financing page](/financing) for the current terms."
         },
         {
-          "question": "What is the warranty?",
-          "answer": "Lifetime on the glide hardware for as long as you own the home. Shelves themselves carry a five year warranty against defects."
+          "question": "Can you get rid of scorpions completely?",
+          "answer": "Nobody honest can promise zero. Sealing plus a regular perimeter treatment cuts indoor sightings dramatically, and we re-treat free if they get in."
         },
         {
-          "question": "Do I need to be home for the install?",
-          "answer": "Someone over eighteen needs to be there to let the installer in and confirm the finished work."
+          "question": "Do I need to leave the house during treatment?",
+          "answer": "Not for general pest, scorpion or rodent work. Bed bug heat treatments and some termite work need you out for part of the day; we tell you when you book."
         }
       ]
     },
@@ -65,11 +65,11 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "No obligation",
-      "heading": "Book a free measure.",
-      "body": "An hour on site, a fixed quote, no pressure to book on the day.",
+      "heading": "Book a free inspection.",
+      "body": "A licensed technician, a written plan, no contract.",
       "ctas": [
         {
-          "label": "Book a consultation",
+          "label": "Book an inspection",
           "href": "/contact",
           "style": "primary",
           "newTab": false

@@ -12,7 +12,6 @@ const {
 	eyebrow,
 	heading = 'Also serving',
 	limit = 8,
-	columns = '4',
 	anchor,
 	surface = 'muted',
 	spacing = 'sm',
@@ -34,12 +33,6 @@ const others = locations
 	.sort((a, b) => a.data.order - b.data.order || a.data.city.localeCompare(b.data.city));
 
 const shown = limit > 0 ? others.slice(0, limit) : others;
-
-const gridCols = {
-	'2': 'sm:grid-cols-2',
-	'3': 'sm:grid-cols-2 lg:grid-cols-3',
-	'4': 'sm:grid-cols-2 lg:grid-cols-4',
-};
 ---
 
 {shown.length > 0 && (
@@ -49,14 +42,22 @@ const gridCols = {
 			{heading}
 		</Heading>
 
-		<ul class={`mt-7 grid gap-x-8 gap-y-3 ${gridCols[columns]}`}>
+		{/* Chip links: each nearby town is a bordered pill that fills navy on hover. */}
+		<ul class="mt-7 flex flex-wrap gap-3">
 			{shown.map((location) => (
 				<li>
 					<a
 						href={`/locations/${location.id}`}
-						class="text-sm underline-offset-4 transition-colors hover:text-brand hover:underline"
+						class={`group inline-flex items-center gap-2.5 border px-4 py-2.5 text-sm font-medium transition-colors ${
+							onDark
+								? 'border-current/25 hover:border-accent hover:bg-accent hover:text-accent-fg'
+								: 'border-line bg-surface text-ink hover:border-brand hover:bg-brand hover:text-brand-fg'
+						}`}
 					>
 						{location.data.city}, {location.data.region}
+						<span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">
+							→
+						</span>
 					</a>
 				</li>
 			))}

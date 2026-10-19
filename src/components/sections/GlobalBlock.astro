@@ -43,7 +43,12 @@ const onDark = surface === 'dark' || surface === 'brand';
 		{(booking.eyebrow || booking.heading || booking.intro) && (
 			<header class="mb-14 max-w-2xl">
 				{booking.eyebrow && (
-					<DimensionLine label={booking.eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
+					<DimensionLine
+						label={booking.eyebrow}
+						rule="both"
+						onDark={onDark}
+						class="mb-6 max-w-xs"
+					/>
 				)}
 				{booking.heading && (
 					<Heading level={headingLevel} size="lg">

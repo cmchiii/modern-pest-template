@@ -4,7 +4,7 @@ import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import { childLevel } from '../../lib/section-base';
 import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = Accordion;
 
@@ -23,46 +23,66 @@ const {
 const onDark = surface === 'dark' || surface === 'brand';
 ---
 
-<Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
-
+<Section
+	anchor={anchor}
+	surface={surface}
+	spacing={spacing}
+	width={width === 'default' ? 'wide' : width}
+>
 	{/*
-		Native details/summary: keyboard accessible, findable by in-page search,
-		and open by default when JavaScript never runs. No script needed.
+		Two columns: the section head sticks in a rail on the left while the
+		questions run down the right. Native details/summary: keyboard
+		accessible, findable by in-page search, no script needed.
 	*/}
-	<div class={`border-t ${onDark ? 'border-current/20' : 'border-line'}`}>
-		{items.map((item) => (
-			<details class={`group border-b ${onDark ? 'border-current/20' : 'border-line'}`}>
-				<summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left [&::-webkit-details-marker]:hidden">
-					<Heading
-						level={childLevel(headingLevel, Boolean(heading))}
-						size="sm"
-						class="text-current"
-					>
-						{item.question}
-					</Heading>
-					<span
-						class={`relative h-4 w-4 shrink-0 ${onDark ? 'text-accent' : 'text-accent-ink'}`}
-						aria-hidden="true"
-					>
-						<span class="absolute top-1/2 left-0 h-px w-4 -translate-y-1/2 bg-current" />
-						<span class="absolute top-1/2 left-0 h-px w-4 -translate-y-1/2 rotate-90 bg-current transition-transform duration-300 group-open:rotate-0" />
-					</span>
-				</summary>
-				<Prose html={item.answer} invert={onDark} class="max-w-2xl pb-7" />
-			</details>
-		))}
+	<div class="grid gap-x-16 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+		<div>
+			<div class="lg:sticky lg:top-28">
+				<SectionHead
+					eyebrow={eyebrow}
+					heading={heading}
+					intro={intro}
+					level={headingLevel}
+					onDark={onDark}
+					stacked
+					size="lg"
+				/>
+			</div>
+		</div>
+
+		<div class={`border-t ${onDark ? 'border-current/40' : 'border-line'}`}>
+			{items.map((item, i) => (
+				<details class={`group border-b ${onDark ? 'border-current/40' : 'border-line'}`}>
+					<summary class="grid cursor-pointer list-none grid-cols-[3.25rem_1fr_auto] items-center gap-4 py-6 text-left [&::-webkit-details-marker]:hidden">
+						<span
+							class={`font-mono text-sm font-semibold ${onDark ? 'text-accent' : 'text-accent-ink'}`}
+						>
+							Q.{String(i + 1).padStart(2, '0')}
+						</span>
+						<Heading
+							level={childLevel(headingLevel, Boolean(heading))}
+							size="sm"
+							class="text-current"
+						>
+							{item.question}
+						</Heading>
+						<span
+							class={`relative flex h-10 w-10 shrink-0 items-center justify-center border transition-colors duration-200 ${
+								onDark
+									? 'border-current/60 group-open:border-accent group-open:bg-accent group-open:text-accent-fg'
+									: 'border-line group-open:bg-accent'
+							}`}
+							aria-hidden="true"
+						>
+							<span class="absolute h-0.5 w-4 bg-current" />
+							<span class="absolute h-0.5 w-4 rotate-90 bg-current transition-transform duration-300 group-open:rotate-0" />
+						</span>
+					</summary>
+					<div class="grid grid-cols-[3.25rem_1fr] gap-4 pb-8">
+						<span class="mono-label pt-1 opacity-50">A.</span>
+						<Prose html={item.answer} invert={onDark} class="max-w-2xl" />
+					</div>
+				</details>
+			))}
+		</div>
 	</div>
 </Section>

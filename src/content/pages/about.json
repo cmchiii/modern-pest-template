@@ -1,11 +1,11 @@
 {
   "title": "About",
-  "permalink": "https://modern-cabinets-template.vercel.app/about",
+  "permalink": "https://clearline-pest-template.vercel.app/about",
   "order": 50,
   "draft": false,
   "seo": {
-    "title": "About Modern Cabinets",
-    "description": "A cabinet shop that measures on site and builds glide-out shelving to the sixteenth. Licensed, bonded and insured, installing across the Phoenix valley since 2009.",
+    "title": "About Clearline Pest Solutions",
+    "description": "A licensed, family-owned pest control company that inspects before it treats and documents every visit. Serving the Phoenix valley since 2011.",
     "noindex": false
   },
   "sections": [
@@ -17,29 +17,29 @@
         "kind": "image",
         "image": {
           "source": "upload",
-          "src": "/media/images/cabinet-business.avif",
-          "alt": "Wooden cabinetry with open shelving"
+          "src": "/media/images/wasp-face.avif",
+          "alt": "Wasp face, macro specimen"
         }
       },
       "eyebrow": "About us",
-      "heading": "The people behind your cabinets.",
-      "body": "Modern Cabinets is a Phoenix workshop that builds glide-out shelving for the cabinets you already own. The same designers, cabinetmakers and installers you meet on day one are the ones who measure, build and fit the work — no subcontractors, no call center.",
-      "mediaNote": "Building in Phoenix since 2009",
+      "heading": "The people behind the field report.",
+      "body": "Clearline Pest Solutions is a Phoenix pest control company built on one idea: you should be able to see what you are paying for. The technician who inspects your home is the one who treats it, writes it up and comes back if anything gets through.",
+      "mediaNote": "Inspecting the valley since 2011",
       "ctas": [
         {
-          "label": "Book a free consultation",
+          "label": "Book a free inspection",
           "href": "/contact",
           "style": "primary",
           "newTab": false
         },
         {
-          "label": "Call (555) 014-2200",
-          "href": "tel:+15550142200",
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
           "style": "secondary",
           "newTab": false
         }
       ],
-      "badges": ["Built in-house", "Licensed & insured", "Fixed quotes"],
+      "badges": ["Our own technicians", "Licensed & insured", "No contracts"],
       "surface": "light",
       "spacing": "md",
       "width": "wide"
@@ -48,7 +48,7 @@
       "type": "placeholder",
       "headingLevel": "h2",
       "label": "Our story",
-      "note": "The company narrative goes here — who started Modern Cabinets, why, and what has stayed the same since 2009. Aim for two or three short paragraphs, ideally with a photo of the shop or the team.",
+      "note": "The company narrative goes here — who started Clearline Pest Solutions, why, and what has stayed the same since 2011. Aim for two or three short paragraphs, ideally with a photo of the team or a service truck.",
       "size": "md",
       "surface": "muted",
       "spacing": "md",
@@ -63,32 +63,32 @@
       "columns": "3",
       "items": [
         {
-          "title": "Free in-home measure",
+          "title": "Free pest inspection",
           "value": "No cost",
-          "body": "A designer measures every cabinet you want changed and leaves a fixed quote.",
+          "body": "A licensed technician inspects inside and out and leaves a written plan with a fixed price.",
           "terms": "No purchase necessary. One per household.",
           "cta": {
-            "label": "Book a measure",
+            "label": "Book an inspection",
             "href": "/contact",
             "style": "primary",
             "newTab": false
           }
         },
         {
-          "title": "Four shelves or more",
-          "value": "$100 off",
-          "code": "FOURPLUS",
-          "body": "Applied to the total when four or more glide-out shelves are fitted in one visit.",
-          "expires": "2026-11-02",
-          "terms": "Cannot be combined with other offers. Quoted before work begins."
+          "title": "First service discount",
+          "value": "$50 off",
+          "code": "FIRST50",
+          "body": "Taken off your initial general pest, scorpion or rodent treatment.",
+          "expires": "2026-11-30",
+          "terms": "New customers only. Cannot be combined with other offers."
         },
         {
-          "title": "Soft-close upgrade",
+          "title": "UV scorpion hunt",
           "value": "Half price",
-          "code": "SOFTCLOSE",
-          "body": "Add soft-close glides to any shelf at half the usual rate.",
-          "expires": "2026-11-02",
-          "terms": "Per shelf. Applies to standard widths only."
+          "code": "GLOW50",
+          "body": "Add a night-time UV scorpion hunt to any new protection plan at half the usual rate.",
+          "expires": "2026-11-30",
+          "terms": "Per property. Phoenix valley addresses only."
         }
       ],
       "surface": "light",
@@ -97,22 +97,22 @@
     },
     {
       "type": "card_grid",
-      "eyebrow": "What we do",
-      "heading": "Every room, one idea.",
-      "intro": "Anywhere a cabinet is deeper than your arm is long.",
+      "eyebrow": "What we treat",
+      "heading": "Know your enemy.",
+      "intro": "Five families of pest, one method: inspect, treat at the source, document.",
       "columns": "5",
       "cards": [
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-hero.avif",
-            "alt": "Kitchen with white shaker cabinets"
+            "src": "/media/images/ant.avif",
+            "alt": "Ant specimen, macro"
           },
-          "title": "Kitchen",
-          "body": "Pots, pans and the lids that never match them. Full-extension shelves bring the back row forward.",
+          "title": "General pests",
+          "body": "Ants, roaches, spiders and crickets. Baited at the source, sealed out at the door.",
           "link": {
-            "label": "Kitchen shelving",
-            "href": "/services/kitchen",
+            "label": "General pest control",
+            "href": "/services/general-pest",
             "style": "ghost",
             "newTab": false
           }
@@ -120,14 +120,14 @@
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/shelf-detail.avif",
-            "alt": "Dishes on a glide-out shelf"
+            "src": "/media/images/scorpion.avif",
+            "alt": "Bark scorpion specimen"
           },
-          "title": "Pantry",
-          "body": "Two usable rows becomes four. Nothing expires behind something else.",
+          "title": "Scorpions",
+          "body": "UV night hunts, exclusion sealing and a perimeter they will not cross.",
           "link": {
-            "label": "Pantry storage",
-            "href": "/services/pantry",
+            "label": "Scorpion control",
+            "href": "/services/scorpions",
             "style": "ghost",
             "newTab": false
           }
@@ -135,14 +135,14 @@
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/cabinet-wood.avif",
-            "alt": "Wooden kitchen cabinetry"
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
           },
-          "title": "Bathroom",
-          "body": "Around the plumbing, not into it. Shelves cut to clear the trap.",
+          "title": "Termites",
+          "body": "Licensed inspections, liquid barriers and bait systems with a renewable warranty.",
           "link": {
-            "label": "Bathroom vanities",
-            "href": "/services/bathroom",
+            "label": "Termite control",
+            "href": "/services/termites",
             "style": "ghost",
             "newTab": false
           }
@@ -150,14 +150,14 @@
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-island.avif",
-            "alt": "Kitchen with a dark island"
+            "src": "/media/images/mouse.avif",
+            "alt": "Mouse specimen close up"
           },
-          "title": "Closets",
-          "body": "Shoes, linens and the vacuum you wrestle out every week.",
+          "title": "Rodents",
+          "body": "Roof rats and mice trapped out and sealed out with steel. Guaranteed.",
           "link": {
-            "label": "Closet systems",
-            "href": "/services/closets",
+            "label": "Rodent control",
+            "href": "/services/rodents",
             "style": "ghost",
             "newTab": false
           }
@@ -165,14 +165,14 @@
         {
           "image": {
             "source": "upload",
-            "src": "/media/images/shelf-detail.avif",
-            "alt": "Open shelving for glassware and bottles"
+            "src": "/media/images/wasp.avif",
+            "alt": "Paper wasp specimen"
           },
-          "title": "Creative Spaces",
-          "body": "Offices, craft rooms and a wall for the wine. Built for what you make, not just what you store.",
+          "title": "Biters & stingers",
+          "body": "Mosquitoes, wasps, fleas, ticks and bed bugs. Fast removal, safe yard.",
           "link": {
-            "label": "Creative spaces",
-            "href": "/services/creative-spaces",
+            "label": "Mosquitoes & stingers",
+            "href": "/services/stinging-insects",
             "style": "ghost",
             "newTab": false
           }
@@ -186,23 +186,23 @@
     {
       "type": "quotes",
       "headingLevel": "h2",
-      "eyebrow": "4.8 / 5",
+      "eyebrow": "4.9 / 5",
       "heading": "Why people call us back.",
       "items": [
         {
-          "quote": "They measured on a Thursday and the shelves fit like the cabinets were built around them. I have had contractors miss by half an inch and call it close.",
+          "quote": "They found the gap under the garage door the scorpions were using. Three other companies just sprayed and left.",
           "name": "Ellen T.",
           "location": "Mesa, AZ",
           "rating": 5
         },
         {
-          "quote": "Second job with them. The installer remembered the first kitchen without checking his notes.",
+          "quote": "Second house with them. Same technician, and he remembered where the roof rats got in last time.",
           "name": "Raymond K.",
           "location": "Chandler, AZ",
           "rating": 5
         },
         {
-          "quote": "Quote did not move between the consultation and the invoice, which is not something I can say about the rest of the remodel.",
+          "quote": "The price on the plan was the price on the invoice. And the report actually told me what they did.",
           "name": "Anita B.",
           "location": "Gilbert, AZ",
           "rating": 5
@@ -217,27 +217,27 @@
       "headingLevel": "h2",
       "eyebrow": "Before you book",
       "heading": "Questions, answered.",
-      "intro": "If yours is not here, call the shop. Nobody is working from a script.",
+      "intro": "If yours is not here, call the office. Nobody is reading from a script.",
       "items": [
         {
-          "question": "Do you have to replace my cabinets?",
-          "answer": "No. The shelves fit inside the cabinet boxes you already have. Your doors, drawer fronts, counters and plumbing all stay where they are."
+          "question": "Are your treatments safe for kids and pets?",
+          "answer": "Yes. We use targeted baits and low-toxicity products placed where pests live, not where people and pets do. Most treated areas are fine to use again once dry, usually within **30 minutes**."
         },
         {
-          "question": "Will they fit an older or non-standard cabinet?",
-          "answer": "Usually yes, and that is the point of measuring on site. Older cabinets are rarely square, so each shelf is cut for one specific opening."
+          "question": "Do I have to sign a contract?",
+          "answer": "No. One-time treatments are available, and protection plans can be cancelled any time without a fee."
         },
         {
-          "question": "How much weight will a shelf hold?",
-          "answer": "Our standard glides are rated to **100 lb** per shelf, which covers stand mixers, stacked cast iron and full cases of tinned goods."
+          "question": "What is a field report?",
+          "answer": "A written summary we leave after every visit: what we found, where we treated, what we sealed, and what to watch for, with photos. It is how you know the work was actually done."
         },
         {
-          "question": "How long does installation take?",
-          "answer": "Most kitchens are done in a single morning. Larger jobs across several rooms can run to a full day, and we tell you which before you book."
+          "question": "What if pests come back between visits?",
+          "answer": "Call us and we come back free. Every protection plan includes unlimited re-treats between scheduled visits."
         },
         {
-          "question": "What is the warranty?",
-          "answer": "Lifetime on the glide hardware for as long as you own the home. Shelves themselves carry a five year warranty against defects."
+          "question": "Do I need to be home?",
+          "answer": "For the first inspection, yes. For exterior-only follow-up visits, no — we text when we arrive and leave the field report by email."
         }
       ],
       "surface": "muted",
@@ -249,7 +249,7 @@
       "headingLevel": "h2",
       "eyebrow": "Two minutes",
       "heading": "Request a call.",
-      "intro": "Tell us which rooms you are thinking about and we will call to arrange a time that suits you.",
+      "intro": "Tell us what you are seeing and we will call to arrange a time that suits you.",
       "endpoint": "https://formspree.io/f/REPLACE_WITH_YOUR_ID",
       "submitLabel": "Request a call",
       "fields": [
@@ -286,23 +286,30 @@
         {
           "kind": "select",
           "name": "rooms",
-          "label": "Which room",
+          "label": "What are you seeing?",
           "required": true,
           "width": "half",
-          "choices": ["Kitchen", "Pantry", "Bathroom", "Closets", "More than one"]
+          "choices": [
+            "Scorpions",
+            "Ants or roaches",
+            "Termites",
+            "Rats or mice",
+            "Wasps, bees or mosquitoes",
+            "Not sure"
+          ]
         },
         {
           "kind": "textarea",
           "name": "message",
           "label": "Anything we should know",
-          "placeholder": "Cabinet sizes, awkward corners, access notes",
+          "placeholder": "Where you see them, for how long, pets or kids in the home",
           "rows": 5,
           "required": false
         },
         {
           "kind": "checkbox",
           "name": "consent",
-          "label": "You can text me about this enquiry. See the [privacy policy](/privacy).",
+          "label": "You can text me about this inspection. See the [privacy policy](/privacy).",
           "required": true
         },
         {
@@ -311,7 +318,7 @@
           "value": "about-page"
         }
       ],
-      "footnote": "We use your details to arrange the consultation and nothing else. No lists, no resale.",
+      "footnote": "We use your details to arrange the inspection and nothing else. No lists, no resale.",
       "surface": "light",
       "spacing": "md",
       "width": "default"
@@ -320,7 +327,7 @@
       "type": "contact_details",
       "headingLevel": "h2",
       "eyebrow": "Where to find us",
-      "heading": "Find the shop.",
+      "heading": "Find the office.",
       "showPhone": true,
       "showEmail": true,
       "showAddress": true,
@@ -328,13 +335,13 @@
       "extra": [
         {
           "label": "Service area",
-          "value": "Phoenix valley, within 40 miles of the shop"
+          "value": "Phoenix valley, within 40 miles of the office"
         }
       ],
       "media": {
         "kind": "embed",
-        "url": "https://maps.google.com/maps?q=1420+Millwork+Ave,+Phoenix,+AZ+85004&z=15&output=embed",
-        "title": "Map showing the Modern Cabinets workshop in Phoenix",
+        "url": "https://maps.google.com/maps?q=2210+E+Camelback+Rd,+Phoenix,+AZ+85016&z=15&output=embed",
+        "title": "Map showing the Clearline Pest Solutions office in Phoenix",
         "ratio": "4/3"
       },
       "surface": "muted",

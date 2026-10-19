@@ -1,0 +1,186 @@
+{
+  "title": "Protection Plans",
+  "permalink": "https://clearline-pest-template.vercel.app/protection-plans",
+  "order": 40,
+  "draft": false,
+  "seo": {
+    "title": "Pest Protection Plans",
+    "description": "Year-round pest protection plans with scheduled visits, free re-treats and a field report every time. No contracts.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "layout": "full",
+      "background": {
+        "kind": "image",
+        "image": {
+          "source": "upload",
+          "src": "/media/images/scorpion-rock.avif",
+          "alt": "Bark scorpion on a rock"
+        }
+      },
+      "eyebrow": "Free re-treats on every plan",
+      "heading": "Year-round protection plans.",
+      "body": "One treatment wears off. A plan keeps a fresh barrier around your home all year, with visits timed to scorpion, monsoon and rodent seasons, and free re-treats whenever something gets through.",
+      "ctas": [
+        {
+          "label": "Start a plan",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h1"
+    },
+    {
+      "type": "pricing_tiers",
+      "headingLevel": "h2",
+      "eyebrow": "Plans",
+      "heading": "Pick your level of protection.",
+      "intro": "Every plan includes an initial inspection, a written field report on every visit and free re-treats between visits. Higher plans add pests and visit frequency.",
+      "columns": "3",
+      "tiers": [
+        {
+          "name": "Essential",
+          "priceLabel": "From",
+          "price": "$39",
+          "priceUnit": "/month",
+          "note": "Ants, roaches, spiders and crickets",
+          "features": [
+            "Quarterly interior & perimeter treatment",
+            "Web and nest sweep every visit",
+            "Free re-treats between visits"
+          ],
+          "cta": {
+            "label": "Choose Essential",
+            "href": "/contact",
+            "style": "secondary",
+            "newTab": false
+          }
+        },
+        {
+          "name": "Total Home",
+          "badge": "Best value",
+          "featured": true,
+          "priceLabel": "From",
+          "price": "$79",
+          "priceUnit": "/month",
+          "note": "Total home protection, priority service",
+          "features": [
+            "Everything in Desert Shield",
+            "Rodent monitoring stations",
+            "Annual termite inspection",
+            "Mosquito treatment through monsoon",
+            "Priority same-day booking"
+          ],
+          "cta": {
+            "label": "Choose Total Home",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          }
+        },
+        {
+          "name": "Desert Shield",
+          "priceLabel": "From",
+          "price": "$59",
+          "priceUnit": "/month",
+          "note": "Built for scorpion country",
+          "features": [
+            "Everything in Essential",
+            "Monthly visits April to October",
+            "Bark scorpion perimeter treatment",
+            "One UV scorpion hunt a year"
+          ],
+          "cta": {
+            "label": "Choose Desert Shield",
+            "href": "/contact",
+            "style": "secondary",
+            "newTab": false
+          }
+        }
+      ],
+      "footnote": "Plans renew monthly and can be cancelled any time. Prices are for homes up to 3,000 sq ft; larger properties are quoted at the free inspection.",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "headingLevel": "h2",
+      "eyebrow": "No obligation",
+      "heading": "Start a protection plan today.",
+      "body": "Keep pests out all year instead of chasing them every few months. Call the office or start online and we will match you to the right plan.",
+      "ctas": [
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        },
+        {
+          "label": "Start online",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "surface": "dark",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "headingLevel": "h2",
+      "eyebrow": "Good to know",
+      "heading": "Frequently asked questions.",
+      "items": [
+        {
+          "question": "What is included in a protection plan?",
+          "answer": "Every plan includes a full initial inspection, scheduled treatments inside and around the perimeter, a field report on every visit, and free re-treats between visits. Higher plans add scorpions, rodents, termite inspections and mosquitoes."
+        },
+        {
+          "question": "Can I change plans later?",
+          "answer": "Yes. Move up or down at any time and the new price starts from your next billing date."
+        },
+        {
+          "question": "Is there a contract or cancellation fee?",
+          "answer": "No. Plans are month to month. Cancel whenever you like."
+        },
+        {
+          "question": "What happens if I see pests between visits?",
+          "answer": "Call or text and we come back free, usually within two business days."
+        }
+      ],
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "contact_details",
+      "headingLevel": "h2",
+      "eyebrow": "Serving your area",
+      "heading": "Proudly serving the Phoenix valley.",
+      "showPhone": true,
+      "showEmail": true,
+      "showAddress": true,
+      "showHours": true,
+      "extra": [
+        {
+          "label": "Service area",
+          "value": "Phoenix valley, within 40 miles of the office"
+        }
+      ],
+      "media": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=2210+E+Camelback+Rd,+Phoenix,+AZ+85016&z=15&output=embed",
+        "title": "Map showing the Clearline Pest Solutions office in Phoenix",
+        "ratio": "4/3"
+      },
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

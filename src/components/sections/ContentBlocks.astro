@@ -1,11 +1,11 @@
 ---
 import type { ContentBlocks } from './ContentBlocks.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
 import Media from '../ui/Media.astro';
 import Button from '../ui/Button.astro';
 import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel, levelNumber } from '../../lib/section-base';
 
 type Props = ContentBlocks;
@@ -50,19 +50,13 @@ const spanClass = (block: (typeof blocks)[number]) => {
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	<div
 		class={`grid gap-x-10 gap-y-8 ${gridCols[columns]} ${align === 'center' ? 'items-center' : 'items-start'}`}

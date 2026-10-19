@@ -1,0 +1,370 @@
+{
+  "title": "Drywood Termites",
+  "summary": "Spot and whole-structure treatment for drywood termites in framing, furniture and trim.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/termite.avif",
+    "alt": "Termite specimen photographed close up"
+  },
+  "order": 32,
+  "parent": {
+    "label": "Termite Control",
+    "href": "/services/termites"
+  },
+  "draft": false,
+  "seo": {
+    "title": "Drywood Termites Control in Phoenix",
+    "description": "Spot and whole-structure treatment for drywood termites in framing, furniture and trim. Licensed technicians, free re-treats and a written field report on every visit.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "badge_strip",
+      "label": "Trust badges",
+      "items": [
+        {
+          "icon": "check",
+          "title": "Free inspection",
+          "subtitle": "Licensed inspectors"
+        },
+        {
+          "icon": "shield",
+          "title": "Renewable warranty",
+          "subtitle": "On every treatment"
+        },
+        {
+          "icon": "clock",
+          "title": "WDI in 48 hours",
+          "subtitle": "For buyers & sellers"
+        },
+        {
+          "icon": "wrench",
+          "title": "Liquid or bait",
+          "subtitle": "Matched to the job"
+        },
+        {
+          "icon": "badge",
+          "title": "Field report",
+          "subtitle": "Every tube mapped"
+        }
+      ],
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "placeholder",
+      "label": "Content to be added",
+      "note": "Placeholder for content to be provided. Replace with the final copy or media for this section.",
+      "size": "md",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "media_split",
+      "eyebrow": "About this treatment",
+      "heading": "No soil contact needed. Drywood termites live in the wood itself.",
+      "body": "Look for small piles of pellet-like droppings below doors, trim and furniture. We confirm the colony, then treat locally with foams and injections, or recommend whole-structure treatment for widespread activity.\n\nEvery visit ends with a written field report: what we found, where we treated, and what to watch for next. If the problem comes back between visits, so do we, free.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/termite.avif",
+        "alt": "Termite specimen photographed close up"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "check",
+          "text": "Species identified first",
+          "desc": "The right product for the right pest, not one spray for everything."
+        },
+        {
+          "icon": "shield",
+          "text": "Safe for kids and pets",
+          "desc": "Targeted, low-toxicity treatments placed where pests live."
+        },
+        {
+          "icon": "badge",
+          "text": "Free re-treats",
+          "desc": "If they come back between visits, we come back too, at no charge."
+        }
+      ],
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "promo_cards",
+      "eyebrow": "More reasons to book",
+      "heading": "Protection plans, financing and this month's offer.",
+      "columns": "3",
+      "cards": [
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
+          },
+          "icon": "shield",
+          "badge": "Free re-treats",
+          "title": "Year-round protection",
+          "subtitle": "For as low as",
+          "price": {
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
+          },
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
+          },
+          "icon": "dollar",
+          "badge": "Limited time",
+          "title": "0% APR for 12 months",
+          "subtitle": "Financing available",
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over low monthly payments. Quick soft-check application — a decision in minutes.",
+          "cta": {
+            "label": "Check your rate",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
+          },
+          "icon": "badge",
+          "badge": "Save now",
+          "title": "$50 off your first service",
+          "subtitle": "New customers",
+          "body": "Take $50 off your initial treatment. Mention code FIRST50 when you book your free inspection. One offer per household.",
+          "cta": {
+            "label": "Book a free inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "lg",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "eyebrow": "Before you book",
+      "heading": "Drywood Termites questions.",
+      "items": [
+        {
+          "question": "How do I know if I have termites?",
+          "answer": "Look for pencil-width mud tubes on the foundation or garage walls, swarms of winged insects after a monsoon rain, and discarded wings on windowsills. A free inspection will confirm it either way."
+        },
+        {
+          "question": "Liquid treatment or bait stations?",
+          "answer": "Liquid barriers act fast and protect the whole perimeter. Bait systems eliminate the colony over time with very little product. We recommend the right one after the inspection, and often combine them."
+        },
+        {
+          "question": "How long does a treatment last?",
+          "answer": "A liquid barrier is typically effective for **five years or more**. Bait systems are monitored and serviced on a plan for as long as you keep it."
+        },
+        {
+          "question": "Do you do real estate inspections?",
+          "answer": "Yes. Our licensed inspectors complete Wood Destroying Insect reports for buyers, sellers and lenders, usually within 48 hours."
+        },
+        {
+          "question": "Is there a warranty?",
+          "answer": "Every termite treatment carries a renewable warranty. If termites return while it is active, we re-treat at no charge."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "collection_feed",
+      "eyebrow": "Related services",
+      "heading": "More termites services.",
+      "intro": "The same inspect-treat-document approach, for related problems.",
+      "source": "services",
+      "layout": "grid",
+      "columns": "3",
+      "limit": 3,
+      "showImage": true,
+      "showSummary": true,
+      "moreLabel": "All termites services",
+      "moreHref": "/services/termites",
+      "moreStyle": "secondary",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "quotes",
+      "eyebrow": "4.9 / 5 on Google",
+      "heading": "Reviews from real homes.",
+      "items": [
+        {
+          "quote": "Inspector spotted mud tubes behind the water heater that two other companies missed.",
+          "name": "Robert K.",
+          "location": "Tempe, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "WDI report came back in a day and a half. Our closing stayed on schedule.",
+          "name": "Lisa M.",
+          "location": "Scottsdale, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "Treated in one visit, and the warranty renewal is cheaper than I expected.",
+          "name": "Hector P.",
+          "location": "Phoenix, AZ",
+          "rating": 4
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "eyebrow": "Free inspection",
+      "heading": "Get rid of drywood termites for good.",
+      "body": "A licensed technician, a full inspection and a written plan. No charge, no contract.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "form_block",
+      "eyebrow": "Get in touch",
+      "heading": "Tell us about your drywood termites problem.",
+      "intro": "Send a few details and we will call to book your free inspection.",
+      "endpoint": "https://formspree.io/f/your-form-id",
+      "submitLabel": "Book my free inspection",
+      "successNote": "Thanks — we will call within one business day, usually sooner.",
+      "fields": [
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "(555) 555-5555",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "placeholder": "you@example.com",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "placeholder": "85001",
+          "required": true,
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "text",
+          "name": "sightings",
+          "label": "Where are you seeing them?",
+          "placeholder": "e.g. kitchen, garage, attic",
+          "required": false,
+          "width": "full"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "Anything else we should know?",
+          "placeholder": "Pets, kids, gate codes, best time to visit…",
+          "required": false,
+          "rows": 4
+        }
+      ],
+      "footnote": "We never share your details. You will only hear from us about your inspection.",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "service_areas",
+      "eyebrow": "Where we work",
+      "heading": "Serving the greater Phoenix valley.",
+      "intro": "Book a free inspection anywhere across these areas and the towns around them.",
+      "columns": "4",
+      "showServed": true,
+      "map": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=Phoenix,AZ&z=10&output=embed",
+        "title": "Map of the greater Phoenix valley service area",
+        "ratio": "4/3"
+      },
+      "footnote": "Not listed? Call us — our trucks cover more of the valley than we can fit here.",
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

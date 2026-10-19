@@ -1,10 +1,9 @@
 ---
 import type { MediaSplit } from './MediaSplit.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
 import Button from '../ui/Button.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { iconPaths } from '../../lib/icons';
 
 type Props = MediaSplit;
@@ -21,7 +20,6 @@ const {
 	anchor,
 	surface = 'light',
 	spacing = 'md',
-	width = 'wide',
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
@@ -30,95 +28,102 @@ const onDark = surface === 'dark' || surface === 'brand';
 const imageFirst = imageSide === 'left';
 
 // A bullet is a bare string or a { text, desc, icon } object. Normalise so the
-// markup reads one shape; a bullet with an icon gets a stroked mark from the
-// shared set, one without keeps the default tick.
+// markup reads one shape.
 const items = bullets.map((b) =>
 	typeof b === 'string' ? { text: b, desc: undefined, icon: undefined } : b
 );
-const bulletAccent = onDark ? 'text-accent' : 'text-accent-ink';
-// When any bullet carries a description the list becomes a "titled" list: the
-// icon sits boxed against the top of a two-line entry rather than centred on one.
-const titled = items.some((item) => item.desc);
-const boxBorder = onDark ? 'border-current/25' : 'border-line';
+
+const pad = { none: 'lg:py-0', sm: 'lg:py-16', md: 'lg:py-24', lg: 'lg:py-32' }[spacing];
 ---
 
-<Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	<div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-		<div class={imageFirst ? 'lg:order-2' : ''}>
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			<Heading level={headingLevel} size="lg">
-				{heading}
-			</Heading>
-			{body && <Prose html={body} invert={onDark} class="mt-6" />}
+<Section anchor={anchor} surface={surface} spacing="none" width="full" contained={false}>
+	{/*
+		Edge-to-edge halves: the specimen plate bleeds to the screen edge on its
+		side, the report copy sits in the other half. Each plate is numbered as a
+		figure (CSS counter) with its alt text as the caption.
+	*/}
+	<div class={`grid ${image ? 'lg:grid-cols-2' : ''}`}>
+		<div
+			class={`flex items-center px-5 py-16 sm:px-8 lg:px-16 xl:px-24 ${pad} ${imageFirst ? 'lg:order-2' : ''}`}
+		>
+			<div class="w-full max-w-2xl">
+				<SectionHead
+					eyebrow={eyebrow}
+					heading={heading}
+					level={headingLevel}
+					onDark={onDark}
+					stacked
+					size="lg"
+					class="!mb-8"
+				/>
 
-			{items.length > 0 && (
-				<ul class={titled ? 'mt-9 space-y-6' : 'mt-8 space-y-4'}>
-					{items.map((item) => (
-						<li class={`flex gap-4 ${titled ? 'items-start' : 'items-center gap-3.5 text-sm'}`}>
-							{item.icon ? (
+				{body && <Prose html={body} invert={onDark} />}
+
+				{items.length > 0 && (
+					<ol class={`mt-10 border-t ${onDark ? 'border-current/40' : 'border-line'}`}>
+						{items.map((item, i) => (
+							<li
+								class={`grid grid-cols-[3rem_1fr_auto] items-start gap-4 border-b py-4 ${
+									onDark ? 'border-current/15' : 'border-line/20'
+								}`}
+							>
 								<span
-									class={
-										titled
-											? `flex h-10 w-10 shrink-0 items-center justify-center rounded-(--radius-brand) border ${boxBorder}`
-											: 'shrink-0'
-									}
+									class={`font-mono text-sm font-semibold ${onDark ? 'text-accent' : 'text-accent-ink'}`}
 								>
+									{String(i + 1).padStart(2, '0')}
+								</span>
+								<span>
+									<span class={`block font-semibold ${item.desc ? 'text-base' : 'text-sm'}`}>
+										{item.text}
+									</span>
+									{item.desc && (
+										<span class="mt-1 block text-sm leading-relaxed opacity-70">{item.desc}</span>
+									)}
+								</span>
+								{item.icon && (
 									<svg
 										viewBox="0 0 24 24"
-										class={`${titled ? 'h-5 w-5' : 'h-6 w-6'} ${bulletAccent}`}
+										class="mt-0.5 h-5 w-5 opacity-40"
 										fill="none"
 										stroke="currentColor"
-										stroke-width="1.75"
-										stroke-linecap="round"
-										stroke-linejoin="round"
+										stroke-width="2"
+										stroke-linecap="square"
 										aria-hidden="true"
 									>
 										<path d={iconPaths[item.icon]} />
 									</svg>
-								</span>
-							) : (
-								<svg
-									viewBox="0 0 16 16"
-									class={`${titled ? 'mt-1.5' : ''} h-3.5 w-3.5 shrink-0 ${onDark ? 'fill-accent' : 'fill-accent-ink'}`}
-									aria-hidden="true"
-								>
-									<path d="M6.2 11.7L2.8 8.3l1.2-1.2 2.2 2.2 5.8-5.8 1.2 1.2z" />
-								</svg>
-							)}
+								)}
+							</li>
+						))}
+					</ol>
+				)}
 
-							{item.desc ? (
-								<span class="block">
-									<span class="block text-base font-semibold text-current">{item.text}</span>
-									<span class="mt-1 block text-sm leading-relaxed opacity-75">{item.desc}</span>
-								</span>
-							) : (
-								<span>{item.text}</span>
-							)}
-						</li>
-					))}
-				</ul>
-			)}
-
-			{ctas.length > 0 && (
-				<div class="mt-9 flex flex-wrap items-center gap-3">
-					{ctas.map((cta) => (
-						<Button {...cta} onDark={onDark} />
-					))}
-				</div>
-			)}
+				{ctas.length > 0 && (
+					<div class="mt-10 flex flex-wrap items-center gap-4">
+						{ctas.map((cta) => (
+							<Button {...cta} onDark={onDark} arrow={cta.style !== 'secondary'} />
+						))}
+					</div>
+				)}
+			</div>
 		</div>
 
 		{image && (
-			<img
-				src={image.src}
-				alt={image.alt}
-				loading="lazy"
-				class={`aspect-4/3 w-full rounded-(--radius-media) object-cover lg:aspect-square ${
-					imageFirst ? 'lg:order-1' : ''
-				}`}
-			/>
+			<figure
+				class={`photo relative min-h-[24rem] overflow-hidden bg-dark sm:min-h-[30rem] ${imageFirst ? 'lg:order-1' : ''}`}
+			>
+				<img
+					src={image.src}
+					alt={image.alt}
+					loading="lazy"
+					class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.6s] ease-out hover:scale-105"
+				/>
+				<span class="inset-frame pointer-events-none absolute inset-5 z-[2]" aria-hidden="true" />
+				<figcaption class="absolute inset-x-0 bottom-0 z-[3] flex items-center gap-4 border-t border-accent bg-dark px-5 py-3 font-mono text-[0.6875rem] tracking-[0.14em] text-dark-fg/80 uppercase sm:px-8">
+					<span class="fig-num shrink-0 font-semibold text-accent" />
+					<span class="truncate">{image.alt}</span>
+				</figcaption>
+			</figure>
 		)}
 	</div>
 </Section>

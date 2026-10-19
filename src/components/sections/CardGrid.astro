@@ -2,9 +2,8 @@
 import type { CardGrid } from './CardGrid.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel } from '../../lib/section-base';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
 
 type Props = CardGrid;
 
@@ -13,7 +12,6 @@ const {
 	eyebrow,
 	heading,
 	intro,
-	columns = '3',
 	cards = [],
 	anchor,
 	surface = 'light',
@@ -22,87 +20,79 @@ const {
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
-
-const gridCols = {
-	'2': 'sm:grid-cols-2',
-	'3': 'sm:grid-cols-2 lg:grid-cols-3',
-	'4': 'sm:grid-cols-2 lg:grid-cols-4',
-	'5': 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
-};
-
-// Narrow cards get a taller frame so a 5-across row does not read as a strip
-// of postage stamps; wider layouts keep the classic landscape crop.
-const imageAspect = {
-	'2': 'aspect-4/3',
-	'3': 'aspect-4/3',
-	'4': 'aspect-square',
-	'5': 'aspect-[4/5]',
-}[columns];
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-14 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-	<ul class={`grid gap-x-8 gap-y-14 ${gridCols[columns]}`}>
-		{cards.map((card) => (
-			<li class="group relative flex flex-col transition-transform duration-300 ease-out hover:-translate-y-1">
-				{card.image && (
-					<div class={`mb-7 overflow-hidden rounded-(--radius-media) ${imageAspect}`}>
-						<img
-							src={card.image.src}
-							alt={card.image.alt}
-							loading="lazy"
-							class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-						/>
-					</div>
-				)}
-				<Heading level={childLevel(headingLevel, Boolean(heading))} size="md">
+	{/*
+		A specimen index rather than a card row: one ruled entry per item with
+		the title set huge. Hovering an entry floods it with the signal colour and
+		opens its specimen plate wide; the whole row is the link.
+	*/}
+	<ol class={`border-b ${onDark ? 'border-current/40' : 'border-line'}`}>
+		{cards.map((card, i) => (
+			<li
+				class={`group relative grid grid-cols-[2.5rem_1fr] items-center gap-x-5 gap-y-3 border-t py-6 transition-colors duration-200 md:grid-cols-[4rem_minmax(0,1.1fr)_minmax(0,1fr)_auto] md:gap-x-8 ${
+					onDark
+						? 'border-current/40 hover:bg-accent hover:text-accent-fg'
+						: 'border-line hover:bg-accent hover:text-accent-fg'
+				}`}
+			>
+				<span class="self-start pt-2 font-mono text-sm font-semibold md:pl-4">
+					{String(i + 1).padStart(2, '0')}
+				</span>
+
+				<Heading
+					level={childLevel(headingLevel, Boolean(heading))}
+					size="xl"
+					display
+					class="!text-[clamp(2rem,4.6vw,4rem)] group-hover:!text-accent-fg"
+				>
 					{card.link ? (
-						<a href={card.link.href} class="transition-colors hover:text-brand">
-							{/* Stretched so the whole card is the hit target, not just the words. */}
-							<span class="absolute inset-0" aria-hidden="true" />
+						<a href={card.link.href} class="focus-visible:outline-offset-8">
+							{/* Stretched so the whole row is the hit target, not just the words. */}
+							<span class="absolute inset-0 z-[1]" aria-hidden="true" />
 							{card.title}
 						</a>
 					) : (
 						card.title
 					)}
 				</Heading>
-				{card.body && <p class="mt-3.5 text-sm leading-relaxed opacity-90">{card.body}</p>}
-				{/*
-					`mt-auto` pins the link to the card's bottom edge so every card in a row
-					lines its label up on one baseline, however long the body copy runs.
-					`pt-6` keeps a minimum gap when a short body lets the auto-margin collapse.
-				*/}
-				{card.link && (
-					<p
-						class={`mt-auto flex items-center gap-2 pt-6 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${
-							onDark ? 'text-accent' : 'text-accent-ink'
-						}`}
-					>
-						<span class="transition-transform duration-300 group-hover:translate-x-1">
+
+				<div class="col-start-2 md:col-start-auto">
+					{card.body && <p class="max-w-md text-sm leading-relaxed opacity-85">{card.body}</p>}
+					{card.link && (
+						<p class="mono-label mt-3 flex items-center gap-2 font-semibold">
 							{card.link.label}
-						</span>
-						<span
-							aria-hidden="true"
-							class={`h-px w-6 origin-left transition-transform duration-300 group-hover:scale-x-150 ${
-								onDark ? 'bg-accent/50' : 'bg-accent-ink/50'
-							}`}
+							<svg
+								viewBox="0 0 16 16"
+								class="h-3 w-3 fill-current transition-transform duration-200 group-hover:translate-x-1.5"
+								aria-hidden="true"
+							>
+								<path d="M8.8 2.4l5 5-5 5-1.1-1.1 3.1-3.1H2v-1.6h8.8L7.7 3.5z" />
+							</svg>
+						</p>
+					)}
+				</div>
+
+				{card.image && (
+					<div class="col-span-2 h-40 overflow-hidden border border-line bg-dark md:col-span-1 md:mr-4 md:h-24 md:w-36 md:transition-[height,width] md:duration-300 md:ease-out md:group-hover:h-40 md:group-hover:w-60">
+						<img
+							src={card.image.src}
+							alt={card.image.alt}
+							loading="lazy"
+							class="h-full w-full object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
 						/>
-					</p>
+					</div>
 				)}
 			</li>
 		))}
-	</ul>
+	</ol>
 </Section>

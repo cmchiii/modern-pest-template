@@ -2,9 +2,8 @@
 import type { PricingTiers } from './PricingTiers.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
 import Button from '../ui/Button.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel } from '../../lib/section-base';
 import { iconPaths } from '../../lib/icons';
 
@@ -15,7 +14,6 @@ const {
 	eyebrow,
 	heading,
 	intro,
-	columns = '3',
 	toggle,
 	tiers = [],
 	footnote,
@@ -28,54 +26,31 @@ const {
 const onDark = surface === 'dark' || surface === 'brand';
 const cardLevel = childLevel(headingLevel, Boolean(heading));
 
-// A 3-tier row jumps straight from 1 column to 3 at lg, skipping a 2-up stage
-// -- on a tablet that stage orphans the third card and breaks the row the
-// featured tier sits in. 2- and 4-tier sets divide evenly, so their 2-up is
-// fine and kept.
-const gridCols = {
-	'2': 'sm:grid-cols-2',
-	'3': 'lg:grid-cols-3',
-	'4': 'sm:grid-cols-2 lg:grid-cols-4',
-};
-
-// Every card carries both price sets in the markup; the toggle only flips which
+// Every row carries both price sets in the markup; the toggle only flips which
 // is shown, so a reader with JS off still sees the primary price rather than a
 // dead switch. The alt figures fall back to the primary when a tier leaves them
 // off, so a partly-filled toggle never blanks a card.
 const hasToggle = Boolean(toggle);
 
-// The featured card is brand-green, so a `primary` (green) CTA all but vanishes
-// on it -- fill, card and page all the same forest. Promote it to the brass
-// `accent`, which reads as a true button on any surface. An explicitly authored
-// non-primary style (secondary/ghost/accent) is still honoured. Mirrors the same
-// promotion in CtaBanner.
+// The featured row is dark navy, where a navy `primary` button disappears.
+// Promote it to `accent`, the orange CTA that reads on any surface. An explicitly authored non-primary style
+// (secondary/ghost/accent) is still honoured. Mirrors the same promotion in
+// CtaBanner.
 const tierCtaStyle = (tier: (typeof tiers)[number]) =>
-	tier.featured && (!tier.cta?.style || tier.cta.style === 'primary')
-		? 'accent'
-		: tier.cta?.style;
+	tier.featured && (!tier.cta?.style || tier.cta.style === 'primary') ? 'accent' : tier.cta?.style;
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" headingStart={4} />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	{toggle && (
-		<div
-			class="mb-10 flex flex-wrap items-center gap-4"
-			data-pricing-toggle
-			data-mode="primary"
-		>
+		<div class="mb-10 flex flex-wrap items-center gap-4" data-pricing-toggle data-mode="primary">
 			<div
 				class={`inline-flex rounded-(--radius-brand) border p-1 ${
 					onDark ? 'border-current/25' : 'border-line bg-surface'
@@ -106,65 +81,43 @@ const tierCtaStyle = (tier: (typeof tiers)[number]) =>
 		</div>
 	)}
 
-	<ul class={`grid gap-6 ${gridCols[columns]}`}>
+	{/*
+		Plan rows rather than a card trio: name and fit on the left, what is
+		included as a two-column checklist in the middle, price and action on
+		the right. The featured plan is the inverted row. Both price sets live in
+		the DOM; the toggle script swaps which one shows.
+	*/}
+	<ul class={`border-t ${onDark ? 'border-current/20' : 'border-line'}`}>
 		{tiers.map((tier) => (
 			<li
-				class={`tier relative flex flex-col rounded-(--radius-media) p-6 sm:p-8 ${
+				class={`tier relative grid gap-8 border-b px-5 py-9 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)_minmax(14rem,0.7fr)] lg:items-center lg:gap-12 ${
 					tier.featured
-						? 'tier-featured bg-brand text-brand-fg ring-2 ring-accent'
+						? 'tier-featured on-dark border-transparent bg-dark text-dark-fg'
 						: onDark
-							? 'border border-current/20'
-							: 'border border-line bg-surface'
+							? 'border-current/20'
+							: 'border-line'
 				}`}
 			>
-				{tier.badge && (
-					<span
-						class={`absolute -top-3 left-8 inline-flex items-center gap-2 rounded-(--radius-brand) px-3 py-1.5 font-mono text-[0.625rem] font-medium uppercase tracking-[0.16em] ${
-							tier.featured ? 'bg-accent text-accent-fg' : 'bg-brand text-brand-fg'
-						}`}
-					>
-						{tier.badge}
-					</span>
-				)}
-
-				<Heading level={cardLevel} size="sm" display class="text-current">
-					{tier.name}
-				</Heading>
-
-				{/* Price. Both sets live in the DOM; the toggle swaps which shows. */}
-				<div class="mt-5">
-					{tier.priceLabel && (
-						<span class="block font-mono text-[0.625rem] uppercase tracking-[0.16em] opacity-70">
-							{tier.priceLabel}
-						</span>
-					)}
-					<span class="mt-1 flex items-baseline gap-1.5">
+				<div>
+					{tier.badge && (
 						<span
-							class="display text-[clamp(2rem,3.4vw,2.75rem)] leading-none"
-							data-price-primary={tier.price}
-							data-price-alt={hasToggle ? (tier.priceAlt ?? tier.price) : undefined}
+							class={`mono-label mb-3 inline-block px-2.5 py-1 ${
+								tier.featured ? 'bg-accent text-accent-fg' : 'bg-muted text-brand'
+							}`}
 						>
-							{tier.price}
+							{tier.badge}
 						</span>
-						{(tier.priceUnit || tier.priceAltUnit) && (
-							<span
-								class="font-mono text-[0.6875rem] uppercase tracking-[0.14em] opacity-70"
-								data-unit-primary={tier.priceUnit ?? ''}
-								data-unit-alt={hasToggle ? (tier.priceAltUnit ?? tier.priceUnit ?? '') : undefined}
-							>
-								{tier.priceUnit}
-							</span>
-						)}
-					</span>
-					{tier.note && (
-						<p class="mt-2 text-xs leading-relaxed opacity-70">{tier.note}</p>
 					)}
+					<Heading level={cardLevel} size="md" class="text-current">
+						{tier.name}
+					</Heading>
+					{tier.note && <p class="mt-2 text-sm leading-relaxed opacity-75">{tier.note}</p>}
 				</div>
 
-				{tier.features.length > 0 && (
-					<ul class={`mt-7 space-y-3 border-t pt-6 ${tier.featured ? 'border-current/20' : 'border-line'}`}>
+				{tier.features.length > 0 ? (
+					<ul class="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
 						{tier.features.map((feature) => (
-							<li class="flex items-start gap-3 text-sm leading-relaxed">
+							<li class="flex items-start gap-2.5 text-sm leading-relaxed">
 								<svg
 									viewBox="0 0 24 24"
 									class={`mt-0.5 h-4 w-4 shrink-0 ${tier.featured ? 'text-accent' : 'text-accent-ink'}`}
@@ -181,18 +134,41 @@ const tierCtaStyle = (tier: (typeof tiers)[number]) =>
 							</li>
 						))}
 					</ul>
+				) : (
+					<span />
 				)}
 
-				{tier.cta && (
-					<div class="mt-8 pt-2">
-						<Button
-							{...tier.cta}
-							style={tierCtaStyle(tier)}
-							onDark={tier.featured || onDark}
-							class="w-full"
-						/>
-					</div>
-				)}
+				<div class="lg:text-right">
+					{tier.priceLabel && <span class="mono-label block opacity-60">{tier.priceLabel}</span>}
+					<span class="mt-1 flex items-baseline gap-1.5 lg:justify-end">
+						<span
+							class="text-[clamp(2.25rem,3.6vw,3rem)] leading-none font-semibold tracking-[-0.03em]"
+							data-price-primary={tier.price}
+							data-price-alt={hasToggle ? (tier.priceAlt ?? tier.price) : undefined}
+						>
+							{tier.price}
+						</span>
+						{(tier.priceUnit || tier.priceAltUnit) && (
+							<span
+								class="text-sm opacity-70"
+								data-unit-primary={tier.priceUnit ?? ''}
+								data-unit-alt={hasToggle ? (tier.priceAltUnit ?? tier.priceUnit ?? '') : undefined}
+							>
+								{tier.priceUnit}
+							</span>
+						)}
+					</span>
+					{tier.cta && (
+						<div class="mt-5">
+							<Button
+								{...tier.cta}
+								style={tierCtaStyle(tier)}
+								onDark={tier.featured || onDark}
+								class="w-full lg:w-auto"
+							/>
+						</div>
+					)}
+				</div>
 			</li>
 		))}
 	</ul>
@@ -204,7 +180,7 @@ const tierCtaStyle = (tier: (typeof tiers)[number]) =>
 
 <style>
 	/*
-	 * The featured tier is always the forest-green card, whatever surface the
+	 * The featured tier is always the black card, whatever surface the
 	 * section sits on. On a light or muted section, though, the Section wrapper
 	 * sets every heading inside it to that surface's DARK heading colour via a
 	 * `[& :is(h1..h4)]` descendant rule -- which also reaches the title inside the
@@ -213,11 +189,11 @@ const tierCtaStyle = (tier: (typeof tiers)[number]) =>
 	 *
 	 * `:global` reaches across to the Heading child component, and the scoped
 	 * `.tier-featured` attribute gives this enough specificity to win, so the
-	 * featured title always reads in the bone foreground. (Mirrors the same fix in
-	 * Offers.astro's coupon-featured card.)
+	 * featured title always reads in the paper foreground. (Mirrors the same fix
+	 * in Offers.astro's coupon-featured card.)
 	 */
 	.tier-featured :global(:is(h1, h2, h3, h4)) {
-		color: var(--color-brand-fg);
+		color: var(--color-dark-fg);
 	}
 </style>
 

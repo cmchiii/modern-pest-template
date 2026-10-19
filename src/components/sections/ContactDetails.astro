@@ -1,10 +1,8 @@
 ---
 import type { ContactDetails } from './ContactDetails.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
 import Media from '../ui/Media.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { site } from '../../lib/site';
 
 type Props = ContactDetails;
@@ -52,42 +50,53 @@ const lines: { label: string; value: string; href?: string }[] = [
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	<div class={media ? 'grid gap-12 lg:grid-cols-2 lg:gap-16' : ''}>
-		<div>
-			{(eyebrow || heading || intro) && (
-				<header class="mb-10 max-w-xl">
-					{eyebrow && (
-						<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-					)}
-					{heading && (
-						<Heading level={headingLevel} size="lg">
-							{heading}
-						</Heading>
-					)}
-					{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-				</header>
-			)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-			<dl class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
-				{lines.map((line) => (
-					<div class={`border-t pt-5 ${onDark ? 'border-current/20' : 'border-line'}`}>
-						<dt class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em] opacity-65">
-							{line.label}
-						</dt>
-						<dd class="mt-2 text-base">
-							{line.href ? (
-								<a href={line.href} class="underline-offset-4 hover:underline">
-									{line.value}
-								</a>
-							) : (
-								line.value
-							)}
-						</dd>
-					</div>
-				))}
-			</dl>
-		</div>
+	{/*
+		The office card sits over a wide, softly tinted map: details first on
+		small screens, the card floating over the map's left edge on large ones.
+	*/}
+	<div class={media ? 'relative lg:min-h-[30rem]' : ''}>
+		{media && (
+			<div class="relative overflow-hidden border border-line lg:absolute lg:inset-0 [&_iframe]:h-full [&_iframe]:min-h-[22rem] [&_img]:h-full">
+				<Media media={media} class="grayscale" />
+				<span
+					class="pointer-events-none absolute inset-0 bg-brand/15 mix-blend-multiply"
+					aria-hidden="true"
+				/>
+			</div>
+		)}
 
-		{media && <Media media={media} class="rounded-(--radius-media)" />}
+		<dl
+			class={`relative z-[1] grid gap-y-5 p-7 sm:p-8 ${
+				media
+					? 'bg-surface text-ink shadow-[0_24px_48px_-24px_rgba(15,27,51,0.45)] lg:absolute lg:top-8 lg:left-8 lg:w-[24rem]'
+					: ''
+			} ${!media && onDark ? '' : 'border border-line'}`}
+		>
+			{lines.map((line) => (
+				<div class="grid grid-cols-[6rem_1fr] gap-4 border-b border-line pb-5 last:border-b-0 last:pb-0">
+					<dt class="mono-label pt-0.5 text-brand">{line.label}</dt>
+					<dd class="text-[0.9375rem] leading-relaxed">
+						{line.href ? (
+							<a
+								href={line.href}
+								class="font-semibold text-ink underline decoration-brand/30 underline-offset-4 hover:decoration-brand"
+							>
+								{line.value}
+							</a>
+						) : (
+							line.value
+						)}
+					</dd>
+				</div>
+			))}
+		</dl>
 	</div>
 </Section>

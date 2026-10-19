@@ -2,8 +2,8 @@
 import type { PromoCards } from './PromoCards.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import Button from '../ui/Button.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel } from '../../lib/section-base';
 import { iconPaths } from '../../lib/icons';
 
@@ -25,178 +25,98 @@ const {
 const onDark = surface === 'dark' || surface === 'brand';
 const cardLevel = childLevel(headingLevel, Boolean(heading));
 
-const gridCols = {
-	'2': 'sm:grid-cols-2',
-	'3': 'sm:grid-cols-2 lg:grid-cols-3',
-};
+const gridCols = { '2': 'md:grid-cols-2', '3': 'md:grid-cols-2 lg:grid-cols-3' };
+
+// Wrap panels butted edge to edge, each in its own ground: black, safety
+// yellow, white -- cycling, so the row reads as one truck panel of three. The text colour is set per panel, not by the
+// section, so the panels look the same on any surface.
+const grounds = [
+	{ panel: 'on-dark bg-dark text-dark-fg', accent: 'text-accent', onDarkCta: true },
+	{ panel: 'bg-brand text-brand-fg', accent: 'text-accent', onDarkCta: false },
+	{ panel: 'bg-surface text-ink', accent: 'text-accent-ink', onDarkCta: false },
+];
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" headingStart={4} />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-	<ul class={`grid gap-6 ${gridCols[columns]}`}>
-		{cards.map((card) => (
-			<li class="promo-card group relative flex flex-col overflow-hidden rounded-(--radius-media) bg-brand text-brand-fg">
-				{/* Photo with a squared icon mark and a corner badge. */}
-				<div class="relative">
-					{card.image ? (
-						<img
-							src={card.image.src}
-							alt={card.image.alt}
-							loading="lazy"
-							class="aspect-[5/4] w-full object-cover"
-						/>
-					) : (
-						<div class="aspect-[5/4] w-full bg-dark" aria-hidden="true" />
-					)}
-
-					{card.icon && (
-						<span class="absolute top-4 left-4 inline-flex h-9 w-9 items-center justify-center rounded-(--radius-brand) bg-surface/95 text-brand backdrop-blur-sm">
+	<ul class={`grid border-t border-l border-line ${gridCols[columns]}`}>
+		{cards.map((card, i) => {
+			const g = grounds[i % grounds.length];
+			return (
+				<li
+					class={`flex flex-col border-r border-b border-line ${g.panel} [&_:is(h3,h4)]:!text-current`}
+				>
+					<div class="flex items-center justify-between gap-4 border-b border-current/80 px-6 py-3">
+						<span class="mono-label font-semibold">
+							{card.badge ?? `Notice ${String(i + 1).padStart(2, '0')}`}
+						</span>
+						{card.icon && (
 							<svg
 								viewBox="0 0 24 24"
-								class="h-5 w-5"
+								class="h-6 w-6"
 								fill="none"
 								stroke="currentColor"
-								stroke-width="1.75"
-								stroke-linecap="round"
-								stroke-linejoin="round"
+								stroke-width="2.25"
+								stroke-linecap="square"
 								aria-hidden="true"
 							>
 								<path d={iconPaths[card.icon]} />
 							</svg>
-						</span>
-					)}
+						)}
+					</div>
 
-					{card.badge && (
-						<span class="absolute top-4 right-4 inline-flex items-center gap-2 rounded-(--radius-brand) bg-dark/70 px-3 py-1.5 font-mono text-[0.625rem] font-medium uppercase tracking-[0.16em] text-accent backdrop-blur-sm">
-							<span class="h-px w-4 bg-accent" aria-hidden="true" />
-							{card.badge}
-						</span>
-					)}
-				</div>
-
-				{/*
-					Dimension-line seam: the site's shop-drawing motif marking the
-					join between photo and panel, in place of a borrowed diagonal.
-				*/}
-				<div class="relative flex items-center gap-3 bg-brand px-7 pt-6" aria-hidden="true">
-					<span class="h-2 w-px bg-accent" />
-					<span class="h-px flex-1 bg-current/25" />
-					<span class="h-2 w-px bg-accent" />
-				</div>
-
-				{/* Filled lower panel */}
-				<div class="flex flex-1 flex-col px-7 pt-5 pb-7">
-					<Heading level={cardLevel} size="md" display class="text-current">
-						{card.title}
-					</Heading>
-
-					{/*
-						The coupon-type label reads in the bone foreground, not brass: brass
-						(#b8894a) on the forest card is only ~3.3:1, which fails AA for text
-						this small. `text-current` is the bone (#f7f3ec), ~9.5:1 -- legible.
-						A short brass tick keeps the drafting accent without tinting the words.
-					*/}
-					{card.subtitle && (
-						<p class="mt-2 flex items-center gap-2 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-current">
-							<span class="h-px w-4 bg-accent" aria-hidden="true" />
-							{card.subtitle}
-						</p>
-					)}
-
-					{card.price ? (
-						<div class="mt-5 self-start border-l-2 border-accent pl-4">
-							{card.price.label && (
-								<span class="block font-mono text-[0.625rem] uppercase tracking-[0.16em] opacity-75">
-									{card.price.label}
-								</span>
-							)}
-							<span class="mt-1 block text-4xl leading-none font-semibold">{card.price.value}</span>
-							{card.price.unit && (
-								<span class="mt-2 block font-mono text-[0.625rem] uppercase tracking-[0.16em] opacity-75">
-									{card.price.unit}
-								</span>
-							)}
-						</div>
-					) : (
-						card.body && <p class="mt-4 text-sm leading-relaxed opacity-85">{card.body}</p>
-					)}
-
-					{/* CTA + phone, pinned to the bottom so cards align across the row. */}
-					{(card.cta || card.phone) && (
-						<div class="mt-auto flex flex-wrap items-center justify-between gap-4 pt-7">
-							{card.cta && (
-								<a
-									href={card.cta.href}
-									class="inline-flex min-h-12 items-center gap-2 rounded-(--radius-brand) bg-surface px-6 font-mono text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-brand transition-colors hover:bg-accent hover:text-accent-fg"
-									{...(card.cta.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-								>
-									{/* Stretched so the whole card is the primary hit target. */}
-									<span class="absolute inset-0" aria-hidden="true" />
-									{card.cta.label}
-									<svg
-										viewBox="0 0 16 16"
-										class="h-3 w-3 fill-current transition-transform group-hover:translate-x-0.5"
-										aria-hidden="true"
-									>
-										<path d="M8.8 2.4l5 5-5 5-1.1-1.1 3.1-3.1H2v-1.6h8.8L7.7 3.5z" />
-									</svg>
-								</a>
-							)}
-
-							{card.phone && (
-								<a
-									href={card.phoneHref ?? `tel:${card.phone.replace(/[^+\d]/g, '')}`}
-									class="relative z-10 inline-flex items-center gap-2 font-mono text-xs font-medium tracking-[0.08em] text-current hover:text-accent"
-								>
-									<svg
-										viewBox="0 0 24 24"
-										class="h-4 w-4"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="1.75"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										aria-hidden="true"
-									>
-										<path d={iconPaths.phone} />
-									</svg>
-									{card.phone}
-								</a>
-							)}
+					{card.image && (
+						<div class="photo relative aspect-[16/9] overflow-hidden border-b border-current/80 bg-dark">
+							<img
+								src={card.image.src}
+								alt={card.image.alt}
+								loading="lazy"
+								class="h-full w-full object-cover"
+							/>
 						</div>
 					)}
-				</div>
-			</li>
-		))}
+
+					<div class="flex flex-1 flex-col px-6 pt-7 pb-6">
+						{card.subtitle && <p class="mono-label mb-3 opacity-70">{card.subtitle}</p>}
+						<Heading level={cardLevel} size="lg" display class="!leading-[0.88]">
+							{card.title}
+						</Heading>
+
+						{card.price && (
+							<p class="mt-5 flex items-baseline gap-3">
+								{card.price.label && <span class="mono-label opacity-70">{card.price.label}</span>}
+								<span class={`font-display text-6xl leading-none font-black ${g.accent}`}>
+									{card.price.value}
+								</span>
+								{card.price.unit && <span class="mono-label opacity-70">{card.price.unit}</span>}
+							</p>
+						)}
+
+						{card.body && <p class="mt-4 text-sm leading-relaxed opacity-85">{card.body}</p>}
+
+						{(card.cta || card.phone) && (
+							<div class="mt-auto flex flex-wrap items-center justify-between gap-4 pt-7">
+								{card.cta && <Button {...card.cta} size="sm" onDark={g.onDarkCta} arrow />}
+								{card.phone && (
+									<a
+										href={card.phoneHref ?? `tel:${card.phone.replace(/[^\d+]/g, '')}`}
+										class="font-mono text-xs font-semibold tracking-[0.08em] underline decoration-2 underline-offset-4"
+									>
+										{card.phone}
+									</a>
+								)}
+							</div>
+						)}
+					</div>
+				</li>
+			);
+		})}
 	</ul>
 </Section>
-
-<style>
-	/*
-	 * Every promo card is the forest-green card, but the section usually sits on a
-	 * light surface -- whose Section wrapper sets all descendant headings to the
-	 * surface's DARK heading colour via a `[& :is(h1..h4)]` rule. That reaches the
-	 * card title too, rendering dark-on-dark. The title carries `.text-current`,
-	 * but a utility class cannot outrank that descendant selector.
-	 *
-	 * `:global` reaches the Heading child, and the scoped `.promo-card` attribute
-	 * lifts this above the Section rule, so the title always reads in the bone
-	 * foreground. (Same fix as Offers' coupon-featured and PricingTiers' featured.)
-	 */
-	.promo-card :global(:is(h1, h2, h3, h4)) {
-		color: var(--color-brand-fg);
-	}
-</style>

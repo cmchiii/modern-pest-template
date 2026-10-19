@@ -2288,6 +2288,10 @@ content:
       - { name: legalName, label: Legal name, type: string }
       - { name: tagline, label: Tagline, type: string }
       - { name: logo, label: Logo, component: image }
+      - name: logoOnDark
+        label: Logo for dark backgrounds
+        component: image
+        description: Optional light version, used in the footer. Leave empty to knock the main logo out to white.
 
       - name: contact
         label: Contact
@@ -2511,7 +2515,7 @@ content:
         description: >-
           Where this page is published -- copy it into your browser to check
           your edit. Read-only: the URL is set by the file name (about.json is
-          /about, services/kitchen.json is /services/kitchen, _home.json is the
+          /about, services/scorpions.json is /services/scorpions, _home.json is the
           site root), so to change it, rename the file.
       # A page can still override its URL with a `slug` in the JSON, honoured by
       # the router and the permalink sync. It is deliberately not a CMS field:
@@ -2600,27 +2604,27 @@ content:
             }
 
   # Services is a navigation-only group so the sidebar shows a collapsible
-  # "Services" dropdown. Inside it, each room is its own collection -- so the
-  # room is a dropdown too, listing its main page (_main.json, sorted first by
+  # "Services" dropdown. Inside it, each pest category is its own collection -- so the
+  # category is a dropdown too, listing its main page (_main.json, sorted first by
   # the leading underscore) and its sub-services. Splitting the one services
   # collection into five by folder changes only the CMS sidebar: the Astro side
   # still loads every file from src/content/services via one glob, and routing
   # is unchanged (src/lib/collections.ts entrySlug strips the trailing /_main,
-  # so <room>/_main.json stays at /services/<room>).
+  # so <category>/_main.json stays at /services/<category>).
   - name: services-group
     label: Services
     type: group
     items:
-      - name: service-kitchen
-        label: Kitchen Shelves
+      - name: service-general-pest
+        label: General Pest Control
         type: collection
-        path: src/content/services/kitchen
+        path: src/content/services/general-pest
         format: json
         filename: '{primary}.json'
         extension: json
         view:
           fields: [title, draft]
-          # Sort the list by order, not the title column, so the room's main
+          # Sort the list by order, not the title column, so the category's main
           # page (lowest order) sits at the top above its sub-services.
           sort: [order, title]
           default:
@@ -2635,8 +2639,8 @@ content:
               The page's main heading and its name in this list. The top of the
               page (heading, intro and image) is built from these fields
               automatically, so there is no hero to add in Page sections below --
-              those are the body. For a room's main page, name it so it reads as
-              the main page here (e.g. "Kitchen — Main Page") and set the Public
+              those are the body. For a category's main page, name it so it reads as
+              the main page here (e.g. "Scorpions — Main Page") and set the Public
               heading below to the real on-page title.
           - name: heading
             label: Public heading
@@ -2665,7 +2669,7 @@ content:
             type: object
             description: >-
               For a sub-service, the room it sits under, so its breadcrumb reads
-              Home / Services / Kitchen / This page. Leave empty for the room's
+              Home / Services / Scorpions / This page. Leave empty for the category's
               own main page.
             fields:
               - { name: label, label: Label, type: string }
@@ -2691,16 +2695,16 @@ content:
 
           - { name: sections, label: Page sections, component: page_sections }
 
-      - name: service-pantry
-        label: Pantry Storage
+      - name: service-scorpions
+        label: Scorpion Control
         type: collection
-        path: src/content/services/pantry
+        path: src/content/services/scorpions
         format: json
         filename: '{primary}.json'
         extension: json
         view:
           fields: [title, draft]
-          # Sort the list by order, not the title column, so the room's main
+          # Sort the list by order, not the title column, so the category's main
           # page (lowest order) sits at the top above its sub-services.
           sort: [order, title]
           default:
@@ -2715,8 +2719,8 @@ content:
               The page's main heading and its name in this list. The top of the
               page (heading, intro and image) is built from these fields
               automatically, so there is no hero to add in Page sections below --
-              those are the body. For a room's main page, name it so it reads as
-              the main page here (e.g. "Kitchen — Main Page") and set the Public
+              those are the body. For a category's main page, name it so it reads as
+              the main page here (e.g. "Scorpions — Main Page") and set the Public
               heading below to the real on-page title.
           - name: heading
             label: Public heading
@@ -2745,7 +2749,7 @@ content:
             type: object
             description: >-
               For a sub-service, the room it sits under, so its breadcrumb reads
-              Home / Services / Kitchen / This page. Leave empty for the room's
+              Home / Services / Scorpions / This page. Leave empty for the category's
               own main page.
             fields:
               - { name: label, label: Label, type: string }
@@ -2771,16 +2775,16 @@ content:
 
           - { name: sections, label: Page sections, component: page_sections }
 
-      - name: service-bathroom
-        label: Bathroom Vanities
+      - name: service-termites
+        label: Termite Control
         type: collection
-        path: src/content/services/bathroom
+        path: src/content/services/termites
         format: json
         filename: '{primary}.json'
         extension: json
         view:
           fields: [title, draft]
-          # Sort the list by order, not the title column, so the room's main
+          # Sort the list by order, not the title column, so the category's main
           # page (lowest order) sits at the top above its sub-services.
           sort: [order, title]
           default:
@@ -2795,8 +2799,8 @@ content:
               The page's main heading and its name in this list. The top of the
               page (heading, intro and image) is built from these fields
               automatically, so there is no hero to add in Page sections below --
-              those are the body. For a room's main page, name it so it reads as
-              the main page here (e.g. "Kitchen — Main Page") and set the Public
+              those are the body. For a category's main page, name it so it reads as
+              the main page here (e.g. "Scorpions — Main Page") and set the Public
               heading below to the real on-page title.
           - name: heading
             label: Public heading
@@ -2825,7 +2829,7 @@ content:
             type: object
             description: >-
               For a sub-service, the room it sits under, so its breadcrumb reads
-              Home / Services / Kitchen / This page. Leave empty for the room's
+              Home / Services / Scorpions / This page. Leave empty for the category's
               own main page.
             fields:
               - { name: label, label: Label, type: string }
@@ -2851,16 +2855,16 @@ content:
 
           - { name: sections, label: Page sections, component: page_sections }
 
-      - name: service-closets
-        label: Closet Systems
+      - name: service-rodents
+        label: Rodent Control
         type: collection
-        path: src/content/services/closets
+        path: src/content/services/rodents
         format: json
         filename: '{primary}.json'
         extension: json
         view:
           fields: [title, draft]
-          # Sort the list by order, not the title column, so the room's main
+          # Sort the list by order, not the title column, so the category's main
           # page (lowest order) sits at the top above its sub-services.
           sort: [order, title]
           default:
@@ -2875,8 +2879,8 @@ content:
               The page's main heading and its name in this list. The top of the
               page (heading, intro and image) is built from these fields
               automatically, so there is no hero to add in Page sections below --
-              those are the body. For a room's main page, name it so it reads as
-              the main page here (e.g. "Kitchen — Main Page") and set the Public
+              those are the body. For a category's main page, name it so it reads as
+              the main page here (e.g. "Scorpions — Main Page") and set the Public
               heading below to the real on-page title.
           - name: heading
             label: Public heading
@@ -2905,7 +2909,7 @@ content:
             type: object
             description: >-
               For a sub-service, the room it sits under, so its breadcrumb reads
-              Home / Services / Kitchen / This page. Leave empty for the room's
+              Home / Services / Scorpions / This page. Leave empty for the category's
               own main page.
             fields:
               - { name: label, label: Label, type: string }
@@ -2931,16 +2935,16 @@ content:
 
           - { name: sections, label: Page sections, component: page_sections }
 
-      - name: service-creative-spaces
-        label: Creative Spaces
+      - name: service-stinging-insects
+        label: Mosquitoes & Stinging Insects
         type: collection
-        path: src/content/services/creative-spaces
+        path: src/content/services/stinging-insects
         format: json
         filename: '{primary}.json'
         extension: json
         view:
           fields: [title, draft]
-          # Sort the list by order, not the title column, so the room's main
+          # Sort the list by order, not the title column, so the category's main
           # page (lowest order) sits at the top above its sub-services.
           sort: [order, title]
           default:
@@ -2955,8 +2959,8 @@ content:
               The page's main heading and its name in this list. The top of the
               page (heading, intro and image) is built from these fields
               automatically, so there is no hero to add in Page sections below --
-              those are the body. For a room's main page, name it so it reads as
-              the main page here (e.g. "Kitchen — Main Page") and set the Public
+              those are the body. For a category's main page, name it so it reads as
+              the main page here (e.g. "Scorpions — Main Page") and set the Public
               heading below to the real on-page title.
           - name: heading
             label: Public heading
@@ -2985,7 +2989,7 @@ content:
             type: object
             description: >-
               For a sub-service, the room it sits under, so its breadcrumb reads
-              Home / Services / Kitchen / This page. Leave empty for the room's
+              Home / Services / Scorpions / This page. Leave empty for the category's
               own main page.
             fields:
               - { name: label, label: Label, type: string }

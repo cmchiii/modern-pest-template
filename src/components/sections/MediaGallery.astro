@@ -1,10 +1,8 @@
 ---
 import type { MediaGallery } from './MediaGallery.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
 import Media from '../ui/Media.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = MediaGallery;
 
@@ -45,19 +43,13 @@ const isMasonry = layout === 'masonry';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-10 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	{hasFilter && (
 		<div class="mb-10 flex flex-wrap gap-2" data-gallery-filter>

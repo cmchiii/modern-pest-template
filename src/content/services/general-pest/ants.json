@@ -1,0 +1,370 @@
+{
+  "title": "Ants",
+  "summary": "Bait-based ant control that takes out the colony, not just the trail across your counter.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/ant.avif",
+    "alt": "Macro photo of an ant specimen"
+  },
+  "order": 11,
+  "parent": {
+    "label": "General Pest Control",
+    "href": "/services/general-pest"
+  },
+  "draft": false,
+  "seo": {
+    "title": "Ants Control in Phoenix",
+    "description": "Bait-based ant control that takes out the colony, not just the trail across your counter. Licensed technicians, free re-treats and a written field report on every visit.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "badge_strip",
+      "label": "Trust badges",
+      "items": [
+        {
+          "icon": "shield",
+          "title": "Pet & kid safe",
+          "subtitle": "Targeted, low-toxicity"
+        },
+        {
+          "icon": "check",
+          "title": "Treated at the source",
+          "subtitle": "Not just the trail"
+        },
+        {
+          "icon": "clock",
+          "title": "Same-week service",
+          "subtitle": "Usually next day"
+        },
+        {
+          "icon": "dollar",
+          "title": "Free re-treats",
+          "subtitle": "Between visits"
+        },
+        {
+          "icon": "badge",
+          "title": "Field report",
+          "subtitle": "Photos on every visit"
+        }
+      ],
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "placeholder",
+      "label": "Content to be added",
+      "note": "Placeholder for content to be provided. Replace with the final copy or media for this section.",
+      "size": "md",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "media_split",
+      "eyebrow": "About this treatment",
+      "heading": "Ants on the counter are the scouts. The colony is in a wall void, under the slab or in the yard.",
+      "body": "We identify the species first, because carpenter, fire and Argentine ants all need different baits. Then we place slow-acting baits the workers carry home, treat the perimeter, and seal the gap they used to get in.\n\nEvery visit ends with a written field report: what we found, where we treated, and what to watch for next. If the problem comes back between visits, so do we, free.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/ant.avif",
+        "alt": "Macro photo of an ant specimen"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "check",
+          "text": "Species identified first",
+          "desc": "The right product for the right pest, not one spray for everything."
+        },
+        {
+          "icon": "shield",
+          "text": "Safe for kids and pets",
+          "desc": "Targeted, low-toxicity treatments placed where pests live."
+        },
+        {
+          "icon": "badge",
+          "text": "Free re-treats",
+          "desc": "If they come back between visits, we come back too, at no charge."
+        }
+      ],
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "promo_cards",
+      "eyebrow": "More reasons to book",
+      "heading": "Protection plans, financing and this month's offer.",
+      "columns": "3",
+      "cards": [
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
+          },
+          "icon": "shield",
+          "badge": "Free re-treats",
+          "title": "Year-round protection",
+          "subtitle": "For as low as",
+          "price": {
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
+          },
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
+          },
+          "icon": "dollar",
+          "badge": "Limited time",
+          "title": "0% APR for 12 months",
+          "subtitle": "Financing available",
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over low monthly payments. Quick soft-check application — a decision in minutes.",
+          "cta": {
+            "label": "Check your rate",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
+          },
+          "icon": "badge",
+          "badge": "Save now",
+          "title": "$50 off your first service",
+          "subtitle": "New customers",
+          "body": "Take $50 off your initial treatment. Mention code FIRST50 when you book your free inspection. One offer per household.",
+          "cta": {
+            "label": "Book a free inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "lg",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "eyebrow": "Before you book",
+      "heading": "Ants questions.",
+      "items": [
+        {
+          "question": "Is the treatment safe for kids and pets?",
+          "answer": "Yes. We use targeted baits and low-toxicity products applied where pests live, not where people and pets do. Most areas are fine to use again as soon as the product is dry, usually within **30 minutes**."
+        },
+        {
+          "question": "How soon will I see results?",
+          "answer": "Most activity drops within a few days. Baits are designed to be carried back to the colony, so you may see a short spike before numbers fall away."
+        },
+        {
+          "question": "Do I need to leave the house?",
+          "answer": "No. General pest treatments do not require you to leave. We will ask you to clear under the sinks and keep pets inside while we treat the perimeter."
+        },
+        {
+          "question": "What if the pests come back?",
+          "answer": "Then so do we, free. Every plan includes re-treats between scheduled visits at no charge."
+        },
+        {
+          "question": "Do you need a contract?",
+          "answer": "No. One-time treatments are available, and protection plans can be cancelled any time."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "collection_feed",
+      "eyebrow": "Related services",
+      "heading": "More general pest services.",
+      "intro": "The same inspect-treat-document approach, for related problems.",
+      "source": "services",
+      "layout": "grid",
+      "columns": "3",
+      "limit": 3,
+      "showImage": true,
+      "showSummary": true,
+      "moreLabel": "All general pest services",
+      "moreHref": "/services/general-pest",
+      "moreStyle": "secondary",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "quotes",
+      "eyebrow": "4.9 / 5 on Google",
+      "heading": "Reviews from real homes.",
+      "items": [
+        {
+          "quote": "They found the ant colony inside the wall behind the dishwasher. Three days later, nothing on the counter.",
+          "name": "Margaret H.",
+          "location": "Scottsdale, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "The field report showed every bait station on a plan of the house. First pest company that ever told me what they actually did.",
+          "name": "Daniel R.",
+          "location": "Chandler, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "Booked on Tuesday, treated Wednesday. Roaches gone from the garage within the week.",
+          "name": "Priya S.",
+          "location": "Phoenix, AZ",
+          "rating": 4
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "eyebrow": "Free inspection",
+      "heading": "Get rid of ants for good.",
+      "body": "A licensed technician, a full inspection and a written plan. No charge, no contract.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "form_block",
+      "eyebrow": "Get in touch",
+      "heading": "Tell us about your ants problem.",
+      "intro": "Send a few details and we will call to book your free inspection.",
+      "endpoint": "https://formspree.io/f/your-form-id",
+      "submitLabel": "Book my free inspection",
+      "successNote": "Thanks — we will call within one business day, usually sooner.",
+      "fields": [
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "(555) 555-5555",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "placeholder": "you@example.com",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "placeholder": "85001",
+          "required": true,
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "text",
+          "name": "sightings",
+          "label": "Where are you seeing them?",
+          "placeholder": "e.g. kitchen, garage, attic",
+          "required": false,
+          "width": "full"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "Anything else we should know?",
+          "placeholder": "Pets, kids, gate codes, best time to visit…",
+          "required": false,
+          "rows": 4
+        }
+      ],
+      "footnote": "We never share your details. You will only hear from us about your inspection.",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "service_areas",
+      "eyebrow": "Where we work",
+      "heading": "Serving the greater Phoenix valley.",
+      "intro": "Book a free inspection anywhere across these areas and the towns around them.",
+      "columns": "4",
+      "showServed": true,
+      "map": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=Phoenix,AZ&z=10&output=embed",
+        "title": "Map of the greater Phoenix valley service area",
+        "ratio": "4/3"
+      },
+      "footnote": "Not listed? Call us — our trucks cover more of the valley than we can fit here.",
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

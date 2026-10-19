@@ -1,9 +1,9 @@
 ---
 import type { FormBlock } from './FormBlock.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
+import { site } from '../../lib/site';
 import { buttonBase, buttonSize, buttonVariant } from '../../lib/button-styles';
 
 type Props = FormBlock;
@@ -23,96 +23,138 @@ const {
 	width = 'default',
 } = Astro.props;
 
-const onDark = surface === 'dark' || surface === 'brand';
-
+// Paper-form fields: no box, just a heavy rule to write on. Labels are
+// numbered by the `field` counter on the form (see the style block).
 const control =
-	'w-full rounded-(--radius-media) border border-line bg-surface px-4 py-3 text-base text-ink transition-colors placeholder:text-body/50 focus:border-brand focus:outline-none';
-const labelClass = 'mb-2 block font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em]';
+	'w-full rounded-(--radius-media) border-0 border-b border-line bg-transparent px-0 py-3 text-lg text-ink transition-colors placeholder:text-body/40 focus:border-accent-ink focus:bg-brand/25 focus:outline-none';
+const labelClass =
+	'field-label mb-1 block font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.14em]';
 
 // `half` fields pair up on a two-column grid; textareas always span it.
 const spanFor = (field: (typeof fields)[number]) =>
 	'width' in field && field.width === 'half' ? 'sm:col-span-1' : 'sm:col-span-2';
 ---
 
-<Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-10 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+<Section
+	anchor={anchor}
+	surface={surface}
+	spacing={spacing}
+	width={width === 'default' ? 'wide' : width}
+>
+	{/*
+		Dispatch layout: a black panel holding the request header and the direct
+		line, beside a paper form. The panel sticks while the form scrolls.
+	*/}
+	<div class="grid border border-line lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+		<aside class="on-dark relative bg-dark p-7 text-dark-fg sm:p-10 [&_:is(h1,h2,h3,h4)]:!text-dark-fg">
+			<div class="lg:sticky lg:top-28">
+				<SectionHead
+					eyebrow={eyebrow}
+					heading={heading}
+					intro={intro}
+					level={headingLevel}
+					onDark
+					stacked
+					size="lg"
+					class="!mb-10"
+				/>
+				<dl class="border-t border-current/20">
+					<div class="flex items-baseline justify-between gap-4 border-b border-current/20 py-4">
+						<dt class="mono-label text-dark-fg/60">Direct line</dt>
+						<dd>
+							<a
+								href={site.contact.phoneHref}
+								class="font-display text-2xl font-black text-accent hover:underline"
+							>
+								{site.contact.phone}
+							</a>
+						</dd>
+					</div>
+					{site.contact.hours && (
+						<div class="flex items-baseline justify-between gap-4 border-b border-current/20 py-4">
+							<dt class="mono-label text-dark-fg/60">Hours</dt>
+							<dd class="text-right text-sm">{site.contact.hours}</dd>
+						</div>
+					)}
+					<div class="flex items-center justify-between gap-4 py-4">
+						<dt class="mono-label text-dark-fg/60">Status</dt>
+						<dd class="mono-label flex items-center gap-2.5 text-accent">
+							<span class="check-dot" aria-hidden="true" />
+							Taking bookings
+						</dd>
+					</div>
+				</dl>
+			</div>
+		</aside>
 
-	<form action={endpoint} method="post" class="grid gap-x-6 gap-y-5 sm:grid-cols-2">
-		{/*
+		<form
+			action={endpoint}
+			method="post"
+			class="grid content-start gap-x-8 gap-y-7 bg-surface p-7 [counter-reset:field] sm:grid-cols-2 sm:p-10"
+		>
+			{/*
 			Honeypot. Bots fill every input they find; people never see this one.
 			Hidden from assistive tech and skipped by tabbing, so it costs a real
 			visitor nothing.
 		*/}
-		<div class="hidden" aria-hidden="true">
-			<label>
-				Leave this field empty
-				<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
-			</label>
-		</div>
+			<div class="hidden" aria-hidden="true">
+				<label>
+					Leave this field empty
+					<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+				</label>
+			</div>
 
-		{fields.map((field) => {
-			const id = `field-${field.name}`;
+			{fields.map((field) => {
+				const id = `field-${field.name}`;
 
-			if (field.kind === 'hidden') {
-				return <input type="hidden" name={field.name} value={field.value} />;
-			}
+				if (field.kind === 'hidden') {
+					return <input type="hidden" name={field.name} value={field.value} />;
+				}
 
-			if (field.kind === 'checkbox') {
-				return (
-					<div class="sm:col-span-2">
-						<label class="flex cursor-pointer items-start gap-3 text-sm">
-							<input
-								type="checkbox"
+				if (field.kind === 'checkbox') {
+					return (
+						<div class="sm:col-span-2">
+							<label class="flex cursor-pointer items-start gap-3 text-sm">
+								<input
+									type="checkbox"
+									id={id}
+									name={field.name}
+									required={field.required || undefined}
+									class="mt-1 h-4 w-4 shrink-0 accent-[var(--brand-primary)]"
+								/>
+								<Prose html={field.label} size="sm" class="[&_p]:m-0" />
+							</label>
+						</div>
+					);
+				}
+
+				if (field.kind === 'textarea') {
+					return (
+						<div class="sm:col-span-2">
+							<label for={id} class={labelClass}>
+								{field.label}
+								{field.required && <span class="text-accent-ink"> *</span>}
+							</label>
+							<textarea
 								id={id}
 								name={field.name}
+								rows={field.rows}
+								placeholder={field.placeholder}
 								required={field.required || undefined}
-								class="mt-1 h-4 w-4 shrink-0 accent-[var(--brand-primary)]"
-							/>
-							<Prose html={field.label} invert={onDark} size="sm" class="[&_p]:m-0" />
-						</label>
-					</div>
-				);
-			}
+								class={control}
+							></textarea>
+						</div>
+					);
+				}
 
-			if (field.kind === 'textarea') {
-				return (
-					<div class="sm:col-span-2">
-						<label for={id} class={labelClass}>
-							{field.label}
-							{field.required && <span class="text-accent-ink"> *</span>}
-						</label>
-						<textarea
-							id={id}
-							name={field.name}
-							rows={field.rows}
-							placeholder={field.placeholder}
-							required={field.required || undefined}
-							class={control}
-						></textarea>
-					</div>
-				);
-			}
-
-			if (field.kind === 'select') {
-				return (
-					<div class={spanFor(field)}>
-						<label for={id} class={labelClass}>
-							{field.label}
-							{field.required && <span class="text-accent-ink"> *</span>}
-						</label>
-						{/*
+				if (field.kind === 'select') {
+					return (
+						<div class={spanFor(field)}>
+							<label for={id} class={labelClass}>
+								{field.label}
+								{field.required && <span class="text-accent-ink"> *</span>}
+							</label>
+							{/*
 							A native <select> can style its closed control (we kill the OS
 							chevron with appearance-none and draw our own stroked one), but its
 							OPEN option list is drawn by the operating system -- blue highlight,
@@ -125,57 +167,28 @@ const spanFor = (field: (typeof fields)[number]) =>
 							back to the select so the form still posts the chosen value. With no
 							JS, the styled shell never appears and the native select works as-is.
 						*/}
-						{/*
+							{/*
 							The native select carries the label's `for` target by default. When
 							JS upgrades the field it moves the id onto the visible trigger button
 							(and clears it here) so the label always focuses whatever control the
 							visitor actually sees -- never leaving two elements sharing one id.
 						*/}
-						<div class="cab-select relative" data-select>
-							<select
-								id={id}
-								name={field.name}
-								required={field.required || undefined}
-								data-select-native
-								class={`${control} peer cursor-pointer appearance-none pr-11`}
-							>
-								<option value="">Choose one</option>
-								{field.choices.map((choice) => (
-									<option value={choice}>{choice}</option>
-								))}
-							</select>
-							<svg
-								viewBox="0 0 16 16"
-								class="pointer-events-none absolute top-1/2 right-4 h-3.5 w-3.5 -translate-y-1/2 text-body transition-colors peer-focus:text-accent-ink"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="1.75"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								aria-hidden="true"
-							>
-								<path d="M4 6l4 4 4-4" />
-							</svg>
-
-							{/*
-								Styled listbox. Hidden until the script reveals it (see the
-								[hidden] rule in the module below), so it never flashes before
-								the native select is upgraded and never shows without JS.
-							*/}
-							<div class="cab-select__ui" data-select-ui hidden>
-								<button
-									type="button"
-									data-select-trigger
-									class={`${control} flex cursor-pointer items-center justify-between gap-3 pr-11 text-left`}
-									aria-haspopup="listbox"
-									aria-expanded="false"
+							<div class="cab-select relative" data-select>
+								<select
+									id={id}
+									name={field.name}
+									required={field.required || undefined}
+									data-select-native
+									class={`${control} peer cursor-pointer appearance-none pr-11`}
 								>
-									<span data-select-value class="truncate text-body/60">Choose one</span>
-								</button>
+									<option value="">Choose one</option>
+									{field.choices.map((choice) => (
+										<option value={choice}>{choice}</option>
+									))}
+								</select>
 								<svg
 									viewBox="0 0 16 16"
-									data-select-chevron
-									class="pointer-events-none absolute top-[2.9rem] right-4 h-3.5 w-3.5 -translate-y-1/2 text-body transition-transform duration-200"
+									class="pointer-events-none absolute top-1/2 right-4 h-3.5 w-3.5 -translate-y-1/2 text-body transition-colors peer-focus:text-accent-ink"
 									fill="none"
 									stroke="currentColor"
 									stroke-width="1.75"
@@ -185,87 +198,127 @@ const spanFor = (field: (typeof fields)[number]) =>
 								>
 									<path d="M4 6l4 4 4-4" />
 								</svg>
-								<ul
-									data-select-list
-									role="listbox"
-									tabindex="-1"
-									aria-label={field.label}
-									class="absolute inset-x-0 top-full z-20 mt-2 max-h-64 overflow-auto rounded-(--radius-media) border border-line bg-surface py-1.5 shadow-[0_24px_48px_-20px_rgba(20,18,15,0.35)]"
-									hidden
-								>
-									<li
-										role="option"
-										data-select-option
-										data-value=""
-										class="cursor-pointer px-4 py-2.5 text-sm text-body/60 transition-colors hover:bg-muted"
+
+								{/*
+								Styled listbox. Hidden until the script reveals it (see the
+								[hidden] rule in the module below), so it never flashes before
+								the native select is upgraded and never shows without JS.
+							*/}
+								<div class="cab-select__ui" data-select-ui hidden>
+									<button
+										type="button"
+										data-select-trigger
+										class={`${control} flex cursor-pointer items-center justify-between gap-3 pr-11 text-left`}
+										aria-haspopup="listbox"
+										aria-expanded="false"
 									>
-										Choose one
-									</li>
-									{field.choices.map((choice) => (
+										<span data-select-value class="truncate text-body/60">
+											Choose one
+										</span>
+									</button>
+									<svg
+										viewBox="0 0 16 16"
+										data-select-chevron
+										class="pointer-events-none absolute top-[2.9rem] right-4 h-3.5 w-3.5 -translate-y-1/2 text-body transition-transform duration-200"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.75"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										aria-hidden="true"
+									>
+										<path d="M4 6l4 4 4-4" />
+									</svg>
+									<ul
+										data-select-list
+										role="listbox"
+										tabindex="-1"
+										aria-label={field.label}
+										class="absolute inset-x-0 top-full z-20 mt-2 max-h-64 overflow-auto rounded-(--radius-media) border border-line bg-surface py-1.5 shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)]"
+										hidden
+									>
 										<li
 											role="option"
 											data-select-option
-											data-value={choice}
-											class="cursor-pointer px-4 py-2.5 text-sm text-ink transition-colors hover:bg-muted"
+											data-value=""
+											class="cursor-pointer px-4 py-2.5 text-sm text-body/60 transition-colors hover:bg-muted"
 										>
-											{choice}
+											Choose one
 										</li>
-									))}
-								</ul>
+										{field.choices.map((choice) => (
+											<li
+												role="option"
+												data-select-option
+												data-value={choice}
+												class="cursor-pointer px-4 py-2.5 text-sm text-ink transition-colors hover:bg-muted"
+											>
+												{choice}
+											</li>
+										))}
+									</ul>
+								</div>
 							</div>
 						</div>
+					);
+				}
+
+				// text, email and tel differ only by input type and autocomplete.
+				const type = field.kind;
+				const autocomplete =
+					field.kind === 'email'
+						? 'email'
+						: field.kind === 'tel'
+							? 'tel'
+							: 'autocomplete' in field
+								? field.autocomplete
+								: undefined;
+
+				return (
+					<div class={spanFor(field)}>
+						<label for={id} class={labelClass}>
+							{field.label}
+							{field.required && <span class="text-accent-ink"> *</span>}
+						</label>
+						<input
+							type={type}
+							id={id}
+							name={field.name}
+							placeholder={field.placeholder}
+							required={field.required || undefined}
+							autocomplete={autocomplete}
+							class={control}
+						/>
 					</div>
 				);
-			}
+			})}
 
-			// text, email and tel differ only by input type and autocomplete.
-			const type = field.kind;
-			const autocomplete =
-				field.kind === 'email'
-					? 'email'
-					: field.kind === 'tel'
-						? 'tel'
-						: 'autocomplete' in field
-							? field.autocomplete
-							: undefined;
-
-			return (
-				<div class={spanFor(field)}>
-					<label for={id} class={labelClass}>
-						{field.label}
-						{field.required && <span class="text-accent-ink"> *</span>}
-					</label>
-					<input
-						type={type}
-						id={id}
-						name={field.name}
-						placeholder={field.placeholder}
-						required={field.required || undefined}
-						autocomplete={autocomplete}
-						class={control}
-					/>
-				</div>
-			);
-		})}
-
-		<div class="sm:col-span-2">
-			{/*
+			<div class="sm:col-span-2">
+				{/*
 				A form submit must be a real <button>, so it can't be the <a>-based
 				Button component -- but it shares Button's styling via the same module
 				so the two never drift (matching radius, type, colours).
 			*/}
-			<button type="submit" class={`${buttonBase} ${buttonSize('md')} ${buttonVariant('primary', onDark)}`}>
-				{submitLabel}
-			</button>
-		</div>
+				<button
+					type="submit"
+					class={`${buttonBase} ${buttonSize('lg')} ${buttonVariant('primary')} w-full sm:w-auto`}
+				>
+					{submitLabel}
+				</button>
+			</div>
 
-		{footnote && (
-			<Prose html={footnote} invert={onDark} size="sm" class="sm:col-span-2 opacity-70" />
-		)}
-	</form>
+			{footnote && <Prose html={footnote} size="sm" class="sm:col-span-2 opacity-70" />}
+		</form>
+	</div>
 </Section>
 
 <style>
+	/* Numbered field labels: 01 — NAME, 02 — PHONE, as on a printed form. */
+	.field-label::before {
+		counter-increment: field;
+		content: counter(field, decimal-leading-zero) ' — ';
+		color: var(--brand-accent-ink);
+	}
+
 	/*
 		Once the script upgrades a select it sets data-enhanced on the wrapper: the
 		native control is pulled out of the layout (kept only for form submission and
@@ -291,7 +344,7 @@ const spanFor = (field: (typeof fields)[number]) =>
 	.cab-select [data-select-option][data-active] {
 		background: var(--brand-muted);
 	}
-	/* The chosen option carries a brass tick set in the mono annotation colour. */
+	/* The chosen option carries a accent tick set in the mono annotation colour. */
 	.cab-select [data-select-option][aria-selected='true'] {
 		color: var(--brand-ink);
 		font-weight: 500;
@@ -347,8 +400,7 @@ const spanFor = (field: (typeof fields)[number]) =>
 		let activeIndex = 0;
 		const setActive = (index: number) => {
 			activeIndex = (index + options.length) % options.length;
-			for (const [i, o] of options.entries())
-				o.toggleAttribute('data-active', i === activeIndex);
+			for (const [i, o] of options.entries()) o.toggleAttribute('data-active', i === activeIndex);
 			options[activeIndex].scrollIntoView({ block: 'nearest' });
 		};
 
@@ -420,8 +472,7 @@ const spanFor = (field: (typeof fields)[number]) =>
 						const from = activeIndex + 1;
 						const match = options.findIndex(
 							(o, i) =>
-								i >= from &&
-								o.textContent?.trim().toLowerCase().startsWith(event.key.toLowerCase()),
+								i >= from && o.textContent?.trim().toLowerCase().startsWith(event.key.toLowerCase())
 						);
 						if (match >= 0) setActive(match);
 					}

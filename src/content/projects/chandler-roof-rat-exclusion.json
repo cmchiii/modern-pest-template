@@ -1,0 +1,72 @@
+{
+  "title": "Chandler roof rat exclusion, 11 gaps",
+  "summary": "Scratching in the ceiling every night. Eleven entry points sealed with steel mesh in one day, attic cleaned.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/attic-rodent.avif",
+    "alt": "Rodent hole chewed through attic insulation"
+  },
+  "order": 30,
+  "location": "Chandler, AZ",
+  "completed": "2026-05-02",
+  "services": ["rodents"],
+  "draft": false,
+  "seo": {
+    "description": "Scratching in the ceiling every night. Eleven entry points sealed with steel mesh in one day, attic cleaned.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "media_split",
+      "eyebrow": "Field report",
+      "heading": "What we found. What we did.",
+      "body": "Scratching in the ceiling every night. Eleven entry points sealed with steel mesh in one day, attic cleaned.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/attic-rodent.avif",
+        "alt": "Rodent hole chewed through attic insulation"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "star",
+          "text": "Found",
+          "desc": "11 entry points: roof vents, an AC line set, garage door corners and a gap at the fascia."
+        },
+        {
+          "icon": "wrench",
+          "text": "Treated",
+          "desc": "Every gap closed with steel mesh and flashing, 9 roof rats trapped out over 12 days."
+        },
+        {
+          "icon": "check",
+          "text": "Result",
+          "desc": "Attic silent since day 9. Insulation replaced; one-year guarantee in place."
+        }
+      ],
+      "ctas": [],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "headingLevel": "h2",
+      "eyebrow": "No obligation",
+      "heading": "Seeing the same thing?",
+      "body": "Book a free inspection and we will tell you exactly what is going on.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "surface": "brand",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

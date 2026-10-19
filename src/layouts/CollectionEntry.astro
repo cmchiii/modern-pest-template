@@ -35,7 +35,7 @@ const {
 } = entry.data;
 
 // `title` is also the CMS list label, so a main page may set it to
-// "Kitchen — Main Page" for the sidebar; `heading` then carries the real H1.
+// "Scorpions — Main Page" for the sidebar; `heading` then carries the real H1.
 const heading = entry.data.heading ?? title;
 
 const base = Astro.site ?? new URL(Astro.url.origin);
@@ -89,7 +89,7 @@ const renderable = sections.flatMap((section: any) => {
 	*/}
 	{!customLayout && (
 		<>
-			<Breadcrumbs items={breadcrumbs} />
+			<Breadcrumbs items={breadcrumbs} onDark />
 			<PageHeader
 				type="page_header"
 				variant={headerVariant}
@@ -98,7 +98,7 @@ const renderable = sections.flatMap((section: any) => {
 				body={summary}
 				image={image}
 				priceNote={priceNote}
-				surface="muted"
+				surface="dark"
 				spacing="sm"
 				width="wide"
 			/>

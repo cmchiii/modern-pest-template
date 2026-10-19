@@ -3,8 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionFeed } from './CollectionFeed.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import Button from '../ui/Button.astro';
 import { childLevel } from '../../lib/section-base';
 import { collectionBasePath, entrySlug } from '../../lib/collections';
@@ -59,68 +58,107 @@ const gridCols = {
 	'5': 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
 };
 const isList = layout === 'list';
+// The double lead tile only works when there are tiles to stack beside it.
+const bento = !isList && columns === '3' && shown.length >= 3;
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	{shown.length === 0 ? (
 		/* An empty collection is a content state, not an error. Say so plainly
 			   rather than rendering an empty grid. */
 		<p class="text-sm opacity-70">Nothing published here yet.</p>
-	) : (
-		<ul
-			class={
-				isList
-					? 'divide-y divide-line border-y border-line'
-					: `grid gap-x-8 gap-y-12 ${gridCols[columns]}`
-			}
-		>
-			{shown.map((entry) => (
-				<li class={isList ? 'group relative py-6' : 'group relative'}>
-					{showImage && entry.data.image && !isList && (
-						<img
-							src={entry.data.image.src}
-							alt={entry.data.image.alt}
-							loading="lazy"
-							class="mb-6 aspect-4/3 w-full rounded-(--radius-media) object-cover"
-						/>
+	) : isList ? (
+		<ul class={`border-y ${onDark ? 'border-current/40' : 'border-line'}`}>
+			{shown.map((entry, i) => (
+				<li
+					class={`group relative flex flex-wrap items-baseline gap-x-6 gap-y-2 border-b py-5 last:border-b-0 ${onDark ? 'border-current/15' : 'border-line/20'}`}
+				>
+					<span class="font-mono text-xs opacity-60">{String(i + 1).padStart(2, '0')}</span>
+					<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm" class="flex-1">
+						<a
+							href={`${base}/${entrySlug(entry.id)}`}
+							class="transition-colors hover:text-accent-ink"
+						>
+							<span class="absolute inset-0" aria-hidden="true" />
+							{entry.data.title}
+						</a>
+					</Heading>
+					{showPrice && 'priceNote' in entry.data && entry.data.priceNote && (
+						<span class="mono-label opacity-65">{entry.data.priceNote}</span>
 					)}
-
-					<div
-						class={isList ? 'flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2' : ''}
-					>
-						<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
-							<a href={`${base}/${entrySlug(entry.id)}`} class="transition-colors hover:text-brand">
-								<span class="absolute inset-0" aria-hidden="true" />
-								{entry.data.title}
-							</a>
-						</Heading>
-
-						{showPrice && 'priceNote' in entry.data && entry.data.priceNote && (
-							<span class="font-mono text-[0.6875rem] uppercase tracking-[0.12em] opacity-65">
-								{entry.data.priceNote}
-							</span>
-						)}
-					</div>
-
 					{showSummary && (
-						<p class="mt-3 max-w-prose text-sm leading-relaxed">{entry.data.summary}</p>
+						<p class="w-full max-w-prose pl-10 text-sm leading-relaxed opacity-80">
+							{entry.data.summary}
+						</p>
 					)}
 				</li>
 			))}
+		</ul>
+	) : (
+		/*
+			Case-file bento: the lead entry takes a double tile, the rest stack
+			beside it. Each tile is the specimen photo under photo with the file
+			tab, metadata and title set on a black foot bar.
+		*/
+		<ul
+			class={`grid gap-4 ${gridCols[columns]} ${bento ? 'lg:auto-rows-[minmax(20rem,auto)]' : ''}`}
+		>
+			{shown.map((entry, i) => {
+				const lead = bento && i === 0;
+				const meta = [
+					'location' in entry.data ? entry.data.location : undefined,
+					'priceNote' in entry.data && showPrice ? entry.data.priceNote : undefined,
+				].filter(Boolean);
+				return (
+					<li
+						class={`on-dark group relative isolate flex min-h-[20rem] flex-col justify-end overflow-hidden border border-line bg-dark text-dark-fg [&_:is(h1,h2,h3,h4)]:!text-dark-fg ${
+							lead ? 'lg:col-span-2 lg:row-span-2' : ''
+						}`}
+					>
+						{showImage && entry.data.image && (
+							<div class="photo absolute inset-0 -z-10">
+								<img
+									src={entry.data.image.src}
+									alt={entry.data.image.alt}
+									loading="lazy"
+									class="h-full w-full object-cover opacity-85 transition-transform duration-700 ease-out group-hover:scale-110"
+								/>
+							</div>
+						)}
+						<span class="mono-label absolute top-5 left-5 bg-surface px-2.5 py-1 text-ink">
+							{source === 'projects' ? 'Case study' : 'Service'} {String(i + 1).padStart(2, '0')}
+						</span>
+						<div class="bg-gradient-to-t from-dark via-dark/85 to-transparent p-5 pt-16 sm:p-7 sm:pt-20">
+							{meta.length > 0 && <p class="mono-label mb-2 opacity-70">{meta.join(' · ')}</p>}
+							<Heading
+								level={childLevel(headingLevel, Boolean(heading))}
+								size={lead ? 'lg' : 'sm'}
+								display={lead}
+							>
+								<a href={`${base}/${entrySlug(entry.id)}`}>
+									<span class="absolute inset-0 z-[1]" aria-hidden="true" />
+									{entry.data.title}
+								</a>
+							</Heading>
+							{showSummary && (
+								<p
+									class={`mt-2 text-sm leading-relaxed opacity-80 ${lead ? 'max-w-lg' : 'line-clamp-2'}`}
+								>
+									{entry.data.summary}
+								</p>
+							)}
+						</div>
+					</li>
+				);
+			})}
 		</ul>
 	)}
 

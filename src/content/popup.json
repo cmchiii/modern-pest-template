@@ -5,14 +5,15 @@
   "scrollPercent": 45,
   "frequency": "session",
   "eyebrow": "This month",
-  "heading": "Free in-home measure.",
-  "body": "A designer measures every cabinet you want changed and leaves a fixed quote. About an hour, and nothing to pay.",
+  "heading": "Free pest inspection.",
+  "body": "A licensed technician inspects inside and out, then leaves a written plan and a fixed price. About 45 minutes, and nothing to pay.",
   "image": {
-    "src": "/media/images/kitchen-island.avif",
-    "alt": "A cabinetmaker measuring a fitted kitchen island"
+    "source": "upload",
+    "src": "/media/images/scorpion-uv.avif",
+    "alt": "Bark scorpion glowing under UV light"
   },
   "cta": {
-    "label": "Book a measure",
+    "label": "Book an inspection",
     "href": "/contact",
     "style": "primary"
   },

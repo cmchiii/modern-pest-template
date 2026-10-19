@@ -1,12 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { sectionSchema } from './lib/section-schemas';
-import {
-	serviceSchema,
-	projectSchema,
-	locationSchema,
-	templateSchema,
-} from './lib/collections';
+import { serviceSchema, projectSchema, locationSchema, templateSchema } from './lib/collections';
 
 const seoSchema = z
 	.object({
@@ -20,7 +15,7 @@ const seoSchema = z
 /**
  * Every routable page is one JSON file holding an ordered array of sections.
  * The file's path under `src/content/pages` becomes its URL: `_home.json` is the
- * site root, `services/kitchen.json` is `/services/kitchen`.
+ * site root, `services/scorpions.json` is `/services/scorpions`.
  */
 const pages = defineCollection({
 	loader: glob({ pattern: '**/*.json', base: './src/content/pages' }),

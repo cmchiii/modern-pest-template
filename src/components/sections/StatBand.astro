@@ -1,8 +1,7 @@
 ---
 import type { StatBand } from './StatBand.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 
 type Props = StatBand;
 
@@ -21,18 +20,7 @@ const onDark = surface === 'dark' || surface === 'brand';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading) && (
-		<header class="mb-12 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-		</header>
-	)}
+	<SectionHead eyebrow={eyebrow} heading={heading} level={headingLevel} onDark={onDark} />
 
 	<dl class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
 		{stats.map((stat) => (

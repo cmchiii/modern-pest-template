@@ -1,20 +1,20 @@
 ---
 /**
- * The signature device: a drafted dimension line.
+ * The signature device: the specimen tag.
  *
- * Tick-terminated rule carrying a monospace measurement, lifted straight from
- * cabinet shop drawings. Used as section eyebrow, divider, and photo
- * annotation. It is structural, not decorative -- the measurement states the
- * promise the business actually makes: built to your exact opening.
+ * A solid marker, a monospace label and a crosshair-terminated hairline,
+ * lifted from field-guide plates and inspection reports (styles live in
+ * global.css as `.dim`). Used as section eyebrow, divider, and photo
+ * annotation -- it states what the business does: find it, name it, mark it.
  */
 interface Props {
-	/** The callout text. Real dimensions read better than invented labels. */
+	/** The callout text. Real specimen or report labels read better than invented ones. */
 	label: string;
 	/** `short` keeps the rule to a fixed stub; `full` spans remaining width. */
 	rule?: 'short' | 'full' | 'both' | 'none';
 	/** Animate the rule drawing itself out on reveal. */
 	animate?: boolean;
-	/** Switches to full-strength brass, which is the legible one on dark. */
+	/** Switches to the full signal green, which is the legible one on dark. */
 	onDark?: boolean;
 	class?: string;
 }

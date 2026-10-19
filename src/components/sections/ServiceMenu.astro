@@ -2,8 +2,7 @@
 import type { ServiceMenu } from './ServiceMenu.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel } from '../../lib/section-base';
 import { iconPaths } from '../../lib/icons';
 
@@ -15,7 +14,6 @@ const {
 	heading,
 	intro,
 	nowViewingLabel = 'Now viewing',
-	columns = '4',
 	tabs = [],
 	anchor,
 	surface = 'light',
@@ -29,45 +27,24 @@ const cardLevel = childLevel(headingLevel, Boolean(heading));
 // Flex rather than grid so a short final row (e.g. 3 cards in a 4-wide layout)
 // centres instead of leaving an empty cell. The basis values reproduce the
 // 2 / 3 / 4 column counts, minus the gap each card shares.
-const cardBasis = {
-	'2': 'sm:basis-[calc(50%-0.75rem)]',
-	'3': 'sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)]',
-	'4': 'sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(25%-1.125rem)]',
-};
-
 // Unique per instance so two menus on one page never share radio state or ids.
 const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mx-auto mb-8 max-w-4xl text-center">
-			{eyebrow && (
-				<DimensionLine
-					label={eyebrow}
-					rule="both"
-					onDark={onDark}
-					class="mx-auto mb-6 max-w-xs justify-center"
-				/>
-			)}
-			{heading && (
-				<Heading
-					level={headingLevel}
-					size="lg"
-					display
-					class="whitespace-normal sm:whitespace-nowrap"
-				>
-					{heading}
-				</Heading>
-			)}
-			{intro && (
-				<Prose html={intro} invert={onDark} class="mx-auto mt-6 max-w-2xl" headingStart={4} />
-			)}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	{tabs.length > 0 && (
-		<div class="service-menu" data-service-menu>
+		<div
+			class="service-menu lg:grid lg:grid-cols-[17rem_1fr] lg:items-start lg:gap-8"
+			data-service-menu
+		>
 			{/*
 				One radio per tab drives the whole section with no JavaScript: the
 				checked radio's panel is shown by a sibling selector below. The
@@ -88,12 +65,12 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 			{/*
 				Tab bar: a drafting-style underline row, no icons. One line that
 				scrolls sideways on narrow screens rather than wrapping, sitting on a
-				hairline baseline rule. The active tab is marked by a brass underline
-				(styled in the block below), matching the dimension-line motif.
+				hairline frame that becomes a vertical rail on large screens. The active
+				tab is filled apricot (styled in the block below).
 			*/}
 			<div
-				class={`mb-8 flex flex-nowrap justify-start gap-7 overflow-x-auto border-b sm:justify-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
-					onDark ? 'border-current/15' : 'border-line'
+				class={`flex flex-nowrap overflow-x-auto border [scrollbar-width:none] lg:sticky lg:top-28 lg:flex-col lg:overflow-visible [&::-webkit-scrollbar]:hidden ${
+					onDark ? 'border-current/40' : 'border-line'
 				}`}
 				role="tablist"
 				data-tablist
@@ -101,12 +78,15 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 				{tabs.map((tab, i) => (
 					<label
 						for={`${uid}-${i}`}
-						class={`group relative -mb-px shrink-0 cursor-pointer border-b-2 border-transparent pb-4 font-mono text-[0.6875rem] font-medium whitespace-nowrap uppercase tracking-[0.16em] transition-colors ${
-							onDark ? 'text-current/60 hover:text-current' : 'text-body hover:text-ink'
+						class={`group relative flex shrink-0 grow cursor-pointer items-baseline gap-3 border-r px-5 py-4 font-heading text-base font-semibold whitespace-nowrap transition-colors last:border-r-0 lg:border-r-0 lg:border-b lg:last:border-b-0 ${
+							onDark ? 'border-current/40 hover:bg-current/10' : 'border-line hover:bg-muted'
 						}`}
 						data-tab-label
 						data-index={i}
 					>
+						<span class="text-xs font-semibold tabular-nums opacity-55">
+							{String(i + 1).padStart(2, '0')}
+						</span>
 						<span>{tab.label}</span>
 					</label>
 				))}
@@ -115,25 +95,22 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 			{/* Panels: one per tab, revealed by its radio via the peer selectors below. */}
 			{tabs.map((tab, i) => (
 				<div
-					class="service-menu-panel"
+					class="service-menu-panel mt-6 lg:col-start-2 lg:row-start-1 lg:mt-0"
 					data-panel
 					data-index={i}
 					role="tabpanel"
 					aria-labelledby={`${uid}-tab-${i}`}
 				>
-					<div class="relative overflow-hidden rounded-(--radius-media)">
+					<div class="photo relative overflow-hidden bg-dark">
 						{tab.image ? (
 							<img
 								src={tab.image.src}
 								alt={tab.image.alt}
 								loading="lazy"
-								class="aspect-[16/9] w-full object-cover sm:aspect-[24/9] lg:aspect-[32/9]"
+								class="aspect-[16/9] w-full object-cover opacity-80 sm:aspect-[21/9]"
 							/>
 						) : (
-							<div
-								class="aspect-[16/9] w-full bg-dark sm:aspect-[24/9] lg:aspect-[32/9]"
-								aria-hidden="true"
-							/>
+							<div class="aspect-[16/9] w-full bg-dark sm:aspect-[21/9]" aria-hidden="true" />
 						)}
 						<div class="absolute inset-0 bg-gradient-to-r from-dark/85 via-dark/45 to-transparent" />
 						{/*
@@ -145,23 +122,29 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 							device the Hero uses for its overlaid headings.
 						*/}
 						<div class="absolute inset-0 flex flex-col justify-end p-6 text-dark-fg [&_:is(h1,h2,h3,h4)]:!text-current md:p-10">
-							<span class="mb-2 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-accent">
-								&mdash; {nowViewingLabel}
+							<span class="mono-label mb-3 flex items-center gap-2.5 text-accent">
+								<span class="check-dot" aria-hidden="true" />
+								{nowViewingLabel}
 							</span>
-							<Heading level={cardLevel} size="lg" display>
+							<Heading
+								level={cardLevel}
+								size="xl"
+								display
+								class="!text-[clamp(2rem,3.6vw,3.25rem)]"
+							>
 								{tab.bannerTitle ?? tab.label}
 							</Heading>
 						</div>
 					</div>
 
 					{tab.cards.length > 0 && (
-						<ul class="mt-8 flex flex-wrap justify-center gap-6">
+						<ul
+							class={`grid gap-px border sm:grid-cols-2 ${onDark ? 'border-current/20 bg-current/20' : 'border-line bg-line'}`}
+						>
 							{tab.cards.map((card, c) => (
 								<li
-									class={`group relative flex basis-full grow-0 flex-col rounded-(--radius-media) border p-6 transition-colors ${cardBasis[columns]} ${
-										onDark
-											? 'border-current/15 hover:border-current/40'
-											: 'border-line hover:border-ink'
+									class={`group relative flex flex-col p-6 transition-colors duration-200 ${
+										onDark ? 'bg-dark hover:bg-current/10' : 'bg-surface hover:bg-muted'
 									}`}
 								>
 									<div class="mb-5 flex items-center justify-between">
@@ -198,7 +181,7 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 
 									<Heading level={childLevel(cardLevel, true)} size="sm">
 										{card.link ? (
-											<a href={card.link.href} class="transition-colors hover:text-brand">
+											<a href={card.link.href} class="transition-colors hover:text-accent-ink">
 												{/* Stretched so the whole card is the hit target. */}
 												<span class="absolute inset-0" aria-hidden="true" />
 												{card.title}
@@ -256,10 +239,10 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 	}
 
 	/*
-	 * Active-tab styling: the label bound to the checked radio gets a brass
+	 * Active-tab styling: the label bound to the checked radio gets a accent
 	 * underline and full-strength text -- the drafting-line marker, not a filled
 	 * pill. Each rule pairs the Nth radio with the Nth tab so only the active one
-	 * is marked. `accent-ink` is the darkened brass that stays legible on the
+	 * is marked. `accent-ink` is the darkened accent that stays legible on the
 	 * pale page.
 	 */
 	.service-menu > input[data-tab-input]:nth-of-type(1):checked ~ [data-tablist] [data-index='0'],
@@ -268,14 +251,14 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 	.service-menu > input[data-tab-input]:nth-of-type(4):checked ~ [data-tablist] [data-index='3'],
 	.service-menu > input[data-tab-input]:nth-of-type(5):checked ~ [data-tablist] [data-index='4'],
 	.service-menu > input[data-tab-input]:nth-of-type(6):checked ~ [data-tablist] [data-index='5'] {
-		color: var(--color-ink);
-		border-bottom-color: var(--color-accent-ink);
+		color: var(--color-accent-fg);
+		background: var(--color-accent);
 	}
 
 	/*
-	 * On dark and brand grounds, ink text and darkened brass both read as mud, so
+	 * On dark and brand grounds, ink text and darkened accent both read as mud, so
 	 * the active tab keeps the light foreground colour and gets full-strength
-	 * brass. Same position pairing, higher specificity via the surface prefix.
+	 * accent. Same position pairing, higher specificity via the surface prefix.
 	 */
 	:is(.bg-dark, .bg-brand)
 		.service-menu
@@ -307,8 +290,8 @@ const uid = `svcmenu-${Math.random().toString(36).slice(2, 8)}`;
 		> input[data-tab-input]:nth-of-type(6):checked
 		~ [data-tablist]
 		[data-index='5'] {
-		color: currentColor;
-		border-bottom-color: var(--color-accent);
+		color: var(--color-accent-fg);
+		background: var(--color-accent);
 	}
 
 	/* Keyboard focus on the hidden radio should still ring its label. */

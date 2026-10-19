@@ -2,9 +2,7 @@
 import { getCollection } from 'astro:content';
 import type { SearchBlock } from './SearchBlock.schema';
 import Section from '../ui/Section.astro';
-import Heading from '../ui/Heading.astro';
-import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { site } from '../../lib/site';
 
 type Props = SearchBlock;
@@ -45,19 +43,13 @@ const rows = locations.map((l) => ({
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro) && (
-		<header class="mb-8 max-w-2xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-			)}
-			{heading && (
-				<Heading level={headingLevel} size="lg">
-					{heading}
-				</Heading>
-			)}
-			{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-		</header>
-	)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
 	<div data-area-search>
 		<div class="max-w-md">
@@ -97,7 +89,7 @@ const rows = locations.map((l) => ({
 				>
 					<a
 						href={`/locations/${row.id}`}
-						class="font-heading text-lg font-semibold transition-colors hover:text-brand"
+						class="font-heading text-lg font-semibold transition-colors hover:text-accent-ink"
 					>
 						<span class="absolute inset-0" aria-hidden="true" />
 						{row.city}, {row.region}

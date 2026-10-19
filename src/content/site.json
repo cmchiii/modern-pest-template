@@ -1,28 +1,32 @@
 {
-  "name": "Modern Cabinets",
-  "legalName": "Modern Cabinets LLC",
+  "name": "Clearline Pest Solutions",
+  "legalName": "Clearline Pest Solutions LLC",
   "businessType": "HomeAndConstructionBusiness",
-  "tagline": "Custom cabinet storage, built to fit",
+  "tagline": "Pest control, done properly.",
   "logo": {
+    "src": "/media/logos/logo-primary.svg",
+    "alt": "Clearline Pest Solutions"
+  },
+  "logoOnDark": {
     "src": "/media/logos/logo-horizontal.svg",
-    "alt": "Modern Cabinets"
+    "alt": "Clearline Pest Solutions"
   },
   "rating": {
-    "value": 4.8,
-    "count": 2431
+    "value": 4.9,
+    "count": 3184
   },
   "contact": {
-    "phone": "(555) 014-2200",
-    "phoneHref": "tel:+15550142200",
-    "email": "hello@moderncabinets.example",
+    "phone": "(555) 014-7378",
+    "phoneHref": "tel:+15550147378",
+    "email": "hello@clearline.example",
     "address": {
-      "street": "1420 Millwork Ave",
+      "street": "2210 E Camelback Rd",
       "city": "Phoenix",
       "region": "AZ",
-      "postalCode": "85004",
+      "postalCode": "85016",
       "country": "US"
     },
-    "hours": "Mon-Fri 8am-6pm, Sat 9am-2pm"
+    "hours": "Mon-Sat 7am-7pm, emergency line 24/7"
   },
   "nav": [
     {
@@ -30,73 +34,113 @@
       "href": "/services",
       "children": [
         {
-          "label": "Kitchen Shelves",
-          "href": "/services/kitchen",
+          "label": "General Pest Control",
+          "href": "/services/general-pest",
           "children": [
-            { "label": "Pots & Pans", "href": "/services/kitchen/pots-and-pans" },
             {
-              "label": "Bakeware & Storage Containers",
-              "href": "/services/kitchen/bakeware-and-storage-containers"
+              "label": "Ants",
+              "href": "/services/general-pest/ants"
             },
-            { "label": "Trash & Recycling", "href": "/services/kitchen/trash-and-recycling" },
-            { "label": "Overhead Storage", "href": "/services/kitchen/overhead-storage" },
-            { "label": "Flat Items", "href": "/services/kitchen/flat-items" },
-            { "label": "Under the Sink", "href": "/services/kitchen/under-the-sink" },
-            { "label": "Spice Racks", "href": "/services/kitchen/spice-racks" },
             {
-              "label": "Pull-Out Organizers & Dividers",
-              "href": "/services/kitchen/pull-out-organizers-and-dividers"
+              "label": "Cockroaches",
+              "href": "/services/general-pest/cockroaches"
             },
-            { "label": "Corner Cabinet", "href": "/services/kitchen/corner-cabinet" },
-            { "label": "Lazy Susan", "href": "/services/kitchen/lazy-susan" },
-            { "label": "Blind Corner Cabinets", "href": "/services/kitchen/blind-corner-cabinets" }
-          ]
-        },
-        {
-          "label": "Pantry Shelves",
-          "href": "/services/pantry",
-          "children": [
-            { "label": "Closet Pantry", "href": "/services/pantry/closet-pantry" },
-            { "label": "Cabinet Pantry", "href": "/services/pantry/cabinet-pantry" },
-            { "label": "Corner Pantry", "href": "/services/pantry/corner-pantry" },
-            { "label": "Walk-In Pantry", "href": "/services/pantry/walk-in-pantry" },
-            { "label": "Double-Door Pantry", "href": "/services/pantry/double-door-pantry" },
-            { "label": "Custom Pantry Designs", "href": "/services/pantry/custom-pantry-designs" }
-          ]
-        },
-        {
-          "label": "Bathroom Shelves",
-          "href": "/services/bathroom",
-          "children": [
-            { "label": "Under the Sink", "href": "/services/bathroom/under-the-sink" },
-            { "label": "Vanity Cabinets", "href": "/services/bathroom/cabinets" },
-            { "label": "Cabinet Organizers", "href": "/services/bathroom/cabinet-organizers" },
             {
-              "label": "Pull-Out Organizers & Dividers",
-              "href": "/services/bathroom/pull-out-organizers-and-dividers"
+              "label": "Spiders",
+              "href": "/services/general-pest/spiders"
+            },
+            {
+              "label": "Black Widows",
+              "href": "/services/general-pest/black-widows"
+            },
+            {
+              "label": "Crickets",
+              "href": "/services/general-pest/crickets"
             }
           ]
         },
         {
-          "label": "Closets & Home Spaces",
-          "href": "/services/closets",
+          "label": "Scorpion Control",
+          "href": "/services/scorpions",
           "children": [
-            { "label": "Closets & Wardrobes", "href": "/services/closets/closets-and-wardrobes" },
             {
-              "label": "Office, Crafts & Entertainment",
-              "href": "/services/closets/office-crafts-and-entertainment-rooms"
+              "label": "Bark Scorpions",
+              "href": "/services/scorpions/bark-scorpions"
             },
-            { "label": "Laundry & Mud Room", "href": "/services/closets/laundry-and-mud-room" },
-            { "label": "Garage & Storage", "href": "/services/closets/garage-and-storage" }
+            {
+              "label": "UV Scorpion Hunts",
+              "href": "/services/scorpions/uv-scorpion-hunts"
+            },
+            {
+              "label": "Scorpion Sealing",
+              "href": "/services/scorpions/scorpion-sealing"
+            }
           ]
         },
         {
-          "label": "Creative Spaces",
-          "href": "/services/creative-spaces",
+          "label": "Termite Control",
+          "href": "/services/termites",
           "children": [
-            { "label": "Office & Crafts", "href": "/services/creative-spaces/office-and-crafts" },
-            { "label": "Spirits & Wine", "href": "/services/creative-spaces/spirits-and-wine" },
-            { "label": "Custom Layouts", "href": "/services/creative-spaces/custom-layouts" }
+            {
+              "label": "Subterranean Termites",
+              "href": "/services/termites/subterranean-termites"
+            },
+            {
+              "label": "Drywood Termites",
+              "href": "/services/termites/drywood-termites"
+            },
+            {
+              "label": "Termite Inspections",
+              "href": "/services/termites/termite-inspections"
+            },
+            {
+              "label": "Pre-Construction Treatment",
+              "href": "/services/termites/pre-construction"
+            }
+          ]
+        },
+        {
+          "label": "Rodent Control",
+          "href": "/services/rodents",
+          "children": [
+            {
+              "label": "Roof Rats",
+              "href": "/services/rodents/roof-rats"
+            },
+            {
+              "label": "Mice",
+              "href": "/services/rodents/mice"
+            },
+            {
+              "label": "Rodent Exclusion",
+              "href": "/services/rodents/rodent-exclusion"
+            },
+            {
+              "label": "Attic Clean-Up",
+              "href": "/services/rodents/attic-cleanup"
+            }
+          ]
+        },
+        {
+          "label": "Mosquitoes & Stinging Insects",
+          "href": "/services/stinging-insects",
+          "children": [
+            {
+              "label": "Mosquitoes",
+              "href": "/services/stinging-insects/mosquitoes"
+            },
+            {
+              "label": "Bees & Wasps",
+              "href": "/services/stinging-insects/bees-and-wasps"
+            },
+            {
+              "label": "Fleas & Ticks",
+              "href": "/services/stinging-insects/fleas-and-ticks"
+            },
+            {
+              "label": "Bed Bugs",
+              "href": "/services/stinging-insects/bed-bugs"
+            }
           ]
         }
       ]
@@ -104,15 +148,27 @@
     {
       "label": "Service areas",
       "children": [
-        { "label": "Phoenix", "href": "/locations/phoenix" },
-        { "label": "Scottsdale", "href": "/locations/scottsdale" },
-        { "label": "Mesa", "href": "/locations/mesa" },
-        { "label": "Chandler", "href": "/locations/chandler" }
+        {
+          "label": "Phoenix",
+          "href": "/locations/phoenix"
+        },
+        {
+          "label": "Scottsdale",
+          "href": "/locations/scottsdale"
+        },
+        {
+          "label": "Mesa",
+          "href": "/locations/mesa"
+        },
+        {
+          "label": "Chandler",
+          "href": "/locations/chandler"
+        }
       ]
     },
     {
-      "label": "Maintenance",
-      "href": "/maintenance"
+      "label": "Protection Plans",
+      "href": "/protection-plans"
     },
     {
       "label": "Financing",
@@ -122,12 +178,15 @@
       "label": "About us",
       "href": "/about",
       "children": [
-        { "label": "Meet The Team", "href": "/team" }
+        {
+          "label": "Meet The Team",
+          "href": "/team"
+        }
       ]
     }
   ],
   "primaryCta": {
-    "label": "Free consultation",
+    "label": "Free inspection",
     "href": "/contact",
     "style": "primary"
   },
@@ -137,24 +196,24 @@
         "title": "Services",
         "links": [
           {
-            "label": "Kitchen Shelves",
-            "href": "/services/kitchen"
+            "label": "General Pest Control",
+            "href": "/services/general-pest"
           },
           {
-            "label": "Pantry Shelves",
-            "href": "/services/pantry"
+            "label": "Scorpion Control",
+            "href": "/services/scorpions"
           },
           {
-            "label": "Bathroom Shelves",
-            "href": "/services/bathroom"
+            "label": "Termite Control",
+            "href": "/services/termites"
           },
           {
-            "label": "Closets & Home Spaces",
-            "href": "/services/closets"
+            "label": "Rodent Control",
+            "href": "/services/rodents"
           },
           {
-            "label": "Creative Spaces",
-            "href": "/services/creative-spaces"
+            "label": "Mosquitoes & Stinging Insects",
+            "href": "/services/stinging-insects"
           }
         ]
       },
@@ -191,8 +250,8 @@
             "href": "/team"
           },
           {
-            "label": "Maintenance",
-            "href": "/maintenance"
+            "label": "Protection Plans",
+            "href": "/protection-plans"
           },
           {
             "label": "Financing",
@@ -223,25 +282,25 @@
     }
   ],
   "theme": {
-    "primary": "#22463a",
-    "primaryHover": "#1a3730",
-    "primaryFg": "#f7f3ec",
-    "accent": "#b8894a",
-    "accentFg": "#14120f",
-    "accentInk": "#8a6230",
-    "ink": "#14120f",
-    "body": "#55514a",
-    "muted": "#eae3d7",
-    "line": "#d8cfc0",
-    "surface": "#f7f3ec",
-    "dark": "#14120f",
-    "darkFg": "#f2f0ee",
-    "radius": "4px",
-    "radiusMedia": "14px",
-    "fontDisplay": "'DM Sans', ui-sans-serif, system-ui, sans-serif",
-    "fontHeading": "'DM Sans', ui-sans-serif, system-ui, sans-serif",
-    "fontBody": "'DM Sans', ui-sans-serif, system-ui, sans-serif",
-    "fontMono": "'DM Mono', ui-monospace, SFMono-Regular, monospace",
-    "fontHref": "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=DM+Mono:wght@400;500&display=swap"
+    "primary": "#17284a",
+    "primaryHover": "#0f1d38",
+    "primaryFg": "#ffffff",
+    "accent": "#ffb37a",
+    "accentFg": "#111827",
+    "accentInk": "#b8460c",
+    "ink": "#111827",
+    "body": "#4b5563",
+    "muted": "#f3f4f6",
+    "line": "#e2e5ea",
+    "surface": "#ffffff",
+    "dark": "#0f1b33",
+    "darkFg": "#f5f7fa",
+    "radius": "0px",
+    "radiusMedia": "0px",
+    "fontDisplay": "'Instrument Sans', ui-sans-serif, system-ui, sans-serif",
+    "fontHeading": "'Instrument Sans', ui-sans-serif, system-ui, sans-serif",
+    "fontBody": "'Instrument Sans', ui-sans-serif, system-ui, sans-serif",
+    "fontMono": "'Instrument Sans', ui-sans-serif, system-ui, sans-serif",
+    "fontHref": "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
   }
 }

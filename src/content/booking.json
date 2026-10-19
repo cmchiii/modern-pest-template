@@ -1,27 +1,27 @@
 {
-  "eyebrow": "Free, about an hour",
-  "heading": "Book a measure.",
-  "intro": "A designer comes to you, measures every cabinet you want changed, and leaves a fixed quote. No obligation.",
+  "eyebrow": "Free, about 45 minutes",
+  "heading": "Book an inspection.",
+  "intro": "A licensed technician walks the whole property, inside and out, and leaves a written plan and a fixed price. No obligation.",
   "steps": [
     {
       "title": "You book",
       "body": "Pick a slot. We confirm by phone the same day."
     },
     {
-      "title": "We measure",
-      "body": "About an hour in your home, taking the numbers that matter."
+      "title": "We inspect",
+      "body": "About 45 minutes, from roof line to slab, mapping entry points and activity."
     },
     {
-      "title": "You get a quote",
-      "body": "Fixed price per shelf, valid thirty days, no pressure on the day."
+      "title": "You get a plan",
+      "body": "A fixed price and a written treatment plan. No pressure on the day."
     },
     {
-      "title": "We build and fit",
-      "body": "Usually two weeks to build, then one morning to install."
+      "title": "We treat and report",
+      "body": "Usually same week. Every visit ends with a field report and photos."
     }
   ],
   "cta": {
-    "label": "Book a consultation",
+    "label": "Book an inspection",
     "href": "/contact",
     "style": "primary",
     "newTab": false

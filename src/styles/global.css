@@ -2,44 +2,45 @@
 @plugin '@tailwindcss/typography';
 
 /*
-  Brand tokens -- "Finish Room".
-  Palette and type come from the millwork shop: bone paper stock, cabinet-paint
-  forest, brass hardware, pencil graphite. Defaults below are overridden at
-  runtime by BaseLayout from `site.json` -> `theme`, which is what lets one
-  template serve many client sites.
+  Brand tokens -- "Clearline".
+  A calm, established service brand: deep navy for trust, crisp white space,
+  burnt orange for the key word of a headline, and one bright orange reserved
+  for the call to action.
+  Type is a single modern sans with a serif italic for the key word of a
+  headline. Corners stay square. Defaults below are overridden at runtime by
+  BaseLayout from `site.json` -> `theme`, which is what lets one template
+  serve many client sites.
 */
 :root {
-	--brand-primary: #22463a;
-	--brand-primary-hover: #1a3730;
-	--brand-primary-fg: #f7f3ec;
-	--brand-accent: #b8894a;
-	--brand-accent-fg: #14120f;
-	/* Darkened brass for use on light grounds: 2.6:1 fails, this clears 4.5:1. */
-	--brand-accent-ink: #8a6230;
+	--brand-primary: #17284a;
+	--brand-primary-hover: #0f1d38;
+	--brand-primary-fg: #ffffff;
+	--brand-accent: #ffb37a;
+	--brand-accent-fg: #111827;
+	/* Apricot is too pale for text on white; small accent text uses burnt orange. */
+	--brand-accent-ink: #b8460c;
 
-	/* A brighter, more saturated gold reserved for the primary CTA button. The
-	   decorative --brand-accent brass is too close in luminance to the green
-	   banner to read as an action; this pops off it. */
-	--brand-cta: #e0a83e;
-	--brand-cta-hover: #efbb52;
-	--brand-cta-fg: #14120f;
+	/* Bright orange CTA: the one hot colour, so the action is never in doubt. */
+	--brand-cta: #e8590c;
+	--brand-cta-hover: #cf4d08;
+	--brand-cta-fg: #ffffff;
 
-	--brand-ink: #14120f;
-	--brand-body: #55514a;
-	--brand-muted: #eae3d7;
-	--brand-line: #d8cfc0;
-	--brand-surface: #f7f3ec;
+	--brand-ink: #111827;
+	--brand-body: #4b5563;
+	--brand-muted: #f3f4f6;
+	--brand-line: #e2e5ea;
+	--brand-surface: #ffffff;
 
-	--brand-dark: #14120f;
-	--brand-dark-fg: #f2f0ee;
+	--brand-dark: #0f1b33;
+	--brand-dark-fg: #f5f7fa;
 
-	--brand-radius: 4px;
-	/* Media blocks sit on a larger radius than UI chrome. */
-	--brand-radius-media: 14px;
-	--brand-font-display: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-	--brand-font-heading: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-	--brand-font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-	--brand-font-mono: 'DM Mono', ui-monospace, SFMono-Regular, monospace;
+	--brand-radius: 0px;
+	--brand-radius-media: 0px;
+	--brand-font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+	--brand-font-heading: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+	--brand-font-body: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+	--brand-font-mono: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+	--brand-font-serif: 'Instrument Serif', Georgia, serif;
 }
 
 /*
@@ -71,6 +72,7 @@
 	--font-heading: var(--brand-font-heading);
 	--font-body: var(--brand-font-body);
 	--font-mono: var(--brand-font-mono);
+	--font-serif: var(--brand-font-serif);
 }
 
 @layer base {
@@ -80,6 +82,7 @@
 	}
 
 	body {
+		counter-reset: report-section report-figure;
 		background: var(--brand-surface);
 		/* Auto-contrast foreground for the page background, so a dark surface set
 		   in the CMS still reads. Falls back to the brand body colour. */
@@ -90,10 +93,6 @@
 		-webkit-font-smoothing: antialiased;
 	}
 
-	/*
-	  Display type is set tight and slightly condensed -- catalog/spec-sheet
-	  register rather than editorial. Tracking opens back up at small sizes.
-	*/
 	h1,
 	h2,
 	h3,
@@ -104,25 +103,22 @@
 		text-wrap: balance;
 	}
 
-	/*
-	  Display sizes run DM Sans at its heaviest. It is a geometric face rather
-	  than a condensed one, so impact comes from weight and tight tracking --
-	  both of which need pulling back hard at large sizes.
-	*/
+	/* Display sizes: semibold sans, tracked in tight. */
 	h1,
 	h2 {
 		font-family: var(--brand-font-display);
-		font-weight: 800;
-		line-height: 0.95;
+		font-weight: 600;
+		line-height: 1.02;
 		letter-spacing: -0.035em;
 	}
 
+	/* Sub-heads: the same sans, a step lighter in tracking. */
 	h3,
 	h4 {
 		font-family: var(--brand-font-heading);
 		font-weight: 600;
-		line-height: 1.18;
-		letter-spacing: -0.015em;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
 	}
 
 	p {
@@ -130,9 +126,8 @@
 	}
 
 	:focus-visible {
-		outline: 2px solid var(--brand-accent);
+		outline: 2px solid var(--brand-accent-ink);
 		outline-offset: 3px;
-		border-radius: 2px;
 	}
 
 	::selection {
@@ -143,72 +138,45 @@
 
 @layer components {
 	/*
-	  Reserved for short, declarative headlines -- a hero statement or a
-	  two-word section title. Long sentences stay in sentence case, where the
-	  weight still carries but the line stays readable.
+	  Display headlines stay in sentence case: weight and tight tracking carry
+	  them, not capitals. Professional, not shouty.
 	*/
 	.display {
-		text-transform: uppercase;
-		line-height: 0.92;
-		letter-spacing: -0.04em;
+		line-height: 1.02;
+		letter-spacing: -0.035em;
 	}
 
-	/*
-	  Signature device: the dimension line.
-	  A tick-terminated rule carrying a monospace measurement, lifted from shop
-	  drawings. Used as section eyebrow, divider, and photo annotation -- it
-	  states the actual promise (exact fit) rather than decorating.
-	*/
+	/* Eyebrow device: a short navy rule and a small caps label. */
 	.dim {
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
 		font-family: var(--brand-font-mono);
-		font-size: 0.6875rem;
-		font-weight: 500;
-		letter-spacing: 0.14em;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--brand-accent-ink);
 	}
 
 	.dim-rule {
-		position: relative;
 		flex: 1 1 auto;
 		height: 1px;
 		background: currentColor;
-		opacity: 0.55;
+		opacity: 0.35;
 		transform-origin: left center;
 	}
 
-	/* Tick terminators, as on a drafted dimension line. */
-	.dim-rule::before,
-	.dim-rule::after {
-		content: '';
-		position: absolute;
-		top: -3px;
-		width: 1px;
-		height: 7px;
-		background: currentColor;
-	}
-
-	.dim-rule::before {
-		left: 0;
-	}
-
-	.dim-rule::after {
-		right: 0;
-	}
-
-	/* On dark grounds the full-strength brass is the legible one. */
 	.dim-on-dark {
 		color: var(--brand-accent);
 	}
 
 	.dim-rule-short {
-		flex: 0 0 2.5rem;
+		flex: 0 0 1.5rem;
+		height: 2px;
+		opacity: 1;
 	}
 
-	/* The one orchestrated motion moment: the rule measures itself out. */
 	.dim-animate .dim-rule {
 		animation: dim-measure 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
@@ -224,8 +192,7 @@
 
 	/*
 	  Logo marquee. The track holds the list twice and slides exactly half its
-	  width, so the loop has no visible seam. Masked at both edges so logos fade
-	  rather than being chopped off.
+	  width, so the loop has no visible seam.
 	*/
 	.logo-marquee {
 		-webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
@@ -245,16 +212,15 @@
 			transform: translateX(0);
 		}
 		to {
-			/* Half the track is the duplicate, so this lands back at the start. */
 			transform: translateX(calc(-50% - 1.75rem));
 		}
 	}
 
 	.mono-label {
 		font-family: var(--brand-font-mono);
-		font-size: 0.6875rem;
-		font-weight: 500;
-		letter-spacing: 0.14em;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
 
@@ -276,6 +242,94 @@
 		transform: none;
 	}
 
+	/* A thin navy-to-apricot rule marking a band edge. */
+	.edge-rule {
+		background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+	}
+
+	/* A hairline inset border over a photo, so it sits on the page like a print. */
+	.inset-frame {
+		position: relative;
+	}
+
+	.inset-frame::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		pointer-events: none;
+		box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+	}
+
+	/*
+	  Numbering. Section heads read "01", "02" and photos "Fig. 1", counted in
+	  document order by CSS counters, so nothing is stored in content.
+	*/
+	.sec-num::before {
+		counter-increment: report-section;
+		content: counter(report-section, decimal-leading-zero);
+	}
+
+	.fig-num {
+		white-space: nowrap;
+	}
+
+	.fig-num::before {
+		counter-increment: report-figure;
+		content: 'Fig. ' counter(report-figure);
+	}
+
+	/*
+	  The key word of a heading, set in the serif italic -- the one editorial
+	  flourish in an otherwise plain sans system.
+	*/
+	.mark {
+		font-family: var(--brand-font-serif);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: -0.01em;
+		color: var(--brand-accent-ink);
+	}
+
+	.mark-on-dark {
+		font-family: var(--brand-font-serif);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: -0.01em;
+		color: var(--brand-accent);
+	}
+
+	/* A small navy check, used as a bullet or status tick. */
+	.check-dot::before {
+		content: '✓';
+		color: var(--brand-accent-ink);
+		font-weight: 700;
+	}
+
+	.on-dark .check-dot::before,
+	.bg-dark .check-dot::before,
+	.bg-brand .check-dot::before {
+		color: var(--brand-accent);
+	}
+
+	/*
+	  Ticker. The track holds its content twice and slides exactly half its own
+	  width, so the loop has no visible seam.
+	*/
+	.ticker-track {
+		animation: ticker 36s linear infinite;
+	}
+
+	.ticker:hover .ticker-track {
+		animation-play-state: paused;
+	}
+
+	@keyframes ticker {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
 	.rich-text :where(h2, h3, h4) {
 		font-family: var(--brand-font-heading);
 	}
@@ -285,7 +339,7 @@
 	}
 
 	.rich-text :where(code) {
-		font-family: var(--brand-font-mono);
+		font-family: ui-monospace, SFMono-Regular, monospace;
 	}
 }
 
@@ -303,10 +357,10 @@
 	--tw-prose-headings: var(--brand-ink);
 	--tw-prose-bold: var(--brand-ink);
 	--tw-prose-links: var(--brand-primary);
-	--tw-prose-bullets: var(--brand-accent);
-	--tw-prose-counters: var(--brand-accent);
+	--tw-prose-bullets: var(--brand-accent-ink);
+	--tw-prose-counters: var(--brand-accent-ink);
 	--tw-prose-quotes: var(--brand-ink);
-	--tw-prose-quote-borders: var(--brand-accent);
+	--tw-prose-quote-borders: var(--brand-accent-ink);
 	--tw-prose-hr: var(--brand-line);
 }
 
@@ -335,7 +389,8 @@
 	}
 
 	.dim-animate .dim-rule,
-	.logo-marquee-track {
+	.logo-marquee-track,
+	.ticker-track {
 		animation: none;
 	}
 

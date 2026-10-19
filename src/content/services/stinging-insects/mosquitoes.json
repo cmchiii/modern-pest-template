@@ -1,0 +1,370 @@
+{
+  "title": "Mosquitoes",
+  "summary": "Monthly mosquito yard treatments through the monsoon season.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/mosquito.avif",
+    "alt": "Mosquito larvae photographed in water"
+  },
+  "order": 51,
+  "parent": {
+    "label": "Mosquitoes & Stinging Insects",
+    "href": "/services/stinging-insects"
+  },
+  "draft": false,
+  "seo": {
+    "title": "Mosquitoes Control in Phoenix",
+    "description": "Monthly mosquito yard treatments through the monsoon season. Licensed technicians, free re-treats and a written field report on every visit.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "badge_strip",
+      "label": "Trust badges",
+      "items": [
+        {
+          "icon": "clock",
+          "title": "Same-day nests",
+          "subtitle": "Wasps & hornets"
+        },
+        {
+          "icon": "shield",
+          "title": "Pet safe once dry",
+          "subtitle": "About 30 minutes"
+        },
+        {
+          "icon": "check",
+          "title": "Bees relocated",
+          "subtitle": "Where possible"
+        },
+        {
+          "icon": "star",
+          "title": "Heat for bed bugs",
+          "subtitle": "No chemicals"
+        },
+        {
+          "icon": "badge",
+          "title": "Field report",
+          "subtitle": "On every visit"
+        }
+      ],
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "placeholder",
+      "label": "Content to be added",
+      "note": "Placeholder for content to be provided. Replace with the final copy or media for this section.",
+      "size": "md",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "media_split",
+      "eyebrow": "About this treatment",
+      "heading": "Mosquitoes breed in a bottle cap of water.",
+      "body": "We treat the places mosquitoes breed and rest: standing water, drip lines, dense shrubs and shaded patios. A larvicide stops the next generation and a barrier treatment knocks down the adults.\n\nEvery visit ends with a written field report: what we found, where we treated, and what to watch for next. If the problem comes back between visits, so do we, free.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/mosquito.avif",
+        "alt": "Mosquito larvae photographed in water"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "check",
+          "text": "Species identified first",
+          "desc": "The right product for the right pest, not one spray for everything."
+        },
+        {
+          "icon": "shield",
+          "text": "Safe for kids and pets",
+          "desc": "Targeted, low-toxicity treatments placed where pests live."
+        },
+        {
+          "icon": "badge",
+          "text": "Free re-treats",
+          "desc": "If they come back between visits, we come back too, at no charge."
+        }
+      ],
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "promo_cards",
+      "eyebrow": "More reasons to book",
+      "heading": "Protection plans, financing and this month's offer.",
+      "columns": "3",
+      "cards": [
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/scorpion-rock.avif",
+            "alt": "Bark scorpion on a rock"
+          },
+          "icon": "shield",
+          "badge": "Free re-treats",
+          "title": "Year-round protection",
+          "subtitle": "For as low as",
+          "price": {
+            "label": "Plans from",
+            "value": "$39",
+            "unit": "per month"
+          },
+          "cta": {
+            "label": "See protection plans",
+            "href": "/protection-plans",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/termite.avif",
+            "alt": "Winged termite specimen"
+          },
+          "icon": "dollar",
+          "badge": "Limited time",
+          "title": "0% APR for 12 months",
+          "subtitle": "Financing available",
+          "body": "Spread the cost of a termite treatment or whole-home exclusion over low monthly payments. Quick soft-check application — a decision in minutes.",
+          "cta": {
+            "label": "Check your rate",
+            "href": "/financing",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        },
+        {
+          "image": {
+            "source": "upload",
+            "src": "/media/images/spider.avif",
+            "alt": "Jumping spider, macro"
+          },
+          "icon": "badge",
+          "badge": "Save now",
+          "title": "$50 off your first service",
+          "subtitle": "New customers",
+          "body": "Take $50 off your initial treatment. Mention code FIRST50 when you book your free inspection. One offer per household.",
+          "cta": {
+            "label": "Book a free inspection",
+            "href": "/contact",
+            "style": "primary",
+            "newTab": false
+          },
+          "phone": "(555) 014-7378",
+          "phoneHref": "tel:+15550147378"
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "lg",
+      "width": "wide"
+    },
+    {
+      "type": "accordion",
+      "eyebrow": "Before you book",
+      "heading": "Mosquitoes questions.",
+      "items": [
+        {
+          "question": "When is mosquito season in Phoenix?",
+          "answer": "Activity climbs with the monsoon in July and runs into October. A monthly yard treatment through the season keeps numbers down."
+        },
+        {
+          "question": "Do you kill honey bees?",
+          "answer": "Not if we can help it. Swarms are relocated to local beekeepers where possible. Africanised colonies inside a structure may need to be removed for safety."
+        },
+        {
+          "question": "How does bed bug heat treatment work?",
+          "answer": "We raise the room to **over 120°F** for several hours, which kills every life stage, including eggs, without chemicals. Most homes are done in a single day."
+        },
+        {
+          "question": "Is the yard treatment safe for pets?",
+          "answer": "Yes, once dry. We ask you to keep pets inside for about 30 minutes after treatment."
+        },
+        {
+          "question": "Can you treat for fleas and ticks?",
+          "answer": "Yes, inside and out. We treat carpets, pet resting areas and the yard together, and recommend you treat pets with your vet at the same time."
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "collection_feed",
+      "eyebrow": "Related services",
+      "heading": "More mosquitoes & stingers services.",
+      "intro": "The same inspect-treat-document approach, for related problems.",
+      "source": "services",
+      "layout": "grid",
+      "columns": "3",
+      "limit": 3,
+      "showImage": true,
+      "showSummary": true,
+      "moreLabel": "All mosquitoes & stingers services",
+      "moreHref": "/services/stinging-insects",
+      "moreStyle": "secondary",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "quotes",
+      "eyebrow": "4.9 / 5 on Google",
+      "heading": "Reviews from real homes.",
+      "items": [
+        {
+          "quote": "Wasp nest the size of a football under the patio. Gone the same afternoon.",
+          "name": "Carlos V.",
+          "location": "Phoenix, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "We can sit outside after sunset in August again. That is the whole review.",
+          "name": "Emily T.",
+          "location": "Scottsdale, AZ",
+          "rating": 5
+        },
+        {
+          "quote": "Bed bug heat treatment in one day, no chemicals, no repeat. Discreet van too.",
+          "name": "Name withheld",
+          "location": "Tempe, AZ",
+          "rating": 5
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "eyebrow": "Free inspection",
+      "heading": "Get rid of mosquitoes for good.",
+      "body": "A licensed technician, a full inspection and a written plan. No charge, no contract.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        },
+        {
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
+          "style": "secondary",
+          "newTab": false
+        }
+      ],
+      "headingLevel": "h2",
+      "surface": "brand",
+      "spacing": "sm",
+      "width": "wide"
+    },
+    {
+      "type": "form_block",
+      "eyebrow": "Get in touch",
+      "heading": "Tell us about your mosquitoes problem.",
+      "intro": "Send a few details and we will call to book your free inspection.",
+      "endpoint": "https://formspree.io/f/your-form-id",
+      "submitLabel": "Book my free inspection",
+      "successNote": "Thanks — we will call within one business day, usually sooner.",
+      "fields": [
+        {
+          "kind": "text",
+          "name": "name",
+          "label": "Name",
+          "placeholder": "Your name",
+          "required": true,
+          "width": "half",
+          "autocomplete": "name"
+        },
+        {
+          "kind": "tel",
+          "name": "phone",
+          "label": "Phone",
+          "placeholder": "(555) 555-5555",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "email",
+          "name": "email",
+          "label": "Email",
+          "placeholder": "you@example.com",
+          "required": true,
+          "width": "half"
+        },
+        {
+          "kind": "text",
+          "name": "postcode",
+          "label": "ZIP code",
+          "placeholder": "85001",
+          "required": true,
+          "width": "half",
+          "autocomplete": "postal-code"
+        },
+        {
+          "kind": "text",
+          "name": "sightings",
+          "label": "Where are you seeing them?",
+          "placeholder": "e.g. kitchen, garage, attic",
+          "required": false,
+          "width": "full"
+        },
+        {
+          "kind": "textarea",
+          "name": "message",
+          "label": "Anything else we should know?",
+          "placeholder": "Pets, kids, gate codes, best time to visit…",
+          "required": false,
+          "rows": 4
+        }
+      ],
+      "footnote": "We never share your details. You will only hear from us about your inspection.",
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "default"
+    },
+    {
+      "type": "service_areas",
+      "eyebrow": "Where we work",
+      "heading": "Serving the greater Phoenix valley.",
+      "intro": "Book a free inspection anywhere across these areas and the towns around them.",
+      "columns": "4",
+      "showServed": true,
+      "map": {
+        "kind": "embed",
+        "url": "https://maps.google.com/maps?q=Phoenix,AZ&z=10&output=embed",
+        "title": "Map of the greater Phoenix valley service area",
+        "ratio": "4/3"
+      },
+      "footnote": "Not listed? Call us — our trucks cover more of the valley than we can fit here.",
+      "headingLevel": "h2",
+      "surface": "muted",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

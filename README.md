@@ -1,4 +1,4 @@
-# Modern Cabinets — service-business site template
+# Clearline — pest control site template
 
 A reusable Astro template for a contractor or service business, edited through
 [Pages CMS](https://pagescms.org/). Content lives in `src/content/`; the layout
@@ -48,3 +48,12 @@ build fails if they drift apart.
   three-registry model. **Read this before adding a section or page.**
 - [`docs/SECTIONS.md`](docs/SECTIONS.md) — the section catalogue and naming rule.
 - [Astro docs](https://docs.astro.build) — the underlying framework.
+
+## Image credits
+
+The specimen macro photos in `public/media/images/` (scorpions, ant, spider,
+cricket, termite, tick, wasps, mouse, mosquito, cockroach, black widow, bed bug,
+attic rodent damage) are public-domain or CC0 images sourced via
+[Openverse](https://openverse.org/), mostly from the USGS Bee Inventory and
+Monitoring Lab and the Insects Unlocked project. No attribution is required, but
+swap them for the client's own job photos before launch.

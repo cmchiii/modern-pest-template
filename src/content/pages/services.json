@@ -1,11 +1,11 @@
 {
   "title": "Services",
-  "permalink": "https://modern-cabinets-template.vercel.app/services",
+  "permalink": "https://clearline-pest-template.vercel.app/services",
   "order": 10,
   "draft": false,
   "seo": {
-    "title": "Services",
-    "description": "Glide-out shelving for kitchens, pantries, bathrooms and closets across the Phoenix valley.",
+    "title": "Pest Control Services",
+    "description": "General pest, scorpion, termite, rodent and stinging-insect control across the Phoenix valley.",
     "noindex": false
   },
   "sections": [
@@ -13,179 +13,293 @@
       "type": "page_header",
       "variant": "feature",
       "headingLevel": "h1",
-      "eyebrow": "Every room",
-      "heading": "What we fit.",
-      "body": "Every shelf is measured in your home and cut to that opening. The room changes; the method does not.",
+      "eyebrow": "Every pest",
+      "heading": "What we treat.",
+      "body": "Every job starts with an inspection and ends with a field report. The pest changes; the method does not.",
       "image": {
         "source": "upload",
-        "src": "/media/images/kitchen-hero.avif",
-        "alt": "Fitted kitchen shelving measured to the opening"
+        "src": "/media/images/scorpion.avif",
+        "alt": "Bark scorpion specimen"
       },
-      "mediaNote": "Built to your exact opening",
+      "mediaNote": "Bark scorpion — last seen on the block wall",
       "surface": "muted",
       "spacing": "sm",
       "width": "wide"
     },
     {
       "type": "service_menu",
-      "headingLevel": "h2",
       "eyebrow": "Explore",
       "heading": "Browse by room.",
-      "intro": "Pick a room to see a few of the jobs we do there. Every shelf is measured on site and cut to your opening.",
+      "intro": "Browse by pest. Pick one to see a few of the treatments we do. Every job starts with an inspection.",
       "nowViewingLabel": "Now viewing",
       "columns": "4",
       "tabs": [
         {
-          "label": "Kitchen",
-          "bannerTitle": "Kitchen shelves",
+          "label": "General Pest",
+          "bannerTitle": "General Pest Control",
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-hero.avif",
-            "alt": "Kitchen with white shaker cabinets"
+            "src": "/media/images/ant.avif",
+            "alt": "Macro photo of an ant specimen on black"
           },
           "cards": [
             {
-              "title": "Pots & Pans",
-              "body": "Full-extension pull-outs for the deep base cabinet that swallows your pots, pans and the lids that never match.",
-              "link": { "label": "View service", "href": "/services/kitchen/pots-and-pans", "style": "ghost", "newTab": false }
+              "icon": "check",
+              "title": "Ants",
+              "body": "Bait-based ant control that takes out the colony, not just the trail across your counter.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/ants",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Corner Cabinet",
-              "body": "The dead corner turned into shelving that swings or slides all the way out.",
-              "link": { "label": "View service", "href": "/services/kitchen/corner-cabinet", "style": "ghost", "newTab": false }
+              "icon": "shield",
+              "title": "Cockroaches",
+              "body": "Cockroach control for kitchens, bathrooms and sewers: gel baits, growth regulators and sealing.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/cockroaches",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Under the Sink",
-              "body": "Shelves cut around the trap and disposal, so the space under the sink is finally usable.",
-              "link": { "label": "View service", "href": "/services/kitchen/under-the-sink", "style": "ghost", "newTab": false }
+              "icon": "star",
+              "title": "Spiders",
+              "body": "Spider control and web removal, plus treatment of the insects they hunt.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/spiders",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Spice Racks",
-              "body": "Slim pull-outs and tiered inserts that keep every jar labelled-side-out and in reach.",
-              "link": { "label": "View service", "href": "/services/kitchen/spice-racks", "style": "ghost", "newTab": false }
+              "icon": "wrench",
+              "title": "Black Widows",
+              "body": "Black widow removal from garages, block walls, meter boxes and patio furniture.",
+              "link": {
+                "label": "See it",
+                "href": "/services/general-pest/black-widows",
+                "style": "ghost",
+                "newTab": false
+              }
             }
           ]
         },
         {
-          "label": "Pantry",
-          "bannerTitle": "Pantry storage",
+          "label": "Scorpions",
+          "bannerTitle": "Scorpion Control",
           "image": {
             "source": "upload",
-            "src": "/media/images/shelf-detail.avif",
-            "alt": "Dishes on a glide-out shelf"
+            "src": "/media/images/scorpion.avif",
+            "alt": "Arizona bark scorpion specimen on black"
           },
           "cards": [
             {
-              "title": "Walk-In Pantry",
-              "body": "Full-depth glide-outs down both walls, sized to what you actually store.",
-              "link": { "label": "View service", "href": "/services/pantry/walk-in-pantry", "style": "ghost", "newTab": false }
+              "icon": "check",
+              "title": "Bark Scorpions",
+              "body": "Monthly bark scorpion treatment for homes across the valley, with free re-treats between visits.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/bark-scorpions",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Cabinet Pantry",
-              "body": "Two usable rows become four, so nothing expires behind something else.",
-              "link": { "label": "View service", "href": "/services/pantry/cabinet-pantry", "style": "ghost", "newTab": false }
+              "icon": "shield",
+              "title": "UV Scorpion Hunts",
+              "body": "Night-time UV hunts that find and remove scorpions you would never see by day.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/uv-scorpion-hunts",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Corner Pantry",
-              "body": "Reaches the awkward back corner every fixed shelf gives up on.",
-              "link": { "label": "View service", "href": "/services/pantry/corner-pantry", "style": "ghost", "newTab": false }
-            },
-            {
-              "title": "Custom Pantry Designs",
-              "body": "Built around odd heights, angled ceilings and the door you cannot move.",
-              "link": { "label": "View service", "href": "/services/pantry/custom-pantry-designs", "style": "ghost", "newTab": false }
+              "icon": "star",
+              "title": "Scorpion Sealing",
+              "body": "Exclusion sealing that closes the gaps scorpions climb through: weep screeds, sweeps and plumbing.",
+              "link": {
+                "label": "See it",
+                "href": "/services/scorpions/scorpion-sealing",
+                "style": "ghost",
+                "newTab": false
+              }
             }
           ]
         },
         {
-          "label": "Bathroom",
-          "bannerTitle": "Bathroom vanities",
+          "label": "Termites",
+          "bannerTitle": "Termite Control",
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-island.avif",
-            "alt": "Wooden bathroom cabinetry"
+            "src": "/media/images/termite.avif",
+            "alt": "Macro photo of a winged termite specimen"
           },
           "cards": [
             {
-              "title": "Under the Sink",
-              "body": "Shelves that clear the trap, so the vanity holds more than a spare roll.",
-              "link": { "label": "View service", "href": "/services/bathroom/under-the-sink", "style": "ghost", "newTab": false }
+              "icon": "check",
+              "title": "Subterranean Termites",
+              "body": "Liquid barrier and bait treatments for desert subterranean termites.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/subterranean-termites",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Vanity Cabinets",
-              "body": "Full-extension pull-outs for towels, bottles and the hairdryer cord.",
-              "link": { "label": "View service", "href": "/services/bathroom/cabinets", "style": "ghost", "newTab": false }
+              "icon": "shield",
+              "title": "Drywood Termites",
+              "body": "Spot and whole-structure treatment for drywood termites in framing, furniture and trim.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/drywood-termites",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Cabinet Organizers",
-              "body": "Dividers and tiered inserts that stop the cabinet becoming a drawer of chaos.",
-              "link": { "label": "View service", "href": "/services/bathroom/cabinet-organizers", "style": "ghost", "newTab": false }
+              "icon": "star",
+              "title": "Termite Inspections",
+              "body": "Licensed Wood Destroying Insect inspections for buyers, sellers and annual checks.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/termite-inspections",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Pull-Out Organizers",
-              "body": "Custom-cut inserts that keep bottles, tools and spares each in their lane.",
-              "link": { "label": "View service", "href": "/services/bathroom/pull-out-organizers-and-dividers", "style": "ghost", "newTab": false }
+              "icon": "wrench",
+              "title": "Pre-Construction Treatment",
+              "body": "Pre-treat soil for new builds, additions and slabs before the concrete is poured.",
+              "link": {
+                "label": "See it",
+                "href": "/services/termites/pre-construction",
+                "style": "ghost",
+                "newTab": false
+              }
             }
           ]
         },
         {
-          "label": "Closets",
-          "bannerTitle": "Closet systems",
+          "label": "Rodents",
+          "bannerTitle": "Rodent Control",
           "image": {
             "source": "upload",
-            "src": "/media/images/cabinet-wood.avif",
-            "alt": "Wooden cabinetry with open shelving"
+            "src": "/media/images/mouse.avif",
+            "alt": "Close-up of a mouse specimen on black"
           },
           "cards": [
             {
-              "title": "Closets & Wardrobes",
-              "body": "Shoes, linens and the vacuum you wrestle out every week, all within reach.",
-              "link": { "label": "View service", "href": "/services/closets/closets-and-wardrobes", "style": "ghost", "newTab": false }
+              "icon": "check",
+              "title": "Roof Rats",
+              "body": "Roof rat trapping and removal from attics, garages and citrus trees.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/roof-rats",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Garage & Storage",
-              "body": "Heavy-duty glides rated for tools, bulk goods and the gear you stack too high.",
-              "link": { "label": "View service", "href": "/services/closets/garage-and-storage", "style": "ghost", "newTab": false }
+              "icon": "shield",
+              "title": "Mice",
+              "body": "Mouse control for kitchens, garages and wall voids.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/mice",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Laundry & Mud Room",
-              "body": "Pull-outs for detergent, baskets and the things that pile by the door.",
-              "link": { "label": "View service", "href": "/services/closets/laundry-and-mud-room", "style": "ghost", "newTab": false }
+              "icon": "star",
+              "title": "Rodent Exclusion",
+              "body": "Whole-home exclusion with steel mesh, flashing and sealant rodents cannot chew through.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/rodent-exclusion",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Office, Crafts & Entertainment",
-              "body": "Shallow pull-outs that keep supplies, media and gear sorted and in view.",
-              "link": { "label": "View service", "href": "/services/closets/office-crafts-and-entertainment-rooms", "style": "ghost", "newTab": false }
+              "icon": "wrench",
+              "title": "Attic Clean-Up",
+              "body": "Removal of droppings, nesting and contaminated insulation after a rodent problem.",
+              "link": {
+                "label": "See it",
+                "href": "/services/rodents/attic-cleanup",
+                "style": "ghost",
+                "newTab": false
+              }
             }
           ]
         },
         {
-          "label": "Creative Spaces",
-          "bannerTitle": "Creative spaces",
+          "label": "Mosquitoes & Stingers",
+          "bannerTitle": "Mosquitoes & Stinging Insects",
           "image": {
             "source": "upload",
-            "src": "/media/images/kitchen-island.avif",
-            "alt": "Open shelving for glassware and bottles"
+            "src": "/media/images/wasp.avif",
+            "alt": "Paper wasp specimen photographed on black"
           },
           "cards": [
             {
-              "title": "Office & Crafts",
-              "body": "Shallow tiered pull-outs that keep supplies visible and sorted.",
-              "link": { "label": "View service", "href": "/services/creative-spaces/office-and-crafts", "style": "ghost", "newTab": false }
+              "icon": "check",
+              "title": "Mosquitoes",
+              "body": "Monthly mosquito yard treatments through the monsoon season.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/mosquitoes",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Spirits & Wine",
-              "body": "Bottle-safe racks and glide-outs sized for stemware and decanters.",
-              "link": { "label": "View service", "href": "/services/creative-spaces/spirits-and-wine", "style": "ghost", "newTab": false }
+              "icon": "shield",
+              "title": "Bees & Wasps",
+              "body": "Same-day wasp nest removal and humane honey bee swarm relocation.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/bees-and-wasps",
+                "style": "ghost",
+                "newTab": false
+              }
             },
             {
-              "title": "Custom Layouts",
-              "body": "For the room that does not fit a category — we measure and build to it.",
-              "link": { "label": "View service", "href": "/services/creative-spaces/custom-layouts", "style": "ghost", "newTab": false }
+              "icon": "star",
+              "title": "Fleas & Ticks",
+              "body": "Inside-and-out flea and tick treatment for homes with pets.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/fleas-and-ticks",
+                "style": "ghost",
+                "newTab": false
+              }
+            },
+            {
+              "icon": "wrench",
+              "title": "Bed Bugs",
+              "body": "Whole-room heat treatment that kills bed bugs and their eggs in a single day.",
+              "link": {
+                "label": "See it",
+                "href": "/services/stinging-insects/bed-bugs",
+                "style": "ghost",
+                "newTab": false
+              }
             }
           ]
         }
       ],
+      "headingLevel": "h2",
       "surface": "light",
       "spacing": "md",
       "width": "wide"
@@ -194,11 +308,11 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "No obligation",
-      "heading": "Book a free measure.",
-      "body": "An hour on site, a fixed quote, no pressure to book on the day.",
+      "heading": "Book a free inspection.",
+      "body": "A licensed technician, a written plan, no contract.",
       "ctas": [
         {
-          "label": "Book a consultation",
+          "label": "Book an inspection",
           "href": "/contact",
           "style": "primary",
           "newTab": false

@@ -1,0 +1,72 @@
+{
+  "title": "Scottsdale scorpion sweep, 63 found",
+  "summary": "A desert-edge home with weekly indoor sightings. One UV hunt, a full weep-screed seal, and monthly treatment.",
+  "image": {
+    "source": "upload",
+    "src": "/media/images/scorpion-uv.avif",
+    "alt": "Bark scorpion glowing under UV light"
+  },
+  "order": 10,
+  "location": "Scottsdale, AZ",
+  "completed": "2026-06-14",
+  "services": ["scorpions"],
+  "draft": false,
+  "seo": {
+    "description": "A desert-edge home with weekly indoor sightings. One UV hunt, a full weep-screed seal, and monthly treatment.",
+    "noindex": false
+  },
+  "sections": [
+    {
+      "type": "media_split",
+      "eyebrow": "Field report",
+      "heading": "What we found. What we did.",
+      "body": "A desert-edge home with weekly indoor sightings. One UV hunt, a full weep-screed seal, and monthly treatment.",
+      "image": {
+        "source": "upload",
+        "src": "/media/images/scorpion-uv.avif",
+        "alt": "Bark scorpion glowing under UV light"
+      },
+      "imageSide": "left",
+      "bullets": [
+        {
+          "icon": "star",
+          "text": "Found",
+          "desc": "63 bark scorpions on block walls, eaves and the garage on a single UV night hunt."
+        },
+        {
+          "icon": "wrench",
+          "text": "Treated",
+          "desc": "Weep screed sealed around the full perimeter, 4 door sweeps fitted, monthly perimeter treatment."
+        },
+        {
+          "icon": "check",
+          "text": "Result",
+          "desc": "Zero indoor sightings reported in the 90 days since the seal."
+        }
+      ],
+      "ctas": [],
+      "headingLevel": "h2",
+      "surface": "light",
+      "spacing": "md",
+      "width": "wide"
+    },
+    {
+      "type": "cta_banner",
+      "headingLevel": "h2",
+      "eyebrow": "No obligation",
+      "heading": "Seeing the same thing?",
+      "body": "Book a free inspection and we will tell you exactly what is going on.",
+      "ctas": [
+        {
+          "label": "Book a free inspection",
+          "href": "/contact",
+          "style": "primary",
+          "newTab": false
+        }
+      ],
+      "surface": "brand",
+      "spacing": "md",
+      "width": "wide"
+    }
+  ]
+}

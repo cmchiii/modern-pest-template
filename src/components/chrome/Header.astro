@@ -6,15 +6,17 @@ import AnnouncementBar from './AnnouncementBar.astro';
 
 <AnnouncementBar />
 
-<header class="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur-md [--mm-gap:0.5rem]">
-	<div class="mx-auto flex w-full max-w-[104rem] items-center gap-6 px-5 py-4 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
+{/*
+	White bar, nav left-aligned beside the logo, contact block and CTA pushed
+	right. The slim dark utility strip above it is the AnnouncementBar.
+*/}
+<header class="sticky top-0 z-40 border-b border-line bg-surface text-ink shadow-[0_12px_32px_-28px_rgba(15,27,51,0.5)] [--mm-gap:0.5rem]">
+	<div class="mx-auto flex w-full max-w-[104rem] items-center gap-6 px-5 py-3.5 sm:px-8 lg:gap-10 lg:px-12">
 		<a href="/" class="flex shrink-0 items-center gap-2.5">
 			{site.logo ? (
-				<img src={site.logo.src} alt={site.logo.alt} class="h-14 w-auto" />
+				<img src={site.logo.src} alt={site.logo.alt} class="h-10 w-auto" />
 			) : (
-				<span class="font-display text-2xl font-bold uppercase tracking-tight text-ink">
-					{site.name}
-				</span>
+				<span class="font-display text-2xl font-semibold tracking-tight text-ink">{site.name}</span>
 			)}
 		</a>
 
@@ -31,7 +33,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 						{item.href ? (
 							<a
 								href={item.href}
-								class="flex items-center gap-1.5 px-3.5 py-2 font-mono text-[0.75rem] font-medium uppercase tracking-[0.12em] text-ink transition-colors hover:text-brand"
+								class="flex items-center gap-1.5 px-3 py-2 text-[0.9375rem] font-medium text-ink transition-colors hover:text-brand"
 							>
 								{item.label}
 								{item.children && (
@@ -48,7 +50,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 							<button
 								type="button"
 								aria-haspopup="true"
-								class="flex cursor-default items-center gap-1.5 px-3.5 py-2 font-mono text-[0.75rem] font-medium uppercase tracking-[0.12em] text-ink transition-colors hover:text-brand"
+								class="flex cursor-default items-center gap-1.5 px-3 py-2 text-[0.9375rem] font-medium text-ink transition-colors hover:text-brand"
 							>
 								{item.label}
 								{item.children && (
@@ -83,12 +85,12 @@ import AnnouncementBar from './AnnouncementBar.astro';
 											that would drop :hover. A script nudge (below) shifts the
 											panel horizontally so a wide menu never clips the viewport.
 										*/}
-										<div class="flex flex-wrap overflow-hidden rounded-(--radius-brand) border border-line bg-surface shadow-[0_28px_60px_-28px_rgba(20,18,15,0.55)]">
+										<div class="flex flex-wrap overflow-hidden rounded-(--radius-brand) border border-line bg-surface shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)]">
 											{item.children.map((group) => (
 												<div class="relative flex w-56 flex-col px-6 py-7 before:absolute before:top-7 before:bottom-7 before:left-0 before:w-px before:bg-line first:before:hidden">
 													{/*
 														Column head reads as a section eyebrow: a mono measurement
-														label sitting above the shop-drawing dimension stub (brass
+														label sitting above the specimen-tag rule (accent
 														tick rule), the site's signature device -- not a UI glyph.
 														The label link is dropped when a group is unlabelled (an
 														ungrouped column then shows just the rule above its links).
@@ -96,7 +98,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 													{group.label && (
 														<a
 															href={group.href}
-															class="flex min-h-[2rem] items-center justify-start text-left font-mono text-[0.75rem] font-medium uppercase leading-tight tracking-[0.14em] text-ink transition-colors hover:text-brand"
+															class="flex min-h-[2rem] items-center justify-start text-left font-mono text-[0.75rem] font-medium uppercase leading-tight tracking-[0.14em] text-ink transition-colors hover:text-accent-ink"
 														>
 															{group.label}
 														</a>
@@ -124,10 +126,10 @@ import AnnouncementBar from './AnnouncementBar.astro';
 									</div>
 								) : (
 									<div class="invisible absolute left-0 top-full z-50 w-60 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-										<div class="rounded-(--radius-brand) border border-line bg-surface px-2 pb-2 pt-4 shadow-[0_18px_40px_-20px_rgba(20,18,15,0.45)]">
+										<div class="rounded-(--radius-brand) border border-line bg-surface px-2 pb-2 pt-4 shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)]">
 											{/*
 												Shop-drawing tick rule as the panel's top accent -- the same
-												brass dimension stub the mega-menu columns use, so a flat
+												accent specimen-tag rule the mega-menu columns use, so a flat
 												location dropdown reads as part of the same system.
 											*/}
 											<span class="dim mb-2 px-1.5" aria-hidden="true">
@@ -154,12 +156,28 @@ import AnnouncementBar from './AnnouncementBar.astro';
 			</ul>
 		</nav>
 
-		<div class="ml-auto flex items-center gap-4 lg:ml-0 lg:justify-self-end">
-			<a
-				href={site.contact.phoneHref}
-				class="hidden whitespace-nowrap font-mono text-[0.75rem] font-medium uppercase tracking-[0.12em] text-ink transition-colors hover:text-brand md:block"
-			>
-				{site.contact.phone}
+		<div class="ml-auto flex items-center gap-5">
+			<a href={site.contact.phoneHref} class="group hidden items-center gap-3 xl:flex">
+				<span class="flex h-10 w-10 items-center justify-center bg-muted text-brand transition-colors group-hover:bg-brand group-hover:text-brand-fg">
+					<svg
+						viewBox="0 0 24 24"
+						class="h-[1.125rem] w-[1.125rem]"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.75"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+					</svg>
+				</span>
+				<span class="leading-tight">
+					<span class="block text-xs text-body">Call a specialist</span>
+					<span class="block text-[0.9375rem] font-semibold whitespace-nowrap">
+						{site.contact.phone}
+					</span>
+				</span>
 			</a>
 			{/*
 				Responsive hiding lives on a wrapper, not on Button. Button sets its
@@ -168,11 +186,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 			*/}
 			{site.primaryCta && (
 				<span class="hidden sm:block">
-					{/*
-						The nav CTA stays compact (`sm`) -- it is persistent chrome sitting
-						beside 11-12px nav links, not a body CTA competing with description
-						copy, so it keeps the smaller drafting-annotation size.
-					*/}
+					{/* The nav CTA stays compact (`sm`): persistent chrome, not a body CTA. */}
 					<Button {...site.primaryCta} size="sm" />
 				</span>
 			)}
@@ -180,7 +194,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 			<button
 				type="button"
 				id="menu-toggle"
-				class="-mr-2 rounded p-2 text-ink lg:hidden"
+				class="-mr-2 rounded-(--radius-brand) p-2 text-ink lg:hidden"
 				aria-label="Open menu"
 				aria-expanded="false"
 				aria-controls="mobile-menu"
@@ -206,8 +220,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 	id="menu-backdrop"
 	class="invisible fixed inset-0 z-[90] bg-dark/50 opacity-0 backdrop-blur-sm transition-opacity duration-300 in-data-[menu-open]:visible in-data-[menu-open]:opacity-100 lg:hidden"
 	aria-hidden="true"
->
-</div>
+></div>
 
 {/*
 	Two shapes by breakpoint. Phones: a full-width panel pinned to the top that
@@ -218,7 +231,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 */}
 <div
 	id="mobile-menu"
-	class="invisible fixed inset-x-0 top-0 z-[100] flex max-h-[85dvh] w-full -translate-y-full flex-col bg-surface shadow-[0_24px_60px_-15px_rgba(20,18,15,0.45)] transition-[transform,visibility] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] in-data-[menu-open]:visible in-data-[menu-open]:translate-y-0 sm:inset-x-auto sm:inset-y-0 sm:right-0 sm:max-h-none sm:w-[26rem] sm:translate-x-full sm:translate-y-0 sm:shadow-[-24px_0_60px_-15px_rgba(20,18,15,0.45)] sm:in-data-[menu-open]:translate-x-0 md:w-[30rem] lg:hidden"
+	class="invisible fixed inset-x-0 top-0 z-[100] flex max-h-[85dvh] w-full -translate-y-full flex-col bg-surface shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)] transition-[transform,visibility] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] in-data-[menu-open]:visible in-data-[menu-open]:translate-y-0 sm:inset-x-auto sm:inset-y-0 sm:right-0 sm:max-h-none sm:w-[26rem] sm:translate-x-full sm:translate-y-0 sm:shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)] sm:in-data-[menu-open]:translate-x-0 md:w-[30rem] lg:hidden"
 	role="dialog"
 	aria-modal="true"
 	aria-label="Menu"
@@ -230,7 +243,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 		<button
 			type="button"
 			id="menu-close"
-			class="-mr-2 rounded p-2 text-ink transition-colors hover:text-brand"
+			class="-mr-2 rounded-(--radius-brand) p-2 text-ink transition-colors hover:text-accent-ink"
 			aria-label="Close menu"
 		>
 			<svg viewBox="0 0 20 20" class="h-5 w-5 fill-current" aria-hidden="true">
@@ -270,7 +283,7 @@ import AnnouncementBar from './AnnouncementBar.astro';
 									{child.children && (
 										/*
 											The drawer widens to 30rem at md, so leaf lists flow into
-											two columns there -- a long group (Kitchen Shelves) fits in
+											two columns there -- a long group (General Pest Control) fits in
 											half the vertical space. Stays single-column on phones where
 											the panel is narrow. `break-inside-avoid` keeps a link whole.
 										*/

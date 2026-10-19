@@ -36,10 +36,8 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 		data-scroll={String(popup.scrollPercent)}
 		data-frequency={popup.frequency}
 		aria-labelledby="site-popup-title"
-		class={`site-popup m-auto overflow-hidden rounded-(--radius-media) border border-line bg-surface p-0 text-body shadow-[0_40px_80px_-24px_rgba(20,18,15,0.55)] backdrop:bg-dark/60 backdrop:backdrop-blur-sm ${
-			popup.image
-				? 'w-[min(46rem,calc(100vw-2rem))]'
-				: 'w-[min(30rem,calc(100vw-2rem))]'
+		class={`site-popup m-auto overflow-hidden rounded-(--radius-media) border border-line bg-surface p-0 text-body shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)] backdrop:bg-dark/60 backdrop:backdrop-blur-sm ${
+			popup.image ? 'w-[min(46rem,calc(100vw-2rem))]' : 'w-[min(30rem,calc(100vw-2rem))]'
 		}`}
 	>
 		{/*
@@ -51,7 +49,7 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 			<button
 				value="dismiss"
 				aria-label="Close"
-				class={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
+				class={`flex h-8 w-8 items-center justify-center rounded-(--radius-brand) transition-colors ${
 					popup.image
 						? 'bg-surface/80 text-ink backdrop-blur-sm hover:bg-surface'
 						: 'text-body/60 hover:bg-muted hover:text-ink'
@@ -82,7 +80,7 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 						class="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-surface/30"
 						aria-hidden="true"
 					/>
-					{/* Brass seam, the shop-drawing rule, sitting on the join. */}
+					{/* Accent seam, the shop-drawing rule, sitting on the join. */}
 					<span
 						class="absolute inset-x-0 bottom-0 h-0.5 bg-accent sm:inset-y-0 sm:right-0 sm:left-auto sm:h-full sm:w-0.5"
 						aria-hidden="true"
@@ -92,7 +90,7 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 
 			{/*
 				Content panel carries a soft warm wash -- ivory lifting into a hint of
-				brass in the far corner -- so it feels lit and inviting rather than a
+				accent in the far corner -- so it feels lit and inviting rather than a
 				flat fill. Falls back cleanly on the plain (imageless) card too.
 			*/}
 			<div class="relative bg-gradient-to-br from-surface via-surface to-accent/8 px-8 pt-9 pb-9 sm:px-9">
@@ -100,9 +98,7 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 					<span class="absolute inset-x-0 top-0 h-0.5 bg-accent" aria-hidden="true" />
 				)}
 
-				{popup.eyebrow && (
-					<DimensionLine label={popup.eyebrow} rule="short" class="mb-5" />
-				)}
+				{popup.eyebrow && <DimensionLine label={popup.eyebrow} rule="short" class="mb-5" />}
 
 				<h2
 					id="site-popup-title"
@@ -130,40 +126,22 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 )}
 
 {popup.enabled && showLauncher && (
+	/*
+		A slim orange tab on the right edge, label set vertically: always in
+		reach, never covering content the way a floating pill does.
+	*/
 	<button
 		type="button"
 		data-popup-launcher
 		aria-haspopup="dialog"
 		aria-controls="site-popup"
-		class="popup-launcher group fixed right-5 bottom-5 z-40 inline-flex items-center gap-3 rounded-full border border-accent/40 bg-brand py-3 pr-6 pl-3.5 text-brand-fg shadow-[0_18px_40px_-12px_rgba(20,18,15,0.55)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_26px_56px_-14px_rgba(20,18,15,0.6)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent sm:right-8 sm:bottom-8"
+		class="popup-launcher group fixed top-1/2 right-0 z-40 flex flex-col items-center gap-3 bg-cta px-2.5 py-5 text-cta-fg shadow-[0_24px_48px_-24px_rgba(15,27,51,0.45)] transition-[background-color,padding] duration-200 hover:bg-cta-hover hover:pr-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
 	>
-		{/*
-			Brass tag mark on a filled disc -- the shop-drawing motif. The disc
-			brightens and the tag tilts on hover so the button feels alive and
-			clickable rather than a static chip.
-		*/}
-		<span
-			class="launcher-disc flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-dark shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)] transition-colors duration-300 group-hover:bg-cta"
-			aria-hidden="true"
-		>
-			<svg
-				viewBox="0 0 24 24"
-				class="launcher-tag h-4 w-4 fill-current transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-rotate-12"
-			>
-				<path d="M20.6 10.6l-7.2-7.2A2 2 0 0 0 12 2.8H5A2 2 0 0 0 3 4.8v7a2 2 0 0 0 .6 1.4l7.2 7.2a2 2 0 0 0 2.8 0l7-7a2 2 0 0 0 0-2.8zM7 8.8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-			</svg>
-		</span>
-		<span class="flex flex-col items-start gap-0.5 leading-none">
-			{/*
-				Eyebrow in the bone foreground at reduced opacity, not brass: brass on
-				the forest button is only ~3.3:1, which fails AA for text this small.
-			*/}
-			<span class="font-mono text-[0.5625rem] font-medium uppercase tracking-[0.2em] text-brand-fg/75">
-				{popup.eyebrow ?? 'This month'}
-			</span>
-			<span class="font-mono text-[0.75rem] font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
-				{launcherLabel}
-			</span>
+		<svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+			<path d="M20.6 10.6l-7.2-7.2A2 2 0 0 0 12 2.8H5A2 2 0 0 0 3 4.8v7a2 2 0 0 0 .6 1.4l7.2 7.2a2 2 0 0 0 2.8 0l7-7a2 2 0 0 0 0-2.8zM7 8.8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+		</svg>
+		<span class="rotate-180 text-sm font-semibold whitespace-nowrap [writing-mode:vertical-rl]">
+			{launcherLabel}
 		</span>
 	</button>
 )}
@@ -205,102 +183,36 @@ const launcherLabel = popup.cta?.label ?? popup.eyebrow ?? 'Special offer';
 	}
 
 	/*
-		While the dialog is open the launcher fades down and out of the way, then
-		returns when the offer closes. `transform`/`opacity` only, so it never
-		intercepts clicks meant for the modal. The base button carries
-		`transition-transform`; add opacity here so the fade is smooth both ways.
+		While the dialog is open the tab slides off the edge and returns when the
+		offer closes. `transform`/`opacity` only, so it never intercepts clicks
+		meant for the modal.
 	*/
 	.popup-launcher {
-		position: fixed;
+		transform: translateY(-50%);
 		transition:
 			transform 0.3s ease,
-			box-shadow 0.3s ease,
 			opacity 0.3s ease,
-			border-color 0.3s ease;
+			background-color 0.2s ease,
+			padding 0.2s ease;
 	}
 	.popup-launcher[data-dialog-open] {
 		opacity: 0;
-		transform: translateY(0.75rem);
+		transform: translate(100%, -50%);
 		pointer-events: none;
 	}
 
-	/*
-		Inviting cue: a brass ring pings outward from the button edge, like sonar,
-		so the offer visibly asks to be tapped. It lives on an ::before that sits
-		BEHIND the button (z-index -1) and expands via box-shadow -- crucially this
-		NEVER moves the button itself or changes its hit area, so hovering is rock
-		steady. (An earlier version bobbed the whole button, which moved the hit
-		target out from under the cursor and made hover flicker on and off.)
-	*/
-	.popup-launcher::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		z-index: -1;
-		border-radius: inherit;
-		/* Start frame for the ping; the keyframes drive it when motion is welcome. */
-		box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 60%, transparent);
-	}
-
 	@media (prefers-reduced-motion: no-preference) {
-		/* Two offset rings so there is almost always one mid-flight -- reads as a
-		   steady, lively pulse rather than a single blink. */
-		.popup-launcher::before {
-			animation: launcher-ping 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
-		}
-
-		/* The brass disc inside gives a soft heartbeat. It is an inner element, so
-		   scaling it leaves the button's outer hit area untouched -- no hover flicker. */
-		.popup-launcher .launcher-disc {
-			animation: launcher-throb 1.8s ease-in-out infinite;
-		}
-
 		.popup-launcher {
-			animation: popup-launcher-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
-		}
-	}
-
-	/* The attention motion settles once the visitor hovers/focuses -- they've
-	   noticed it. The button's own hover lift comes from its Tailwind transition,
-	   which is untouched here, so the lift stays smooth and stable. */
-	.popup-launcher:hover::before,
-	.popup-launcher:focus-visible::before,
-	.popup-launcher:hover .launcher-disc,
-	.popup-launcher:focus-visible .launcher-disc {
-		animation-play-state: paused;
-	}
-
-	@keyframes launcher-ping {
-		0% {
-			box-shadow:
-				0 0 0 0 color-mix(in srgb, var(--color-accent) 60%, transparent),
-				0 0 0 0 color-mix(in srgb, var(--color-accent) 40%, transparent);
-		}
-		100% {
-			box-shadow:
-				0 0 0 14px color-mix(in srgb, var(--color-accent) 0%, transparent),
-				0 0 0 24px color-mix(in srgb, var(--color-accent) 0%, transparent);
-		}
-	}
-
-	@keyframes launcher-throb {
-		0%,
-		100% {
-			transform: scale(1);
-		}
-		50% {
-			transform: scale(1.1);
+			animation: popup-launcher-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s backwards;
 		}
 	}
 
 	@keyframes popup-launcher-in {
 		from {
-			opacity: 0;
-			transform: translateY(1rem);
+			transform: translate(100%, -50%);
 		}
 		to {
-			opacity: 1;
-			transform: translateY(0);
+			transform: translate(0, -50%);
 		}
 	}
 </style>

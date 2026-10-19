@@ -1,9 +1,9 @@
 {
-  "title": "Cabinet shelving in {{city}}",
-  "summary": "Glide-out shelving measured and installed across {{city}}, usually within two weeks of the consultation.",
+  "title": "Pest control in {{city}}",
+  "summary": "Scorpion, termite, rodent and general pest control across {{city}}, usually within a day of your call.",
   "seo": {
-    "title": "Glide-Out Cabinet Shelving in {{city}}, {{region}}",
-    "description": "Custom glide-out shelves for cabinets in {{city}}. Measured on site, built to the sixteenth, installed in one visit.",
+    "title": "Pest Control in {{city}}, {{region}}",
+    "description": "Scorpion, termite, rodent and general pest control in {{city}}. Inspected, treated at the source, documented on every visit.",
     "noindex": false
   },
   "sections": [
@@ -11,8 +11,8 @@
       "type": "rich_text",
       "headingLevel": "h2",
       "eyebrow": "{{city}}, {{region}}",
-      "heading": "Cabinet shelving in {{city}}.",
-      "body": "We cover {{city}} and the surrounding area, including {{serves}}.\n\nEvery shelf is measured in your home and cut to that opening, so an older {{city}} kitchen gets the same fit as a new build. Postcodes served include {{postalCodes}}.",
+      "heading": "Pest control in {{city}}.",
+      "body": "We cover {{city}} and the surrounding area, including {{serves}}.\n\nEvery home is inspected before it is treated, so an older {{city}} block home gets the same attention as a new build. Postcodes served include {{postalCodes}}.",
       "align": "left",
       "surface": "light",
       "spacing": "md",
@@ -22,20 +22,20 @@
       "type": "feature_list",
       "headingLevel": "h2",
       "eyebrow": "What to expect",
-      "heading": "How a {{city}} job runs.",
+      "heading": "How a {{city}} visit runs.",
       "columns": "3",
       "items": [
         {
-          "title": "Measured on site",
-          "body": "A designer comes to your {{city}} address and measures every opening you want changed."
+          "title": "Inspected first",
+          "body": "A licensed technician walks your {{city}} property inside and out and maps every entry point."
         },
         {
-          "title": "Built to those numbers",
-          "body": "Cut in the shop to the sixteenth of an inch, usually inside two weeks."
+          "title": "Treated at the source",
+          "body": "Baits, barriers and sealing where pests live and enter, not just where you saw them."
         },
         {
-          "title": "Fitted in one visit",
-          "body": "Most {{city}} installs take a morning, without removing doors or counters."
+          "title": "Documented every time",
+          "body": "Every {{city}} visit ends with a written field report and photos of what we found and did."
         }
       ],
       "surface": "muted",
@@ -45,7 +45,7 @@
     {
       "type": "collection_feed",
       "headingLevel": "h2",
-      "eyebrow": "What we fit",
+      "eyebrow": "What we treat",
       "heading": "Services in {{city}}.",
       "source": "services",
       "layout": "grid",
@@ -69,7 +69,7 @@
         },
         {
           "question": "How quickly can you get to {{city}}?",
-          "answer": "Usually within a week for the consultation, and about two weeks from measure to installation."
+          "answer": "Usually the next business day for an inspection, and the same day for wasps, bees and rodents in the living space."
         },
         {
           "question": "Which parts of {{city}} do you cover?",
@@ -95,11 +95,11 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "No obligation",
-      "heading": "Book a measure in {{city}}.",
-      "body": "About an hour on site, and a fixed quote before anything is built. Call {{phone}} or book online.",
+      "heading": "Book an inspection in {{city}}.",
+      "body": "About 45 minutes on site, a written plan and a fixed price. Call {{phone}} or book online.",
       "ctas": [
         {
-          "label": "Book a consultation",
+          "label": "Book an inspection",
           "href": "/contact",
           "style": "primary",
           "newTab": false

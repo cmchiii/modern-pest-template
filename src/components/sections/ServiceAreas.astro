@@ -5,8 +5,10 @@ import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
 import Media from '../ui/Media.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
+import Button from '../ui/Button.astro';
+import SectionHead from '../ui/SectionHead.astro';
 import { childLevel } from '../../lib/section-base';
+import { site } from '../../lib/site';
 
 type Props = ServiceAreas;
 
@@ -42,102 +44,89 @@ const gridCols = {
 	'3': 'sm:grid-cols-2 lg:grid-cols-3',
 	'4': 'sm:grid-cols-2 lg:grid-cols-4',
 };
+const card = onDark ? 'border-current/15 bg-current/[0.05]' : 'border-line bg-surface';
 ---
 
 <Section anchor={anchor} surface={surface} spacing={spacing} width={width}>
-	{(eyebrow || heading || intro || map) && (
-		<div class={map ? 'mb-12 grid items-center gap-12 lg:grid-cols-2 lg:gap-16' : 'mb-12'}>
-			{(eyebrow || heading || intro) && (
-				<header class={map ? 'max-w-xl' : 'max-w-2xl'}>
-					{eyebrow && (
-						<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-6 max-w-xs" />
-					)}
-					{heading && (
-						<Heading level={headingLevel} size="lg">
-							{heading}
-						</Heading>
-					)}
-					{intro && <Prose html={intro} invert={onDark} class="mt-6" />}
-				</header>
-			)}
+	<SectionHead
+		eyebrow={eyebrow}
+		heading={heading}
+		intro={intro}
+		level={headingLevel}
+		onDark={onDark}
+	/>
 
-			{map && <Media media={map} class="rounded-(--radius-media)" />}
-		</div>
-	)}
-
+	{/*
+		City cards: each service area leads with its aerial photo and name, then
+		the neighbourhoods and ZIP codes, and the whole card links to the town
+		page. The map follows full width and tall, with the "outside these
+		areas?" call box floating over its top-right corner on large screens.
+	*/}
 	{locations.length === 0 ? (
 		<p class="text-sm opacity-70">No service areas published yet.</p>
 	) : (
 		regions.map((region) => (
-			<div class="mb-12 last:mb-0">
-				{regions.length > 1 && (
-					<p class="mb-6 font-mono text-[0.6875rem] uppercase tracking-[0.14em] opacity-65">
-						{region}
-					</p>
-				)}
-
-				<ul class={`grid gap-5 ${gridCols[columns]}`}>
+			<div class="mb-6 last:mb-0">
+				{regions.length > 1 && <p class="mono-label mb-4 opacity-65">{region}</p>}
+				<ul class={`grid gap-6 ${gridCols[columns]}`}>
 					{locations
 						.filter((l) => l.data.region === region)
 						.map((location) => (
 							<li
-								class={`group relative flex flex-col p-6 transition-[transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1`}
+								class={`group relative flex flex-col border transition-shadow duration-300 hover:shadow-[0_24px_48px_-24px_rgba(15,27,51,0.35)] ${card}`}
 							>
-								{/* Shop-drawing top rule instead of a full border -- a hairline
-									across the card head that thickens to a brass accent on hover,
-									the same top-edge device the quote cards use. */}
-								<span
-									aria-hidden="true"
-									class={`absolute inset-x-0 top-0 h-px transition-[height,background-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-										onDark
-											? 'bg-current/20 group-hover:h-1 group-hover:bg-accent'
-											: 'bg-line group-hover:h-1 group-hover:bg-accent-ink'
-									}`}
-								>
-								</span>
+								<div class="relative aspect-[4/3] overflow-hidden bg-dark">
+									{location.data.image && (
+										<img
+											src={location.data.image.src}
+											alt={location.data.image.alt}
+											loading="lazy"
+											class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+										/>
+									)}
+									<div class="absolute inset-0 bg-gradient-to-t from-dark/85 via-dark/20 to-transparent" />
+									<div class="absolute inset-x-0 bottom-0 p-5 text-dark-fg [&_:is(h3,h4)]:!text-dark-fg">
+										<Heading level={childLevel(headingLevel, Boolean(heading))} size="md">
+											<a href={`/locations/${location.id}`}>
+												<span class="absolute inset-0 z-[1]" aria-hidden="true" />
+												{location.data.city}
+											</a>
+										</Heading>
+										<p class="mt-1 text-xs text-dark-fg/75">
+											{location.data.region} · Daily routes
+										</p>
+									</div>
+								</div>
 
-								<Heading level={childLevel(headingLevel, Boolean(heading))} size="sm">
-									<a
-										href={`/locations/${location.id}`}
-										class="flex items-center justify-between gap-2 transition-colors group-hover:text-brand"
-									>
-										<span class="absolute inset-0" aria-hidden="true" />
-										<span>{location.data.city}</span>
-										{/* Arrow in a circle -- an unambiguous 'go to page' button that's
-											visible at rest and fills with the brand colour on hover. */}
-										<span
-											aria-hidden="true"
-											class={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
-												onDark
-													? 'bg-current/10 text-current group-hover:bg-accent group-hover:text-accent-fg'
-													: 'bg-brand/[0.07] text-brand group-hover:bg-brand group-hover:text-brand-fg'
-											}`}
+								<div class="flex flex-1 flex-col p-5">
+									{showServed && location.data.serves.length > 0 && (
+										<p class="text-sm leading-relaxed opacity-80">
+											{location.data.serves.join(', ')}
+										</p>
+									)}
+									{showPostalCodes && location.data.postalCodes.length > 0 && (
+										<ul
+											class="mt-4 flex flex-wrap gap-1.5"
+											aria-label={`ZIP codes in ${location.data.city}`}
 										>
-											<svg viewBox="0 0 16 16" class="h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5">
-												<path
-													fill="none"
-													stroke="currentColor"
-													stroke-width="1.75"
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M3 8h10M9 4l4 4-4 4"
-												/>
-											</svg>
+											{location.data.postalCodes.map((zip) => (
+												<li
+													class={`px-2 py-0.5 text-xs tabular-nums ${onDark ? 'bg-current/10' : 'bg-muted text-ink'}`}
+												>
+													{zip}
+												</li>
+											))}
+										</ul>
+									)}
+									<p
+										class={`mt-auto flex items-center gap-2 pt-5 text-sm font-semibold ${onDark ? 'text-accent' : 'text-brand'}`}
+									>
+										View {location.data.city}
+										<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">
+											→
 										</span>
-									</a>
-								</Heading>
-
-								{showServed && location.data.serves.length > 0 && (
-									<p class="mt-3 text-sm leading-relaxed opacity-75">
-										{location.data.serves.join(', ')}
 									</p>
-								)}
-
-								{showPostalCodes && location.data.postalCodes.length > 0 && (
-									<p class="mt-2 font-mono text-[0.625rem] uppercase tracking-[0.12em] opacity-55">
-										{location.data.postalCodes.join(' / ')}
-									</p>
-								)}
+								</div>
 							</li>
 						))}
 				</ul>
@@ -145,5 +134,34 @@ const gridCols = {
 		))
 	)}
 
-	{footnote && <Prose html={footnote} invert={onDark} size="sm" class="mt-10 opacity-70" />}
+	{(map || footnote) && (
+		<div class={`relative mt-6 border ${onDark ? 'border-current/15' : 'border-line'}`}>
+			{map && (
+				<div class="relative overflow-hidden [&_iframe]:aspect-auto [&_iframe]:h-[26rem] sm:[&_iframe]:h-[32rem] lg:[&_iframe]:h-[38rem]">
+					<Media media={map} class="grayscale" />
+					<span
+						class="pointer-events-none absolute inset-0 bg-brand/15 mix-blend-multiply"
+						aria-hidden="true"
+					/>
+				</div>
+			)}
+			<div
+				class={`flex flex-col gap-5 bg-brand p-7 text-brand-fg sm:p-8 ${
+					map
+						? 'lg:absolute lg:top-8 lg:right-8 lg:w-[22rem] lg:shadow-[0_24px_48px_-24px_rgba(15,27,51,0.55)]'
+						: ''
+				}`}
+			>
+				<p class="text-xl leading-snug font-semibold tracking-[-0.02em]">Outside these areas?</p>
+				{footnote && <Prose html={footnote} size="sm" invert class="opacity-85" />}
+				<div>
+					<Button
+						label={`Call ${site.contact.phone}`}
+						href={site.contact.phoneHref}
+						style="accent"
+					/>
+				</div>
+			</div>
+		</div>
+	)}
 </Section>

@@ -7,8 +7,8 @@ layout shape so one component serves any trade.
 
 **Name a section by what it looks like, never by what it says.**
 
-ShelfGenie ships a block called `terms-conditions` that renders "How ShelfGenie
-Works". The name lies about the shape, so nobody can reuse it and nobody can
+A competitor site ships a block called `terms-conditions` that renders "How
+It Works". The name lies about the shape, so nobody can reuse it and nobody can
 find it. That is the failure to avoid.
 
 - Right: `card_grid`, `media_split`, `steps`
@@ -103,12 +103,12 @@ The heart of a contractor site, and where most of the page count comes from.
 Sections that read a collection instead of hand-typed content. These are what
 keep a 200-page site maintainable.
 
-| Section           | Shape                            | Variants                                                                                    | Status    |
-| ----------------- | -------------------------------- | ------------------------------------------------------------------------------------------- | --------- |
+| Section           | Shape                            | Variants                                                                           | Status    |
+| ----------------- | -------------------------------- | ---------------------------------------------------------------------------------- | --------- |
 | `collection_feed` | Latest N items from a collection | source `projects` / `services` / `locations`; layout grid / list / carousel; limit | **Built** |
-| `carousel`        | Sliding row of cards or media    | cards / media / quotes; auto or manual                                                      | Later     |
-| `video_embed`     | A single video                   | inline / lightbox                                                                           | Later     |
-| `embed_block`     | Arbitrary third-party embed      | aspect-locked / free height                                                                 | Later     |
+| `carousel`        | Sliding row of cards or media    | cards / media / quotes; auto or manual                                             | Later     |
+| `video_embed`     | A single video                   | inline / lightbox                                                                  | Later     |
+| `embed_block`     | Arbitrary third-party embed      | aspect-locked / free height                                                        | Later     |
 
 Give `card_grid`, `media_gallery` and `collection_feed` a shared
 `source: manual | auto` field. Manual means the editor picks items; auto means
@@ -116,11 +116,11 @@ the section queries a collection. Index pages then maintain themselves.
 
 ## Page structure
 
-| Section          | Shape                        | Variants                                           | Status    |
-| ---------------- | ---------------------------- | -------------------------------------------------- | --------- |
-| `page_header`    | Compact interior page opener | with or without image                              | **Built** |
-| `anchor_nav`     | Sticky in-page jump links    | sticky / static                                    | Later     |
-| `spacer_divider` | Deliberate gap or rule       | space only / rule / dimension line                 | Later     |
+| Section          | Shape                        | Variants                           | Status    |
+| ---------------- | ---------------------------- | ---------------------------------- | --------- |
+| `page_header`    | Compact interior page opener | with or without image              | **Built** |
+| `anchor_nav`     | Sticky in-page jump links    | sticky / static                    | Later     |
+| `spacer_divider` | Deliberate gap or rule       | space only / rule / dimension line | Later     |
 
 Breadcrumbs are not a section and not part of `page_header`. The trail is
 derived from the route (`lib/breadcrumbs.ts`) and rendered by `BreadcrumbBar`
@@ -141,16 +141,16 @@ Header and navigation, footer, announcement bar, cookie notice, skip link.
 Sections compose into pages. These are the pages a complete site needs, and the
 ones marked _collection_ are generated from data rather than authored one by one.
 
-| Page                                                            | Source                                     |
-| --------------------------------------------------------------- | ------------------------------------------ |
-| Home, About, Contact, FAQ, Financing, Careers, Free estimate    | One JSON file each                         |
-| Privacy, Terms, Accessibility, 404                              | One JSON file each                         |
-| Services index, Projects index, Service areas index            | One JSON file, feeding a `collection_feed` |
-| Service detail                                                  | _collection_                               |
-| Project detail                                                  | _collection_                               |
-| Location detail                                                 | _collection_, one per town                 |
+| Page                                                         | Source                                     |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| Home, About, Contact, FAQ, Financing, Careers, Free estimate | One JSON file each                         |
+| Privacy, Terms, Accessibility, 404                           | One JSON file each                         |
+| Services index, Projects index, Service areas index          | One JSON file, feeding a `collection_feed` |
+| Service detail                                               | _collection_                               |
+| Project detail                                               | _collection_                               |
+| Location detail                                              | _collection_, one per town                 |
 
-Location pages are where the page count explodes. ShelfGenie has 1,241 of them
+Location pages are where the page count explodes. A national pest control brand can run to a thousand or more
 against roughly 35 hand-authored pages. They come from one template plus a data
 row per town, not from an editor building them individually.
 

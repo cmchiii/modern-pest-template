@@ -57,7 +57,7 @@ const link =
 			href={hasPrev ? href(current - 1) : undefined}
 			class={`${link} ${
 				hasPrev
-					? 'border border-line text-ink hover:border-ink'
+					? 'border border-line text-ink hover:border-line'
 					: 'pointer-events-none border border-line opacity-35'
 			}`}
 			aria-disabled={hasPrev ? undefined : 'true'}
@@ -80,7 +80,7 @@ const link =
 							class={`${link} ${
 								item === current
 									? 'bg-brand text-brand-fg'
-									: 'border border-line text-ink hover:border-ink'
+									: 'border border-line text-ink hover:border-line'
 							}`}
 							aria-current={item === current ? 'page' : undefined}
 						>
@@ -96,7 +96,7 @@ const link =
 			href={hasNext ? href(current + 1) : undefined}
 			class={`${link} ${
 				hasNext
-					? 'border border-line text-ink hover:border-ink'
+					? 'border border-line text-ink hover:border-line'
 					: 'pointer-events-none border border-line opacity-35'
 			}`}
 			aria-disabled={hasNext ? undefined : 'true'}

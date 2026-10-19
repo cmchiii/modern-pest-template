@@ -71,9 +71,9 @@ const pairs = [
 const failures = pairs.filter((p) => !p.passes && !p.info);
 
 const fonts = [
-	{ name: 'Display', stack: t.fontDisplay, sample: 'Keep your cabinets' },
+	{ name: 'Display', stack: t.fontDisplay, sample: 'Nothing gets in' },
 	{ name: 'Heading', stack: t.fontHeading, sample: 'Built to fit your opening' },
-	{ name: 'Body', stack: t.fontBody, sample: 'Every shelf is measured in your kitchen.' },
+	{ name: 'Body', stack: t.fontBody, sample: 'Every visit ends with a field report.' },
 	{ name: 'Mono', stack: t.fontMono, sample: '23-11/16 IN.' },
 ];
 ---
@@ -143,7 +143,7 @@ const fonts = [
 								<td class="py-3 pr-4">{p.label}</td>
 								<td class="py-3 pr-4">
 									<span
-										class="inline-block rounded px-3 py-1.5"
+										class="inline-block rounded-(--radius-brand) px-3 py-1.5"
 										style={`background:${p.bg};color:${p.fg}`}
 									>
 										Sample
@@ -154,7 +154,11 @@ const fonts = [
 								<td class="py-3">
 									<span
 										class={`font-mono text-xs uppercase tracking-[0.1em] ${
-											p.info ? 'text-body opacity-60' : p.passes ? 'text-brand' : 'text-red-700'
+											p.info
+												? 'text-body opacity-60'
+												: p.passes
+													? 'text-accent-ink'
+													: 'text-red-700'
 										}`}
 									>
 										{p.info ? 'Avoided' : p.passes ? p.verdict : 'Fail'}

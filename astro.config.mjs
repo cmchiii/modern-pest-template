@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
 	// Overridden per client site. Used by @astrojs/sitemap and canonical URLs.
-	site: 'https://modern-cabinets-template.vercel.app',
+	site: 'https://clearline-pest-template.vercel.app',
 	integrations: [
 		sitemap({
 			// /theme is an internal reference marked noindex. Listing it in the

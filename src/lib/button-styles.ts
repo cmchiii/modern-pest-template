@@ -27,39 +27,45 @@ export type ButtonStyle = 'primary' | 'accent' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 // Everything that is NOT size-related. Size comes from buttonSize() so the two
-// never collide.
+// never collide. Flat and square, sentence case; filled buttons lift a pixel
+// on a soft shadow when hovered.
 export const buttonBase =
-	'group inline-flex items-center justify-center gap-2.5 rounded-(--radius-media) whitespace-nowrap font-mono uppercase transition-colors duration-300';
+	'group inline-flex items-center justify-center gap-2.5 rounded-(--radius-brand) whitespace-nowrap font-heading transition-[color,background-color,border-color,transform,box-shadow] duration-200';
+
+const lifted =
+	'border border-transparent shadow-[0_1px_2px_rgba(15,27,51,0.12)] hover:-translate-y-px hover:shadow-[0_10px_24px_-10px_rgba(15,27,51,0.45)] active:translate-y-0';
 
 /** Size utilities for a given scale token. One font-size/padding/min-height each. */
 export function buttonSize(size: ButtonSize): string {
 	switch (size) {
 		case 'sm':
-			return 'min-h-10 px-6 text-[0.6875rem] font-medium tracking-[0.14em]';
+			return 'min-h-10 px-5 text-sm font-semibold tracking-[-0.005em]';
 		case 'lg':
-			return 'min-h-[3.5rem] px-9 text-sm font-semibold tracking-[0.16em]';
+			return 'min-h-[3.5rem] px-8 text-base font-semibold tracking-[-0.01em]';
 		default:
-			return 'min-h-[3.25rem] px-8 text-[0.8125rem] font-semibold tracking-[0.15em]';
+			return 'min-h-12 px-7 text-[0.9375rem] font-semibold tracking-[-0.01em]';
 	}
 }
 
 /** Variant classes. `onDark` inverts the outline variants for dark surfaces. */
 export function buttonVariant(style: ButtonStyle, onDark = false): string {
 	switch (style) {
-		// The brass accent reads as a true call-to-action on any surface -- crucially
-		// on the brand-green banner, where a `primary` (green-on-green) button all but
-		// vanishes. Same treatment on light or dark, so the CTA always pops.
+		// The orange CTA: the one hot colour, legible on white, navy and dark alike.
 		case 'accent':
-			return 'bg-cta text-cta-fg shadow-[0_12px_28px_-8px_rgba(224,168,62,0.45)] hover:bg-cta-hover';
+			return `bg-cta text-cta-fg hover:bg-cta-hover ${lifted}`;
 		case 'secondary':
 			return onDark
-				? 'border border-current/30 text-current hover:border-current/60'
-				: 'border border-line text-ink hover:border-ink';
+				? 'border border-current/35 text-current hover:border-current hover:bg-current/10'
+				: 'border border-ink/25 text-ink hover:border-ink';
 		case 'ghost':
 			return onDark
-				? 'px-0 text-current hover:text-accent'
-				: 'px-0 text-brand hover:text-accent';
+				? 'px-0 text-current underline decoration-current/40 decoration-1 underline-offset-[6px] hover:decoration-current'
+				: 'px-0 text-brand underline decoration-brand/40 decoration-1 underline-offset-[6px] hover:decoration-brand';
+		// Primary hovers to the apricot accent so the change always reads. On dark
+		// grounds a navy fill would vanish, so it starts white instead.
 		default:
-			return 'bg-brand text-brand-fg hover:bg-brand-hover';
+			return onDark
+				? `bg-surface text-ink hover:bg-accent hover:text-accent-fg ${lifted}`
+				: `bg-brand text-brand-fg hover:bg-accent hover:text-accent-fg ${lifted}`;
 	}
 }

@@ -1,26 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!--
-    Favicon based on the Modern Cabinets logo mark (public/media/logos/logo-primary.svg):
-    an arched cabinet with two door handles, a centre seam and a base rail.
-    Simplified and thickened so it still reads at 16px. Brand forest tile with a
-    bone-coloured mark; inverts to a dark tile in dark mode for contrast.
-  -->
-  <rect class="bg" width="128" height="128" rx="24" fill="#1E3A32"/>
-  <g class="mark" fill="none" stroke="#F3ECDD" stroke-width="7"
-     stroke-linecap="round" stroke-linejoin="round" transform="translate(29 30)">
-    <!-- Cabinet body: arched top over straight sides. -->
-    <path d="M6 72 V30 A29 29 0 0 1 64 30 V72"/>
-    <!-- Centre seam between the two doors. -->
-    <line x1="35" y1="7" x2="35" y2="72"/>
-    <!-- Two door handles. -->
-    <line x1="30" y1="40" x2="30" y2="52"/>
-    <line x1="40" y1="40" x2="40" y2="52"/>
-    <!-- Base rail. -->
-    <line x1="0" y1="72" x2="70" y2="72"/>
-  </g>
-  <style>
-    @media (prefers-color-scheme: dark) {
-      .bg { fill: #141414; }
-    }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Favicon from the Clearline mark: navy tile, white horizon line, orange square. -->
+  <g transform="translate(0 0) scale(1)">
+<rect width="100" height="100" fill="#17284A"/>
+<rect x="18" y="62" width="64" height="6" fill="#FFFFFF"/>
+<rect x="52" y="34" width="22" height="22" fill="#E8590C"/>
+</g>
 </svg>

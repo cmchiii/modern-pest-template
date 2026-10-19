@@ -1,95 +1,83 @@
 ---
 import { site } from '../../lib/site';
-import DimensionLine from '../ui/DimensionLine.astro';
+import Button from '../ui/Button.astro';
 
 const year = new Date().getFullYear();
 const address = site.contact.address;
 ---
 
-<footer class="bg-dark text-dark-fg">
+<footer class="on-dark bg-dark text-dark-fg">
+	<div class="edge-rule h-1" aria-hidden="true"></div>
+
 	<div class="mx-auto w-full max-w-[104rem] px-5 sm:px-8 lg:px-12">
 		{/*
-			The footer opens on the site's signature device -- a drafted dimension
-			line -- so it reads as the closing panel of the same shop drawing rather
-			than a detached slab. Muted rule spanning the measure; the brass is held
-			back for a single accent (the phone number) rather than lining the page.
+			Closing call to action: one line of reassurance and the two ways to
+			book, before the directory below.
 		*/}
-		<DimensionLine label={site.tagline ?? site.name} rule="full" class="py-9 text-dark-fg/40" />
-
-		<div class="grid gap-x-12 gap-y-12 pb-14 lg:grid-cols-[1.1fr_2fr]">
+		<div class="grid items-center gap-8 border-b border-current/12 py-14 lg:grid-cols-[1fr_auto] lg:py-16">
 			<div>
-				{site.logo ? (
-					/*
-						The horizontal logo is drawn dark (green icon, near-black wordmark)
-						for light headers. On this near-black footer that would vanish, so
-						we invert it to a light tone -- the same cream the text wordmark
-						used -- rather than shipping a second asset.
-					*/
-					<img
-						src={site.logo.src}
-						alt={site.logo.alt}
-						class="h-14 w-auto brightness-0 invert"
-					/>
+				<p class="text-[clamp(1.75rem,3.2vw,2.75rem)] leading-[1.05] font-semibold tracking-[-0.03em]">
+					Ready when you are.
+					<span class="mark-on-dark">Free inspection, no contract.</span>
+				</p>
+				{site.contact.hours && <p class="mt-3 text-sm text-dark-fg/65">{site.contact.hours}</p>}
+			</div>
+			<div class="flex flex-wrap items-center gap-3">
+				{site.primaryCta && <Button {...site.primaryCta} style="accent" size="lg" />}
+				<Button
+					label={site.contact.phone}
+					href={site.contact.phoneHref}
+					style="secondary"
+					size="lg"
+					onDark
+				/>
+			</div>
+		</div>
+
+		<div class="grid gap-12 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+			<div class="sm:col-span-2 lg:col-span-1">
+				{site.logoOnDark ? (
+					<img src={site.logoOnDark.src} alt={site.logoOnDark.alt} class="h-11 w-auto" />
+				) : site.logo ? (
+					/* No light logo set: knock the header logo out to white for the dark ground. */
+					<img src={site.logo.src} alt={site.logo.alt} class="h-11 w-auto brightness-0 invert" />
 				) : (
-					<p class="font-display text-3xl font-bold uppercase tracking-tight text-dark-fg">
-						{site.name}
-					</p>
+					<p class="text-2xl font-semibold tracking-tight">{site.name}</p>
+				)}
+				{site.tagline && (
+					<p class="mt-5 max-w-xs text-sm leading-relaxed text-dark-fg/70">{site.tagline}</p>
 				)}
 
-				<div class="mt-7 space-y-4 text-sm">
-					{/*
-						Contact rows are labelled like spec-sheet callouts: a mono
-						measurement-register key sitting above each value, echoing the
-						mega-menu column heads and dimension eyebrows used sitewide.
-					*/}
-					<div>
-						<span class="mono-label block text-dark-fg/45">Call</span>
-						<a
-							href={site.contact.phoneHref}
-							class="mt-1 inline-block font-display text-xl font-bold tracking-tight text-accent transition-colors hover:text-dark-fg"
-						>
-							{site.contact.phone}
-						</a>
-					</div>
-
+				<dl class="mt-7 space-y-3 text-sm">
 					{site.contact.email && (
-						<div>
-							<span class="mono-label block text-dark-fg/45">Write</span>
-							<a
-								href={`mailto:${site.contact.email}`}
-								class="mt-1 inline-block text-dark-fg/85 underline-offset-4 transition-colors hover:text-accent hover:underline"
-							>
-								{site.contact.email}
-							</a>
+						<div class="flex gap-3">
+							<dt class="w-16 shrink-0 text-dark-fg/50">Email</dt>
+							<dd>
+								<a href={`mailto:${site.contact.email}`} class="hover:text-accent">
+									{site.contact.email}
+								</a>
+							</dd>
 						</div>
 					)}
-
 					{address && (
-						<div>
-							<span class="mono-label block text-dark-fg/45">Visit</span>
-							<address class="mt-1 not-italic leading-relaxed text-dark-fg/85">
-								{address.street}
-								<br />
-								{address.city}, {address.region} {address.postalCode}
-							</address>
+						<div class="flex gap-3">
+							<dt class="w-16 shrink-0 text-dark-fg/50">Office</dt>
+							<dd>
+								<address class="not-italic">
+									{address.street}, {address.city}, {address.region} {address.postalCode}
+								</address>
+							</dd>
 						</div>
 					)}
-
-					{site.contact.hours && (
-						<div>
-							<span class="mono-label block text-dark-fg/45">Hours</span>
-							<p class="mt-1 text-dark-fg/85">{site.contact.hours}</p>
-						</div>
-					)}
-				</div>
+				</dl>
 
 				{site.social.length > 0 && (
-					<ul class="mt-8 flex gap-3">
+					<ul class="mt-7 flex gap-2">
 						{site.social.map((s) => (
 							<li>
 								<a
 									href={s.href}
-									class="inline-flex items-center rounded-(--radius-brand) border border-current/20 px-3.5 py-1.5 font-mono text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-dark-fg/80 transition-colors hover:border-accent hover:text-accent"
+									class="inline-flex items-center border border-current/20 px-3 py-1.5 text-xs font-medium text-dark-fg/80 transition-colors hover:border-accent hover:text-accent"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -101,43 +89,30 @@ const address = site.contact.address;
 				)}
 			</div>
 
-			{/*
-				Link columns carry the same brass dimension-stub head as the header
-				mega-menu, and a hairline vertical rule between columns (mega-menu's
-				`before:` device) so the two menus read as one system.
-			*/}
-			<div class="grid gap-x-8 gap-y-10 sm:grid-cols-3">
-				{site.footer.columns.map((column) => (
-					<div class="relative sm:pl-8 sm:before:absolute sm:before:inset-y-1 sm:before:left-0 sm:before:w-px sm:before:bg-current/12 sm:first:pl-0 sm:first:before:hidden">
-						<p class="mono-label mb-4 text-dark-fg/45">{column.title}</p>
-						<ul class="space-y-2.5 text-sm">
-							{column.links.map((link) => (
-								<li>
-									<a
-										href={link.href}
-										class="text-dark-fg/80 underline-offset-4 transition-colors hover:text-accent hover:underline"
-									>
-										{link.label}
-									</a>
-								</li>
-							))}
-						</ul>
-					</div>
-				))}
-			</div>
+			{site.footer.columns.map((column) => (
+				<div>
+					<p class="mb-5 text-sm font-semibold">{column.title}</p>
+					<ul class="space-y-3 text-sm">
+						{column.links.map((link) => (
+							<li>
+								<a href={link.href} class="text-dark-fg/70 transition-colors hover:text-accent">
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
 		</div>
 
-		<div class="flex flex-col gap-4 border-t border-current/12 py-8 text-xs text-dark-fg/60 sm:flex-row sm:items-center sm:justify-between">
+		<div class="flex flex-col gap-4 border-t border-current/12 py-7 text-xs text-dark-fg/55 sm:flex-row sm:items-center sm:justify-between">
 			<p>
 				&copy; {year} {site.legalName ?? site.name}. All rights reserved.
 			</p>
 			<ul class="flex flex-wrap gap-x-6 gap-y-2">
 				{site.footer.legal.map((link) => (
 					<li>
-						<a
-							href={link.href}
-							class="underline-offset-4 transition-colors hover:text-accent hover:underline"
-						>
+						<a href={link.href} class="transition-colors hover:text-accent">
 							{link.label}
 						</a>
 					</li>

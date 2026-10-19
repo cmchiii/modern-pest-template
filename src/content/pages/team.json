@@ -1,11 +1,11 @@
 {
   "title": "Meet the team",
-  "permalink": "https://modern-cabinets-template.vercel.app/team",
+  "permalink": "https://clearline-pest-template.vercel.app/team",
   "order": 60,
   "draft": false,
   "seo": {
-    "title": "Meet the team — Modern Cabinets",
-    "description": "The designers, cabinetmakers and installers behind Modern Cabinets. Licensed, family owned, and building glide-out shelving across the Phoenix valley since 2009.",
+    "title": "Meet the team — Clearline Pest Solutions",
+    "description": "The licensed technicians, inspectors and office crew behind Clearline Pest Solutions. Family owned and protecting homes across the Phoenix valley since 2011.",
     "noindex": false
   },
   "sections": [
@@ -17,29 +17,29 @@
         "kind": "image",
         "image": {
           "source": "upload",
-          "src": "/media/images/team-group.avif",
-          "alt": "Wooden cabinetry with open shelving"
+          "src": "/media/images/black-widow.avif",
+          "alt": "Black widow spider specimen, front view"
         }
       },
       "eyebrow": "About us",
-      "heading": "Meet the team behind Modern Cabinets.",
-      "body": "Licensed cabinetmakers, seasoned installers, and a support crew who treat every job like it is their own home. Get to know the people building your shelving across the Phoenix valley.",
-      "mediaNote": "Family owned since 2009",
+      "heading": "Meet the team behind Clearline Pest Solutions.",
+      "body": "Licensed technicians, termite inspectors and an office crew who treat every home like their own. Get to know the people keeping pests out across the Phoenix valley.",
+      "mediaNote": "Family owned since 2011",
       "ctas": [
         {
-          "label": "Book a free consultation",
+          "label": "Book a free inspection",
           "href": "/contact",
           "style": "primary",
           "newTab": false
         },
         {
-          "label": "Call (555) 014-2200",
-          "href": "tel:+15550142200",
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
           "style": "secondary",
           "newTab": false
         }
       ],
-      "badges": ["Family owned", "Licensed & insured", "Fixed quotes"],
+      "badges": ["Family owned", "Licensed & insured", "No contracts"],
       "surface": "light",
       "spacing": "md",
       "width": "wide"
@@ -49,7 +49,7 @@
       "headingLevel": "h2",
       "eyebrow": "Our team",
       "heading": "The people powering your service.",
-      "intro": "Designers, cabinetmakers, and office staff who show up on time and stand behind the work. Add each person's photo in Site Settings.",
+      "intro": "Technicians, inspectors and office staff who show up on time and stand behind the work. Add each person's photo in Site Settings.",
       "columns": "3",
       "members": [
         {
@@ -59,8 +59,8 @@
             "alt": "Portrait of Marcus Reyes"
           },
           "name": "Marcus Reyes",
-          "role": "Owner & master cabinetmaker",
-          "bio": "18 years in the trade. Founded the company on a simple promise: do every job right."
+          "role": "Owner & licensed qualifying party",
+          "bio": "18 years in pest control. Started the company on a simple promise: show the customer the work."
         },
         {
           "photo": {
@@ -70,7 +70,7 @@
           },
           "name": "Daniela Cruz",
           "role": "Operations manager",
-          "bio": "Runs scheduling, dispatch, and quality control across the entire crew."
+          "bio": "Runs scheduling, routing and quality control across every truck on the road."
         },
         {
           "photo": {
@@ -79,8 +79,8 @@
             "alt": "Portrait of Tyrone Walker"
           },
           "name": "Tyrone Walker",
-          "role": "Lead installer",
-          "bio": "Specialises in glide-out retrofits and awkward corner cabinets. Eight years with the team."
+          "role": "Lead technician",
+          "bio": "Scorpion specialist and our UV hunt lead. Eight years with the team."
         },
         {
           "photo": {
@@ -89,8 +89,8 @@
             "alt": "Portrait of Priya Anand"
           },
           "name": "Priya Anand",
-          "role": "Design lead",
-          "bio": "Measures on site and turns a wish list into a shelf-by-shelf plan you can read."
+          "role": "Termite inspector",
+          "bio": "Licensed WDI inspector. Writes the reports agents and lenders actually read."
         },
         {
           "photo": {
@@ -99,8 +99,8 @@
             "alt": "Portrait of Jamal Foster"
           },
           "name": "Jamal Foster",
-          "role": "Cabinetmaker",
-          "bio": "Cuts and finishes every shelf to the sixteenth in the shop before it ever reaches your kitchen."
+          "role": "Exclusion specialist",
+          "bio": "Seals roof lines, vents and weep screeds so rodents and scorpions have nowhere left to go."
         },
         {
           "photo": {
@@ -110,7 +110,7 @@
           },
           "name": "Sophia Nguyen",
           "role": "Customer care lead",
-          "bio": "The friendly voice on the phone, scheduling appointments and keeping every visit on track."
+          "bio": "The friendly voice on the phone, booking inspections and keeping every visit on track."
         }
       ],
       "surface": "light",
@@ -121,8 +121,8 @@
       "type": "cta_banner",
       "headingLevel": "h2",
       "eyebrow": "Join the team",
-      "heading": "Want to build with us?",
-      "body": "We are always looking for skilled cabinetmakers, installers, and support staff who share our standards. Fair pay, steady work, and a real trade to grow in.",
+      "heading": "Want to join the crew?",
+      "body": "We are always looking for technicians, inspectors and office staff who share our standards. Paid licensing, steady routes, and a company truck.",
       "ctas": [
         {
           "label": "Get in touch",
@@ -131,8 +131,8 @@
           "newTab": false
         },
         {
-          "label": "Call (555) 014-2200",
-          "href": "tel:+15550142200",
+          "label": "Call (555) 014-7378",
+          "href": "tel:+15550147378",
           "style": "secondary",
           "newTab": false
         }

@@ -1,30 +1,46 @@
 ---
 import { announcement } from '../../lib/announcement';
+import { site } from '../../lib/site';
 ---
 
+{/*
+	Utility strip above the header: the current announcement on the left, the
+	standing credentials and hours on the right. Dismissing it hides the strip.
+*/}
 {announcement.enabled && (
 	<div
 		id="announcement-bar"
-		class="bg-brand px-5 py-2.5 text-center text-sm text-brand-fg sm:px-8"
+		class="bg-dark px-5 py-2 text-[0.8125rem] text-dark-fg sm:px-8 lg:px-12"
 		data-dismissible={announcement.dismissible ? 'true' : 'false'}
 	>
-		<div class="mx-auto flex w-full max-w-[104rem] items-center justify-center gap-3">
-			<p>
+		<div class="mx-auto flex w-full max-w-[104rem] items-center gap-6">
+			<p class="min-w-0 truncate">
+				<span class="mr-2 inline-block bg-accent px-1.5 py-px text-[0.6875rem] font-semibold tracking-[0.06em] text-accent-fg uppercase">
+					New
+				</span>
 				{announcement.text}
 				{announcement.link && (
-					<a href={announcement.link.href} class="ml-2 font-semibold underline underline-offset-4">
+					<a
+						href={announcement.link.href}
+						class="ml-2 font-semibold text-accent underline underline-offset-4"
+					>
 						{announcement.link.label}
 					</a>
 				)}
+			</p>
+			<p class="ml-auto hidden shrink-0 items-center gap-5 text-dark-fg/70 lg:flex">
+				<span>Licensed &amp; insured</span>
+				<span aria-hidden="true">·</span>
+				<span>{site.contact.hours}</span>
 			</p>
 			{announcement.dismissible && (
 				<button
 					type="button"
 					data-dismiss
-					class="ml-auto shrink-0 rounded p-1 opacity-70 transition-opacity hover:opacity-100"
+					class="shrink-0 p-1 opacity-70 transition-opacity hover:opacity-100 lg:ml-0"
 					aria-label="Dismiss announcement"
 				>
-					<svg viewBox="0 0 16 16" class="h-4 w-4 fill-current" aria-hidden="true">
+					<svg viewBox="0 0 16 16" class="h-3.5 w-3.5 fill-current" aria-hidden="true">
 						<path d="M4.3 3.3l4.7 4.7 4.7-4.7 1 1L10 9l4.7 4.7-1 1L9 10l-4.7 4.7-1-1L7 9 2.3 4.3z" />
 					</svg>
 				</button>

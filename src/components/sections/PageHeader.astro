@@ -3,7 +3,6 @@ import type { PageHeader } from './PageHeader.schema';
 import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
 
 type Props = PageHeader;
 
@@ -23,88 +22,110 @@ const {
 } = Astro.props;
 
 const onDark = surface === 'dark' || surface === 'brand';
-
-// The photo caption falls back to the eyebrow so the annotation comes for free.
-const note = mediaNote ?? eyebrow;
+const accent = onDark ? 'text-accent' : 'text-accent-ink';
+const rule = onDark ? 'border-current/30' : 'border-line';
+const pad = { none: 'py-10', sm: 'py-14 lg:py-20', md: 'py-20 lg:py-28', lg: 'py-24 lg:py-36' }[
+	spacing
+];
 ---
 
 {variant === 'feature' ? (
 	<Section anchor={anchor} surface={surface} spacing={spacing} width={width} reveal={false}>
-		<div class="max-w-4xl">
-			{eyebrow && (
-				<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-7 max-w-sm" />
+		{/* Title page: the heading runs the full measure over a heavy rule. */}
+		<p class={`mono-label mb-8 flex items-center gap-3 ${accent}`}>
+			<span class="check-dot" aria-hidden="true" />
+			{eyebrow ?? 'Report'}
+		</p>
+		<Heading
+			level={headingLevel}
+			size="hero"
+			display
+			class="!text-[clamp(2.75rem,7vw,6.5rem)] !leading-[0.95]"
+		>
+			{heading}
+		</Heading>
+		<div class={`mt-10 grid gap-8 border-t pt-8 lg:grid-cols-[1fr_auto] ${rule}`}>
+			{body && <Prose html={body} invert={onDark} size="lg" class="max-w-2xl" />}
+			{(mediaNote || priceNote) && (
+				<p class="mono-label opacity-70 lg:text-right">{priceNote ?? mediaNote}</p>
 			)}
-			<Heading level={headingLevel} size="hero" display class="max-w-3xl text-balance">
-				{heading}
-			</Heading>
-			{body && <Prose html={body} invert={onDark} size="lg" class="mt-7 max-w-2xl" />}
 		</div>
 
 		{image && (
-			<figure class="relative mt-12 overflow-hidden rounded-(--radius-media)">
+			<figure class="photo relative mt-12 h-[clamp(14rem,32vw,26rem)] overflow-hidden border border-line bg-dark">
 				<img
 					src={image.src}
 					alt={image.alt}
-					class="aspect-21/9 w-full object-cover"
+					class="h-full w-full object-cover"
 					fetchpriority="high"
 				/>
-				{note && (
-					<figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-5 sm:p-8">
-						<DimensionLine label={note} rule="both" onDark class="max-w-sm text-white" />
-					</figcaption>
-				)}
+				<figcaption class="absolute inset-x-0 bottom-0 z-[2] flex gap-4 bg-dark px-5 py-3 font-mono text-[0.6875rem] tracking-[0.14em] text-dark-fg/80 uppercase">
+					<span class="fig-num font-semibold text-accent" />
+					<span class="truncate">{image.alt}</span>
+				</figcaption>
 			</figure>
 		)}
 	</Section>
 ) : (
-	<Section anchor={anchor} surface={surface} spacing={spacing} width={width} reveal={false}>
-		<div class={image ? 'grid items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16' : ''}>
-			<div>
-				{eyebrow && (
-					<DimensionLine label={eyebrow} rule="both" onDark={onDark} class="mb-7 max-w-xs" />
-				)}
-				<Heading level={headingLevel} size="xl" display class="text-balance">
+	<Section
+		anchor={anchor}
+		surface={surface}
+		spacing="none"
+		width="full"
+		contained={false}
+		reveal={false}
+	>
+		{/*
+			Specimen plate: the subject's photo bleeds to the right edge under
+			photo, the name is set huge on the left over a spec table.
+		*/}
+		<div class={`grid ${image ? 'lg:grid-cols-[1.1fr_1fr]' : ''}`}>
+			<div class={`px-5 sm:px-8 lg:px-12 ${pad} flex flex-col justify-end`}>
+				<p class={`mono-label mb-6 flex items-center gap-3 ${accent}`}>
+					<span class="check-dot" aria-hidden="true" />
+					{eyebrow ?? 'Report'}
+				</p>
+				<Heading
+					level={headingLevel}
+					size="hero"
+					display
+					class="!text-[clamp(2.5rem,5.5vw,5.25rem)] !leading-[0.95]"
+				>
 					{heading}
 				</Heading>
 				{body && <Prose html={body} invert={onDark} size="lg" class="mt-7 max-w-xl text-pretty" />}
 
-				{/*
-					A spec row anchors the copy column's lower edge against the tall
-					photo, so a short summary no longer floats in empty space. Shows
-					the entry's price note -- a fact carried nowhere else on the
-					opener -- and omits itself entirely when there is none, leaving
-					the plainer header untouched. The parent is deliberately not
-					repeated here; it already sits in the breadcrumb trail above.
-				*/}
-				{priceNote && (
-					<dl
-						class={`mt-9 flex flex-wrap gap-x-10 gap-y-4 border-t pt-6 ${
-							onDark ? 'border-current/20' : 'border-line'
-						}`}
-					>
-						<div>
+				<dl class={`mt-10 grid max-w-xl grid-cols-2 border-t sm:grid-cols-3 ${rule}`}>
+					<div class="py-4 pr-4">
+						<dt class="mono-label opacity-60">Category</dt>
+						<dd class="mt-1 text-sm font-semibold">{eyebrow ?? 'Service'}</dd>
+					</div>
+					{priceNote && (
+						<div class="border-l border-current/20 py-4 pl-4">
 							<dt class="mono-label opacity-60">Price</dt>
-							<dd class="mt-1.5 font-display text-xl font-semibold tracking-tight">
-								{priceNote}
-							</dd>
+							<dd class={`mt-1 text-sm font-semibold ${accent}`}>{priceNote}</dd>
 						</div>
-					</dl>
-				)}
+					)}
+					<div class="border-l border-current/20 py-4 pl-4">
+						<dt class="mono-label opacity-60">Status</dt>
+						<dd class="mt-1 text-sm font-semibold">Booking this week</dd>
+					</div>
+				</dl>
 			</div>
 
 			{image && (
-				<figure class="relative overflow-hidden rounded-(--radius-media)">
+				<figure class="photo relative min-h-[18rem] overflow-hidden bg-dark lg:min-h-[32rem]">
 					<img
 						src={image.src}
 						alt={image.alt}
-						class="aspect-4/3 w-full object-cover"
+						class="absolute inset-0 h-full w-full object-cover"
 						fetchpriority="high"
 					/>
-					{mediaNote && (
-						<figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-4 sm:p-6">
-							<DimensionLine label={mediaNote} rule="both" onDark class="max-w-xs text-white" />
-						</figcaption>
-					)}
+					<span class="inset-frame pointer-events-none absolute inset-5 z-[2]" aria-hidden="true" />
+					<figcaption class="absolute inset-x-0 bottom-0 z-[3] flex gap-4 border-t border-accent bg-dark px-5 py-3 font-mono text-[0.6875rem] tracking-[0.14em] text-dark-fg/80 uppercase">
+						<span class="fig-num shrink-0 font-semibold text-accent" />
+						<span class="truncate">{mediaNote ?? image.alt}</span>
+					</figcaption>
 				</figure>
 			)}
 		</div>

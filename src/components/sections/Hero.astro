@@ -4,7 +4,6 @@ import Section from '../ui/Section.astro';
 import Heading from '../ui/Heading.astro';
 import Prose from '../ui/Prose.astro';
 import Button from '../ui/Button.astro';
-import DimensionLine from '../ui/DimensionLine.astro';
 import HeroBackground from './HeroBackground.astro';
 
 type Props = Hero;
@@ -26,136 +25,127 @@ const {
 	width = 'wide',
 } = Astro.props;
 
-// `full` breaks the container entirely: the image runs edge to edge and only
-// the text inside it is held to the page measure.
 const isFull = layout === 'full';
-const onDark = isFull || surface === 'dark' || surface === 'brand';
+const centered = layout === 'centered';
+const onDark = surface === 'dark' || surface === 'brand';
+
+// Stacked sentences, one per line; every sentence after the first is set in
+// the serif italic ("Nothing gets in. / Nothing stays.").
+const sentences = heading.split(/(?<=[.!?])\s+/).filter(Boolean);
 const stars = rating ? Math.round(rating.value) : 0;
+const showStats = !centered && (rating || badges.length > 0);
 ---
 
 <Section
 	anchor={anchor}
-	surface={isFull ? 'dark' : surface}
-	spacing={isFull ? 'none' : spacing}
-	width={isFull ? 'full' : width}
-	contained={!isFull}
+	surface={surface}
+	spacing={isFull ? 'md' : spacing}
+	width={width}
 	reveal={false}
 >
+	{/*
+		Built from the same parts as the sections below it: copy on the left,
+		the photo in a hairline-framed card on the right (caption beneath, like
+		the case files), and a bordered stats grid under both -- the score and
+		each credential in a cell, the same grid the plans and areas use.
+	*/}
 	<div
 		class={
-			isFull
-				? 'relative isolate flex min-h-[clamp(34rem,88vh,54rem)] items-end overflow-hidden bg-dark text-dark-fg [&_:is(h1,h2,h3,h4)]:text-current'
-				: layout === 'centered'
-					? 'mx-auto max-w-3xl text-center'
-					: 'grid items-center gap-14 lg:grid-cols-[1fr_1.05fr] lg:gap-20'
+			centered
+				? 'mx-auto max-w-3xl text-center'
+				: 'grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16'
 		}
 	>
-		{isFull && <HeroBackground background={background} />}
+		<div>
+			{eyebrow && (
+				<p
+					class={`mono-label mb-7 inline-flex items-center gap-2.5 px-3 py-1.5 ${
+						onDark ? 'bg-current/10 text-accent' : 'bg-muted text-brand'
+					}`}
+				>
+					<span class="check-dot" aria-hidden="true" />
+					{eyebrow}
+				</p>
+			)}
 
-		<div
-			class={
-				isFull
-					? 'mx-auto w-full max-w-[104rem] px-5 pb-16 pt-32 sm:px-8 sm:pb-20 lg:px-12 lg:pb-24'
-					: ''
-			}
-		>
-			{/*
-				The text column is capped by a wrapper rather than by a `[&>*]` rule:
-				an arbitrary child selector outranks the plain `max-w-*` utilities the
-				children set for themselves, and silently widens them.
-			*/}
-			<div class={isFull ? 'max-w-[58rem]' : ''}>
-				{eyebrow && (
-					<DimensionLine
-						label={eyebrow}
-						rule="both"
-						animate
-						onDark={onDark}
-						class={`mb-6 max-w-xs ${layout === 'centered' ? 'mx-auto' : ''}`}
-					/>
-				)}
+			<Heading level={headingLevel} size="hero" display class="!text-[clamp(2.6rem,5vw,4.75rem)]">
+				{sentences.map((s, i) => (
+					<span class={`block ${i > 0 ? (onDark ? 'mark-on-dark' : 'mark') : ''}`}>{s}</span>
+				))}
+			</Heading>
 
-				<Heading level={headingLevel} size="hero" display class="max-w-[16ch]">
-					{heading}
-				</Heading>
+			{body && (
+				<Prose
+					html={body}
+					invert={onDark}
+					size="lg"
+					class={`mt-7 max-w-xl ${centered ? 'mx-auto' : ''}`}
+				/>
+			)}
 
-				{body && (
-					<Prose
-						html={body}
-						invert={onDark}
-						size="lg"
-						class={`mt-7 max-w-xl ${layout === 'centered' ? 'mx-auto' : ''}`}
-					/>
-				)}
-
-				{ctas.length > 0 && (
-					<div
-						class={`mt-9 flex flex-wrap items-center gap-x-4 gap-y-3 ${layout === 'centered' ? 'justify-center' : ''}`}
-					>
-						{/*
-							Hero CTAs take the `lg` scale -- the page's primary action, sized a
-							step above the already-heavier-than-body default. Ghost CTAs stay a
-							text link (the size token drops its padding in Button).
-						*/}
-						{ctas.map((cta) => (
-							<Button {...cta} size="lg" onDark={onDark} />
-						))}
-					</div>
-				)}
-
-				{rating && (
-					<div
-						class={`mt-8 flex items-center gap-3 ${layout === 'centered' ? 'justify-center' : ''}`}
-					>
-						<div class="flex gap-0.5" aria-hidden="true">
-							{Array.from({ length: 5 }).map((_, i) => (
-								<svg
-									viewBox="0 0 20 20"
-									class={`h-4 w-4 ${i < stars ? 'fill-accent' : 'fill-current opacity-25'}`}
-								>
-									<path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9 4.7 17.6l1-5.8L1.5 7.7l5.9-.9z" />
-								</svg>
-							))}
-						</div>
-						<p class="mono-label opacity-75">
-							{rating.value.toFixed(1)} / 5 &middot; {rating.label}
-							{rating.count ? ` (${rating.count.toLocaleString()})` : ''}
-						</p>
-					</div>
-				)}
-
-				{badges.length > 0 && (
-					<ul
-						class={`mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t pt-6 text-sm ${
-							onDark ? 'border-current/20' : 'border-line'
-						} ${layout === 'centered' ? 'justify-center' : ''}`}
-					>
-						{badges.map((badge) => (
-							<li class="flex items-center gap-2.5">
-								<span class="h-1 w-1 bg-accent" aria-hidden="true" />
-								{badge}
-							</li>
-						))}
-					</ul>
-				)}
-			</div>
+			{ctas.length > 0 && (
+				<div
+					class={`mt-9 flex flex-wrap items-center gap-x-7 gap-y-3 ${centered ? 'justify-center' : ''}`}
+				>
+					{ctas.map((cta) => (
+						<Button {...cta} size="lg" onDark={onDark} arrow={cta.style === 'ghost'} />
+					))}
+				</div>
+			)}
 		</div>
 
-		{!isFull && layout === 'split' && background && (
-			<figure class="relative isolate overflow-hidden rounded-(--radius-media)">
-				<div class="relative aspect-4/5 w-full sm:aspect-4/3 lg:aspect-5/4">
+		{!centered && background && (
+			<figure class={`border p-3 ${onDark ? 'border-current/15' : 'border-line bg-surface'}`}>
+				<div class="relative isolate aspect-[4/3] overflow-hidden bg-dark">
 					<HeroBackground background={background} scrim={false} />
 				</div>
 				{mediaNote && (
-					<figcaption class="pointer-events-none absolute inset-x-0 bottom-0 p-4 sm:p-6">
-						<div class="dim dim-animate rounded-(--radius-brand) bg-dark/75 px-4 py-2.5 text-accent backdrop-blur-sm">
-							<span class="dim-rule" />
-							<span class="whitespace-nowrap">{mediaNote}</span>
-							<span class="dim-rule" />
-						</div>
+					<figcaption class="flex items-center gap-2.5 px-2 pt-3 pb-1 text-sm opacity-75">
+						<span class="check-dot" aria-hidden="true" />
+						{mediaNote}
 					</figcaption>
 				)}
 			</figure>
 		)}
 	</div>
+
+	{showStats && (
+		<dl
+			class={`mt-12 grid gap-px border sm:grid-cols-2 lg:mt-16 ${
+				badges.length + (rating ? 1 : 0) >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+			} ${onDark ? 'border-current/15 bg-current/15' : 'border-line bg-line'}`}
+		>
+			{rating && (
+				<div class={`flex items-center gap-4 p-6 ${onDark ? 'bg-dark' : 'bg-surface'}`}>
+					<dt class="sr-only">Customer rating</dt>
+					<dd
+						class={`text-4xl leading-none font-semibold tracking-[-0.03em] ${onDark ? '' : 'text-ink'}`}
+					>
+						{rating.value.toFixed(1)}
+					</dd>
+					<dd>
+						<span class="block text-sm tracking-[0.1em] text-cta" aria-hidden="true">
+							{'★'.repeat(stars)}
+						</span>
+						<span class="block text-xs opacity-70">
+							{rating.count ? `${rating.count.toLocaleString()} ` : ''}
+							{rating.label}
+						</span>
+					</dd>
+				</div>
+			)}
+			{badges.map((badge, i) => (
+				<div class={`flex items-center gap-3.5 p-6 ${onDark ? 'bg-dark' : 'bg-surface'}`}>
+					<dt class="sr-only">Credential {i + 1}</dt>
+					<span
+						class={`flex h-10 w-10 shrink-0 items-center justify-center ${onDark ? 'bg-current/10' : 'bg-muted'}`}
+						aria-hidden="true"
+					>
+						<span class="check-dot" />
+					</span>
+					<dd class="text-sm leading-snug font-medium">{badge}</dd>
+				</div>
+			))}
+		</dl>
+	)}
 </Section>
